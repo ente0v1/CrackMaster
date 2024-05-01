@@ -1,5 +1,5 @@
 #!/bin/bash
-default_scripts="/root/scripts/Crack_Master-1.0"
+default_scripts="./"
 
 # Source the functions library
 source "$default_scripts/functions.sh"
