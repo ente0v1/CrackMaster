@@ -18,8 +18,7 @@ This Bash script provides a simple interface to perform cracking operations usin
 - Supports session restoration for interrupted cracking sessions.
 
 ## Attack Modes
-  # | Mode
- ===+======
+Modes
   0 | Straight
   1 | Combination
   3 | Brute-force
@@ -27,18 +26,16 @@ This Bash script provides a simple interface to perform cracking operations usin
   7 | Hybrid Mask + Wordlist
   9 | Association
 
-- [ Basic Examples ] -
-
-  Attack-          | Hash- |
+Basic Examples
   Mode             | Type  | Example command
- ==================+=======+==================================================================
   Wordlist         | $P$   | hashcat -a 0 -m 400 example400.hash example.dict
   Wordlist + Rules | MD5   | hashcat -a 0 -m 0 example0.hash example.dict -r rules/best64.rule
   Brute-Force      | MD5   | hashcat -a 3 -m 0 example0.hash ?a?a?a?a?a?a
   Combinator       | MD5   | hashcat -a 1 -m 0 example0.hash example.dict example.dict
   Association      | $1$   | hashcat -a 9 -m 500 example500.hash 1word.dict -r rules/best64.rule
 
-  from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
+from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
+  
 ![Test Image](./assets/menu.png)
 
 
