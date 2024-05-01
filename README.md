@@ -27,12 +27,14 @@ This Bash script provides a simple interface to perform cracking operations usin
 - Wordlists, rules, and masks available in the specified paths
 
 ## Usage
-1. Clone the repository to your local machine.
-2. Go into the repo folder: `cd CrackMaster`
-3. Make the script executable: `chmod +x *`
-4. Change directory to your hash path: `cd $path`
-5. Run the script: `./crackmaster.sh`
-6. Follow the on-screen instructions to select the cracking method and provide necessary inputs.
+To begin, clone the repository using "git clone https://github.com/ente0v1/Crack_Master.git" in your $HOME directory, then navigate into the CrackMaster folder by typing "cd CrackMaster". After that, make all scripts executable with "chmod +x *", and proceed to move "hash.hc22000" in repo root directory. With these steps completed, you're now ready to run the script by executing "./crackmaster.sh".
 
+
+git clone [<repository_url>](https://github.com/ente0v1/Crack_Master.git)
+mv Crack_Master $HOME
+cd Crack_Master
+chmod +x *
+mv hash.hc22000 $HOME/Crack_Master
+./crackmaster.sh
 
 ![Test Image](./assets/action.png)
