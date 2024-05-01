@@ -2,7 +2,6 @@
 # Brute-force
 # Example:  hashcat -a 3 -m 0 example.hash ?a?a?a?a?a?a
 source functions.sh
-default_scripts="/$HOME/Crack_Master"
 
 define_default_parameters
 define_colors
