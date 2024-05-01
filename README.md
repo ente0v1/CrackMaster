@@ -17,7 +17,7 @@ This Bash script provides a simple interface to perform cracking operations usin
 - Easy-to-use menu interface for selecting cracking options.
 - Supports session restoration for interrupted cracking sessions.
 
-## Attack Modes
+## Attacks
 ```
 - [ Attack Modes ] -
 
@@ -40,6 +40,7 @@ This Bash script provides a simple interface to perform cracking operations usin
   Brute-Force      | MD5   | hashcat -a 3 -m 0 example0.hash ?a?a?a?a?a?a
   Combinator       | MD5   | hashcat -a 1 -m 0 example0.hash example.dict example.dict
   Association      | $1$   | hashcat -a 9 -m 500 example500.hash 1word.dict -r rules/best64.rule
+
 ```
 from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
   
