@@ -6,6 +6,9 @@ Bash script to perform cracking operations with Hashcat
 ## Description
 This Bash script provides a simple interface to perform cracking operations using Hashcat. It offers various options such as cracking with wordlists, rules, brute-force, and hybrid wordlist + mask attacks.
 
+## Disclaimer
+This program is provided without warranties of any kind. The author assumes no responsibility for any damages resulting from the use of this software. We recommend that you use it only for lawful purposes and in accordance with local laws.
+
 ## Features
 - Crack passwords using wordlists, rules, or brute-force methods.
 - Perform hybrid attacks combining wordlists and masks.
