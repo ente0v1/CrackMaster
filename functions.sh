@@ -1,5 +1,5 @@
 #!/bin/bash
-default_scripts="/$HOME/Crack_Master"
+default_scripts="$HOME/Crack_Master"
 
 # Function to define colors
 define_colors() {
@@ -14,7 +14,7 @@ define_colors() {
 
 # Function to define default parameters
 define_default_parameters() {
-    default_restorepath="/$HOME/.local/share/hashcat/sessions"
+    default_restorepath="$HOME/.local/share/hashcat/sessions"
     default_session=$(date +"%Y-%m-%d")
     default_wordlists="$default_scripts/wordlists"
     default_masks="$default_scripts/masks"
