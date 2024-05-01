@@ -36,6 +36,3 @@ This Bash script provides a simple interface to perform cracking operations usin
 
 
 ![Test Image](./assets/action.png)
-
-
-## Example
