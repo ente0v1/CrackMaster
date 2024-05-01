@@ -1,5 +1,5 @@
 #!/bin/bash
-default_scripts="/home/$USER/Crack_Master"
+default_scripts="/$HOME/Crack_Master"
 
 # Function to define colors
 define_colors() {
