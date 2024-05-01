@@ -17,7 +17,28 @@ This Bash script provides a simple interface to perform cracking operations usin
 - Easy-to-use menu interface for selecting cracking options.
 - Supports session restoration for interrupted cracking sessions.
 
+## Attack Modes
+  # | Mode
+ ===+======
+  0 | Straight
+  1 | Combination
+  3 | Brute-force
+  6 | Hybrid Wordlist + Mask
+  7 | Hybrid Mask + Wordlist
+  9 | Association
 
+- [ Basic Examples ] -
+
+  Attack-          | Hash- |
+  Mode             | Type  | Example command
+ ==================+=======+==================================================================
+  Wordlist         | $P$   | hashcat -a 0 -m 400 example400.hash example.dict
+  Wordlist + Rules | MD5   | hashcat -a 0 -m 0 example0.hash example.dict -r rules/best64.rule
+  Brute-Force      | MD5   | hashcat -a 3 -m 0 example0.hash ?a?a?a?a?a?a
+  Combinator       | MD5   | hashcat -a 1 -m 0 example0.hash example.dict example.dict
+  Association      | $1$   | hashcat -a 9 -m 500 example500.hash 1word.dict -r rules/best64.rule
+
+  from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
 ![Test Image](./assets/menu.png)
 
 
@@ -28,9 +49,8 @@ This Bash script provides a simple interface to perform cracking operations usin
 
 ## Installation
 To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the CrackMaster folder by typing `cd Crack_Master`. After that, make all scripts executable with `chmod +x *`, and proceed to move "hash.hc22000" in your repo root directory. With these steps completed, you're now ready to run the script by executing `./crackmaster.sh`.
-
-Commands to execute:
-```bash
+Execution:
+```
 git clone https://github.com/ente0v1/Crack_Master.git
 mv Crack_Master $HOME
 cd $HOME/Crack_Master
