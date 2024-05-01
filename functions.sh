@@ -14,7 +14,7 @@ define_colors() {
 
 # Function to define default parameters
 define_default_parameters() {
-    default_restorepath="/$USER/.local/share/hashcat/sessions"
+    default_restorepath="/$HOME/.local/share/hashcat/sessions"
     default_session=$(date +"%Y-%m-%d")
     default_wordlists="$default_scripts/wordlists"
     default_masks="$default_scripts/masks"
