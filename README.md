@@ -31,7 +31,7 @@ To begin, clone the repository using `git clone https://github.com/ente0v1/Crack
 
 Commands to execute:
 ```bash
-git clone https://github.com/ente0v1/Crack_Master.git)
+git clone https://github.com/ente0v1/Crack_Master.git
 mv Crack_Master $HOME
 cd $HOME/Crack_Master
 chmod +x *
