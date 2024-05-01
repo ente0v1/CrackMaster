@@ -14,12 +14,12 @@ define_colors() {
 
 # Function to define default parameters
 define_default_parameters() {
-    default_restorepath="/root/.local/share/hashcat/sessions"
+    default_restorepath="/$USER/.local/share/hashcat/sessions"
     default_session=$(date +"%Y-%m-%d")
-    default_wordlists="/usr/share/wordlists"
-    default_masks="/usr/share/hashcat/masks"
-    default_rules="/usr/share/hashcat/rules"
-    default_wordlist="rockyou.txt"
+    default_wordlists="$default_scripts/wordlists"
+    default_masks="$default_scripts/masks"
+    default_rules="$default_scripts/rules"
+    default_wordlist="john.lst"
     default_mask="?d?d?d?d"
     default_rule="T0XlCv2.rule"
     default_min_length="4"
