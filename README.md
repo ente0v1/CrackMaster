@@ -43,8 +43,6 @@ This Bash script provides a simple interface to perform cracking operations usin
 
 ```
 from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
-  
-![Test Image](./assets/menu.png)
 
 
 ## Requirements
@@ -61,6 +59,8 @@ mv Crack_Master $HOME
 cd $HOME/Crack_Master
 chmod +x *
 ```
+![Test Image](./assets/menu.png)
+
 
 If you prefer to use wordlists and other custom parameters, in files suffixed with `crack*` on line 7, replace `define_default_parameters` with `define_my_parameters` and go change variables in function "define_my_parameters" in `functions.sh`.
 
