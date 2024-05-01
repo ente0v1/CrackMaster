@@ -69,7 +69,7 @@ To start the script log in as non-root user and rename your hash in "hash.hc2200
 
 ![Test Image](./assets/action.png)
 
-## Useful one-liners for wordlist manipulation
+## Useful one-liners for wordlist manipulation (from [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git))
 **Remove duplicates**
 ```
 awk '!(count[$0]++)' old.txt > new.txt
@@ -93,4 +93,4 @@ cat file1.txt file2.txt > combined.txt
 egrep -v "^[[:space:]]*$" old.txt > new.txt
 ```
 ## Help
-If you want more information about how hashcat's attack methods work, I recommend reading the official [Hashcat Wiki](https://hashcat.net/wiki/).
+If you desire to get more wordlists and resources look at [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git) repo. Also if you want more information about how hashcat's attack methods work, I recommend reading the official [Hashcat Wiki](https://hashcat.net/wiki/).
