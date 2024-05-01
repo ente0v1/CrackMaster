@@ -53,7 +53,7 @@ from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
 ## Installation
 ![Test Image](./assets/menu.png)
 
-To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the CrackMaster folder by typing `cd Crack_Master`. After that, make all scripts executable with `chmod +x *`, and proceed to move "hash.hc22000" in your repo root directory. With these steps completed, you're now ready to run the script by executing `./crackmaster.sh`.
+To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the Crack_Master folder by typing `cd Crack_Master`. After that, make all scripts executable with `chmod +x *`, and proceed to move "hash.hc22000" in your repo root directory. With these steps completed, you're now ready to run the script by executing `./crackmaster.sh`.
 Execution:
 ```
 git clone https://github.com/ente0v1/Crack_Master.git
