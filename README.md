@@ -51,6 +51,8 @@ from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
 - Wordlists, rules, and masks available in the specified paths
 
 ## Installation
+![Test Image](./assets/menu.png)
+
 To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the CrackMaster folder by typing `cd Crack_Master`. After that, make all scripts executable with `chmod +x *`, and proceed to move "hash.hc22000" in your repo root directory. With these steps completed, you're now ready to run the script by executing `./crackmaster.sh`.
 Execution:
 ```
@@ -59,9 +61,6 @@ mv Crack_Master $HOME
 cd $HOME/Crack_Master
 chmod +x *
 ```
-![Test Image](./assets/menu.png)
-
-
 If you prefer to use wordlists and other custom parameters, in files suffixed with `crack*` on line 7, replace `define_default_parameters` with `define_my_parameters` and go change variables in function "define_my_parameters" in `functions.sh`.
 
 ## Usage
