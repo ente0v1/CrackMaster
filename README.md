@@ -1,6 +1,6 @@
 # CrackMaster
 Bash script to perform cracking operations with Hashcat
-![GitHub](https://img.shields.io/github/license/yourusername/Bash-Crack-Script)
+![GitHub]([https://img.shields.io/github/license/yourusername/Bash-Crack-Script)](https://github.com/ente0v1/CrackMaster?tab=GPL-3.0-1-ov-file#readme)
 
 ## Description
 This Bash script provides a simple interface to perform cracking operations using Hashcat. It offers various options such as cracking with wordlists, rules, brute-force, and hybrid wordlist + mask attacks. This Bash script is inspired by the TV Show "Mr. Robot".
