@@ -68,7 +68,9 @@ To start the script log in as non-root user and rename your hash in `hash.hc2200
 
 ![Test Image](./assets/action.png)
 
-When the cracking is finished, you will find the results in `logs`; "status.txt" contains the following info:
+When the cracking is finished, you will find the results in `logs`.
+
+"status.txt" contains the following info:
 ```
 ------------------
 STATUS.TXT
