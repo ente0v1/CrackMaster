@@ -2,7 +2,7 @@
 # Hybrid Wordlist + Mask
 # Example:  hashcat -a 6 -m 0 example.hash example.dict ?a?a?a?a?a?a
 source functions.sh
-default_scripts="/$HOME/Crack_Master"
+default_scripts="$HOME/Crack_Master"
 
 define_default_parameters
 define_colors
@@ -66,13 +66,15 @@ else
 fi
 
 # Save successful settings
-save_settings "$session" "$wordlist_path" "$wordlist" "$mask"
+save_settings "$session" "$wordlist_path" "$wordlist" "$mask" ""
 
 # Save logs
 mkdir logs
-echo "$session" > session.txt
+mkdir "$session"
+mv "$session" logs
 echo -e "$status" > status.txt
-mv session.txt logs
-mv status.txt logs
-mv plaintext.txt logs
+mv session.txt "logs/$session"
+mv status.txt "logs/$session"
+mv plaintext.txt "logs/$session"
+
 

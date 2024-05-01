@@ -2,7 +2,7 @@
 # Brute-force
 # Example:  hashcat -a 3 -m 0 example.hash ?a?a?a?a?a?a
 source functions.sh
-default_scripts="/$HOME/Crack_Master"
+default_scripts="$HOME/Crack_Master"
 
 define_default_parameters
 define_colors
@@ -30,16 +30,16 @@ echo -e "${RED}Enter Wordlists Path (press Enter to use default '$default_wordli
 read wordlist_path
 wordlist_path=${wordlist_path:-$default_wordlists}
 
-echo -e "${MAGENTA}Available Wordlists in $wordlist_path:${NC}"
-ls "$wordlist_path"
+echo -e "${MAGENTA}Available Wordlists in $default_wordlists:${NC} "
+ls "$default_wordlists:${NC}"
 
 echo -e "${MAGENTA}Enter Wordlist (press Enter to use default '$default_wordlist'):${NC}"
 read wordlist
-wordlist=${wordlist:-$default_wordlist}
+wordlist=${wordlist_input:-$default_wordlist}
 
 echo -e "${MAGENTA}Enter Mask (press Enter to use default '$default_mask'):${NC}"
 read mask
-mask=${mask:-$default_mask}
+mask=${mask_input:-$default_mask}
 
 echo -e "${MAGENTA}Use status timer? (y/n)${NC}"
 read status_timer_input
@@ -60,18 +60,20 @@ echo -e "${GREEN}Command >>${NC} hashcat --session="$session" --increment --incr
 
 # Execute hashcat with combined attack (wordlist + mask) and increment options
 if [ "$status_timer_input" = "y" ]; then
-    hashcat --session="$session" --status --status-timer=2 -m 22000 hash.hc22000 -a 3 -w 4 --outfile-format=2 -o plaintext.txt "$mask"
+    hashcat --session="$session" --status --status-timer=2 -m 22000 hash.hc22000 -a 3 -w 4 --outfile-format=2 -o plaintext.txt "$mask_input"
 else
-    hashcat --session="$session" -m 22000 hash.hc22000 -a 3 -w 4 --outfile-format=2 -o plaintext.txt "$mask"
+    hashcat --session="$session" -m 22000 hash.hc22000 -a 3 -w 4 --outfile-format=2 -o plaintext.txt "$mask_input"
 fi
 
 # Save successful settings
-save_settings "$session" "$wordlist_path" "$wordlist" "$mask"
+save_settings "" "" "" "$mask" ""
 
 # Save logs
 mkdir logs
-echo "$session" > session.txt
+mkdir "$session"
+mv "$session" logs
 echo -e "$status" > status.txt
-mv session.txt logs
-mv status.txt logs
-mv plaintext.txt logs
+mv session.txt "logs/$session"
+mv status.txt "logs/$session"
+mv plaintext.txt "logs/$session"
+

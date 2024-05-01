@@ -145,12 +145,14 @@ save_settings() {
     local path_wordlists="$2"
     local default_wordlist="$3"
     local mask="$4"
+    local rule="$5"
     local plaintext_file="plaintext.txt"
     
     status+="\nSession: $session"
     status+="\nWordlist Path: $path_wordlists/$default_wordlist"
     status+="\nMask: $mask"
-    status+="\nPlaintext:\n$(cat $plaintext_file)"
+    status+="\nRule: $rule"
+    status+="\nPlaintext: $(cat $plaintext_file)"
 }
 
 # Function to handle session restoration

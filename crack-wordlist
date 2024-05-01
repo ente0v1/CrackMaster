@@ -2,7 +2,7 @@
 # Wordlist
 # Example:  hashcat -a 0 -m 0 example.hash example.dict
 source functions.sh
-default_scripts="/$HOME/Crack_Master"
+default_scripts="$HOME/Crack_Master"
 
 define_default_parameters
 define_colors
@@ -26,27 +26,34 @@ echo -e "${MAGENTA}Enter session name (press Enter to use default '$default_sess
 read session_input
 session=${session_input:-$default_session}
 
-echo -e "${MAGENTA}Available Wordlists in $default_wordlists:${NC} "
-ls "$default_wordlists"
+echo -e "${RED}Enter Wordlists Path (press Enter to use default '$default_wordlists'):${NC}"
+read wordlist_path
+wordlist_path=${wordlist_path:-$default_wordlists}
+
+echo -e "${MAGENTA}Available Wordlists in $wordlist_path:${NC} "
+ls "$wordlist_path"
+
 echo -e "${MAGENTA}Enter Wordlist (press Enter to use default '$default_wordlist'):${NC}"
 read wordlist_input
 wordlist=${wordlist_input:-$default_wordlist}
 
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$default_wordlists/$wordlist""
+echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist""
 
 # Execute hashcat with the specified wordlist
-hashcat --session="$session" -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$default_wordlists/$wordlist"
+hashcat --session="$session" -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
 
 # Save successful settings
-save_settings "$session" "$default_wordlists" "$wordlist" ""
+save_settings "$session" "$wordlist_path" "$wordlist" ""
 
 # Save logs
 mkdir logs
-echo "$session" > session.txt
+mkdir "$session"
+mv "$session" logs
 echo -e "$status" > status.txt
-mv session.txt logs
-mv status.txt logs
-mv plaintext.txt logs
+mv session.txt "logs/$session"
+mv status.txt "logs/$session"
+mv plaintext.txt "logs/$session"
+
 
