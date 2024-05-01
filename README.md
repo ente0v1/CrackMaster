@@ -19,8 +19,10 @@ This Bash script provides a simple interface to perform cracking operations usin
 
 ## Usage
 1. Clone the repository to your local machine.
-2. Make the script executable: `chmod +x bash_crack_script.sh`
-3. Run the script: `./bash_crack_script.sh`
-4. Follow the on-screen instructions to select the cracking method and provide necessary inputs.
+2. Go into the repo folder: `cd CrackMaster`
+3. Make the script executable: `chmod +x *`
+4. Change directory to your hash path: `cd $path`
+5. Run the script: `./crackmaster.sh`
+6. Follow the on-screen instructions to select the cracking method and provide necessary inputs.
 
 ## Example
