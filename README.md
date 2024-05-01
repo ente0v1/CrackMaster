@@ -1,7 +1,9 @@
 # CrackMaster
-Bash script to perform cracking operations with Hashcat
-![GitHub](https://img.shields.io/github/license/ente0v1/CrackMaster)
+Bash script to perform cracking operations with Hashcat    ![GitHub](https://img.shields.io/github/license/ente0v1/CrackMaster)
+
+
 ![Test Image](./images/pennybags.png)
+
 
 ## Disclaimer
 This program is provided without warranties of any kind. The author assumes no responsibility for any damages resulting from the use of this software. We recommend that you use it only for lawful purposes and in accordance with local laws.
