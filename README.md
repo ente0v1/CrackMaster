@@ -1,5 +1,5 @@
 # CrackMaster
-Bash script to perform cracking operations with Hashcat
+An awareness based Bash script to perform cracking operations with Hashcat
 ![GitHub](https://img.shields.io/github/license/ente0v1/CrackMaster)
 
 
