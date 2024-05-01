@@ -30,13 +30,12 @@ This Bash script provides a simple interface to perform cracking operations usin
 To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the CrackMaster folder by typing `cd Crack_Master`. After that, make all scripts executable with `chmod +x *`, and proceed to move "hash.hc22000" in repo root directory. With these steps completed, you're now ready to run the script by executing `./crackmaster.sh`.
 
 Commands to execute:
-`git clone https://github.com/ente0v1/Crack_Master.git)`
-
-`mv Crack_Master $HOME`
-
-`cd Crack_Master`
-
-`chmod +x *`
+```bash
+git clone https://github.com/ente0v1/Crack_Master.git)
+mv Crack_Master $HOME`
+cd Crack_Master`
+chmod +x *
+```
 
 ## Usage
 To start Crack_Master rename your hash in "hash.hc22000" move your hash into the repo and execute: `./crackmaster.sh`
