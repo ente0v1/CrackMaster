@@ -93,4 +93,4 @@ cat file1.txt file2.txt > combined.txt
 egrep -v "^[[:space:]]*$" old.txt > new.txt
 ```
 ## Help
-If you want more information about how hashcat's attack methods work, I recommend reading the official [Hashcat Wiki](https://hashcat.net/wiki/) and the file named `crackwiki.txt`.
+If you want more information about how hashcat's attack methods work, I recommend reading the official [Hashcat Wiki](https://hashcat.net/wiki/).
