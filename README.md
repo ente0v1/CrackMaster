@@ -43,4 +43,4 @@ To start Crack_Master rename your hash in "hash.hc22000" move your hash into the
 ![Test Image](./assets/action.png)
 
 ## Help
-If you want more information about how hashcat's attack methods work, I recommend reading the official [Hashcat Wiki](https://hashcat.net/wiki/)
+If you want more information about how hashcat's attack methods work, I recommend reading the official [Hashcat Wiki](https://hashcat.net/wiki/) and the repo file named `crackwiki.txt`
