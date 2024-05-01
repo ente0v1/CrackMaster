@@ -33,7 +33,7 @@ Commands to execute:
 ```bash
 git clone https://github.com/ente0v1/Crack_Master.git)
 mv Crack_Master $HOME
-cd Crack_Master
+cd $HOME/Crack_Master
 chmod +x *
 ```
 
