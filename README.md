@@ -44,5 +44,28 @@ To start the script log in as non-root user and rename your hash in "hash.hc2200
 
 ![Test Image](./assets/action.png)
 
+## Useful one-liners for wordlist manipulation
+**Remove duplicates**
+```
+awk '!(count[$0]++)' old.txt > new.txt
+```
+**Sort by length**
+```
+awk '{print length, $0}' old.txt | sort -n | cut -d " " -f2- > new.txt
+```
+
+**Sort by alphabetical order**
+```
+sort old.txt | uniq > new.txt
+```
+**Merge multiple text files into one**
+```
+cat file1.txt file2.txt > combined.txt
+```
+
+**Remove all blank lines**
+```
+egrep -v "^[[:space:]]*$" old.txt > new.txt
+```
 ## Help
 If you want more information about how hashcat's attack methods work, I recommend reading the official [Hashcat Wiki](https://hashcat.net/wiki/) and the file named `crackwiki.txt`.
