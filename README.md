@@ -1,21 +1,5 @@
 # CrackMaster
 Bash script to perform cracking operations with Hashcat
-
-         	      ▄▀▄▄▄▄   ▄▀▀▄▀▀▀▄  ▄▀▀█▄   ▄▀▄▄▄▄   ▄▀▀▄ █            
-		      █ █    ▌ █   █   █ ▐ ▄▀ ▀▄ █ █    ▌ █  █ ▄▀            
-		      ▐ █      ▐  █▀▀█▀    █▄▄▄█ ▐ █      ▐  █▀▄             
-		        █       ▄▀    █   ▄▀   █   █        █   █            
-		       ▄▀▄▄▄▄▀ █     █   █   ▄▀   ▄▀▄▄▄▄▀ ▄▀   █             
-		      █     ▐  ▐     ▐   ▐   ▐   █     ▐  █    ▐             
-		      ▐                          ▐        ▐                  
-		 ▄▀▀▄ ▄▀▄  ▄▀▀█▄   ▄▀▀▀▀▄  ▄▀▀▀█▀▀▄  ▄▀▀█▄▄▄▄  ▄▀▀▄▀▀▀▄
-		█  █ ▀  █ ▐ ▄▀ ▀▄ █ █   ▐ █    █  ▐ ▐  ▄▀   ▐ █   █   █
-		▐  █    █   █▄▄▄█    ▀▄   ▐   █       █▄▄▄▄▄  ▐  █▀▀█▀ 
-		  █    █   ▄▀   █ ▀▄   █     █        █    ▌   ▄▀    █ 
-		▄▀   ▄▀   █   ▄▀   █▀▀▀    ▄▀        ▄▀▄▄▄▄   █     █  
-		█    █    ▐   ▐    ▐      █          █    ▐   ▐     ▐  
-		▐    ▐                    ▐          ▐                 
-
 ![GitHub](https://img.shields.io/github/license/yourusername/Bash-Crack-Script)
 
 ## Description
