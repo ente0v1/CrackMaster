@@ -102,6 +102,49 @@ cat file1.txt file2.txt > combined.txt
 ```
 egrep -v "^[[:space:]]*$" old.txt > new.txt
 ```
+## Cracking in-depth
+**Hybrid Wordlist + Mask**
+Breakdown of the Additional Code:
+This code snippet focuses on the functionality related to cracking with a combined wordlist and mask attack. Here's a detailed explanation:
+
+1. Hybrid Wordlist + Mask Cracking:
+This script specifically handles cracking with a combination of a wordlist and a mask.
+The mask allows generating variations of words from the wordlist using placeholders like ?a?a?a? which represent characters.
+
+2. User Prompts and Inputs:
+The script retrieves available sessions for potential restoration.
+It prompts the user for various inputs:
+  Restore file name (optional)
+  Session name (defaults to $default_session)
+  Wordlist path (defaults to $default_wordlists)
+  Wordlist name (defaults to $default_wordlist)
+  Mask (defaults to $default_mask)
+  Whether to use a status timer (prompts for "y" or "n")
+  Minimum password length (defaults to $default_min_length)
+  Maximum password length (defaults to $default_max_length)
+3. Hashcat Command Construction:
+
+The script constructs the hashcat command based on user inputs and default values.
+Here's a breakdown of the important options:
+  --session="$session": Creates or resumes a session named $session
+  --increment --increment-min="$min_length" --increment-max="$max_length": Enables password length incrementing within the specified range.
+  -m 22000: Specifies the hash mode (likely for a specific hash type)
+  hash.hc22000: Path to the hash file containing the password hash
+  -a 6: Sets the attack mode to hybrid wordlist + mask (mode 6)
+  -w 4: Uses wordlists for the attack
+  --outfile-format=2: Specifies output format for cracked passwords
+  -o plaintext.txt: Output file for cracked passwords
+  "wordlist_path/$wordlist": Path to the chosen wordlist
+  "mask": The mask string to generate password variations
+4. Conditional Hashcat Execution:
+The script checks the user's choice for a status timer.
+If "y", it executes hashcat with --status --status-timer=2 options, providing real-time status updates every 2 seconds.
+Otherwise, it executes hashcat without the status timer.
+5. Saving Results:
+
+The script calls save_settings to store details about the successful cracking session (session name, wordlist path, wordlist name, mask, etc.).
+It calls save_logs to organize and store session data and logs.
+
 ## Help
 If you desire to get more resources take a look at:
   [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git), [paroleitaliane](https://github.com/napolux/paroleitaliane), [SecLists](https://github.com/danielmiessler/SecLists), [hashcat-rules](https://github.com/Unic0rn28/hashcat-rules)
