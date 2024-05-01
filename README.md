@@ -2,7 +2,7 @@
 Bash script to perform cracking operations with Hashcat    ![GitHub](https://img.shields.io/github/license/ente0v1/CrackMaster)
 
 
-![Test Image](./images/pennybags.png)
+![Test Image](./assets/pennybags.png)
 
 
 ## Disclaimer
@@ -17,6 +17,10 @@ This Bash script provides a simple interface to perform cracking operations usin
 - Easy-to-use menu interface for selecting cracking options.
 - Supports session restoration for interrupted cracking sessions.
 
+
+![Test Image](./assets/menu.png)
+
+
 ## Requirements
 - Linux operating system
 - Hashcat installed (`sudo apt install hashcat`)
@@ -29,5 +33,9 @@ This Bash script provides a simple interface to perform cracking operations usin
 4. Change directory to your hash path: `cd $path`
 5. Run the script: `./crackmaster.sh`
 6. Follow the on-screen instructions to select the cracking method and provide necessary inputs.
+
+
+![Test Image](./assets/action.png)
+
 
 ## Example
