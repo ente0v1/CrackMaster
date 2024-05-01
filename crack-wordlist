@@ -2,7 +2,6 @@
 # Wordlist
 # Example:  hashcat -a 0 -m 0 example.hash example.dict
 source functions.sh
-default_scripts="/$HOME/Crack_Master"
 
 define_default_parameters
 define_colors
