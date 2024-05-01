@@ -5,7 +5,7 @@ default_scripts="/home/$USER/Crack_Master"
 source "$default_scripts/functions.sh"
 source "$default_scripts/fsociety00.dat"
 
-#Define parameters
+# Define parameters
 define_default_parameters
 define_colors
 
