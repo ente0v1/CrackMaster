@@ -70,11 +70,8 @@ To start the script log in as non-root user and rename your hash in `hash.hc2200
 
 When the cracking is finished, you will find the results in `logs`.
 
-"status.txt" contains the following info:
+`status.txt` contains the following info:
 ```
-------------------
-STATUS.TXT
-------------------
 Session: $session
 Wordlist Path: $wordlist_path
 Mask: $mask
