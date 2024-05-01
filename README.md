@@ -40,7 +40,7 @@ chmod +x *
 If you prefer to use wordlists and other custom parameters, in files suffixed with `crack*` on line 7, replace `define_default_parameters` with `define_my_parameters` and go change variables in function "define_my_parameters" in `functions.sh`.
 
 ## Usage
-To start Crack_Master rename your hash in "hash.hc22000" move your hash into the root directory and execute: `./crackmaster.sh`
+To start the script log in as non-root user and rename your hash in "hash.hc22000", move your hash into Crack_Master directory and execute: `./crackmaster.sh`
 
 ![Test Image](./assets/action.png)
 
