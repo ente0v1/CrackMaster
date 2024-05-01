@@ -2,6 +2,7 @@
 # Wordlist
 # Example:  hashcat -a 0 -m 0 example.hash example.dict
 source functions.sh
+default_scripts="/$HOME/Crack_Master"
 
 define_default_parameters
 define_colors
@@ -41,6 +42,11 @@ hashcat --session="$session" -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 
 # Save successful settings
 save_settings "$session" "$default_wordlists" "$wordlist" ""
 
-# Save session name
+# Save logs
+mkdir logs
 echo "$session" > session.txt
+echo -e "$status" > status.txt
+mv session.txt logs
+mv status.txt logs
+mv plaintext.txt logs
 

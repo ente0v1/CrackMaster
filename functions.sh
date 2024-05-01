@@ -151,8 +151,6 @@ save_settings() {
     status+="\nWordlist Path: $path_wordlists/$default_wordlist"
     status+="\nMask: $mask"
     status+="\nPlaintext:\n$(cat $plaintext_file)"
-    
-    echo -e "$status" > status.txt
 }
 
 # Function to handle session restoration

@@ -2,6 +2,7 @@
 # Wordlist + Rule
 # Example:  hashcat -a 0 -m 0 example.hash example.dict example.rule
 source functions.sh
+default_scripts="/$HOME/Crack_Master"
 
 define_default_parameters
 define_colors
@@ -57,6 +58,11 @@ fi
 # Save successful settings
 save_settings "$session" "$wordlist_path" "$wordlist" "$rule"
 
-# Save session name
+# Save logs
+mkdir logs
 echo "$session" > session.txt
+echo -e "$status" > status.txt
+mv session.txt logs
+mv status.txt logs
+mv plaintext.txt logs
 
