@@ -1,5 +1,5 @@
 #!/bin/bash
-default_scripts="./"
+default_scripts="/home/enteo/Crack_Master"
 
 # Source the functions library
 source "$default_scripts/functions.sh"
