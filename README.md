@@ -69,7 +69,7 @@ At the end of the cracking you will see the results inside `logs`, just open `st
 ```
 from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
 
-## Cracking Methods in-depth
+## Cracking options in-depth
 ```
 - [ Crack Menu ] -
 
