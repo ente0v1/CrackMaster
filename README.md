@@ -71,7 +71,9 @@ To start the script log in as non-root user and rename your hash in "hash.hc2200
 At the end of the cracking you will see the results inside `logs`, just open `status.txt` in the session folder.
 
 ## Cracking Methods in-depth
+
 **crack-combo**
+
 Breakdown of the Additional Code:
 This code snippet focuses on the functionality related to cracking with a combined wordlist and mask attack. Here's a detailed explanation:
 
