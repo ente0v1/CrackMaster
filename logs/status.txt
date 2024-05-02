@@ -1,0 +1,5 @@
+
+Session: pennybags
+Wordlist Path: /usr/share/wordlists/rockyou.txt
+Mask: 
+Plaintext: admin
