@@ -76,7 +76,7 @@ from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
 Here's a detailed explanation on how code is made:
 1. Hybrid Wordlist + Mask Cracking:
   - This script specifically handles cracking with a combination of a wordlist and a mask.
-  - The mask allows generating variations of words from the wordlist using placeholders like ?a?a?a? which represent characters.
+  - The mask allows generating variations of words from the wordlist using placeholders like ?a?a?a which represent characters.
 
 2. User Prompts and Inputs:
   - The script retrieves available sessions for potential restoration.
