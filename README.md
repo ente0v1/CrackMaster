@@ -157,7 +157,7 @@ The `crack-rule` script do password cracking using a combination of a wordlist a
 ```
 
 ## Useful one-liners for wordlist manipulation (from [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git))
-Remove duplicates
+Remove duplicates:
 ```
 awk '!(count[$0]++)' old.txt > new.txt
 ```
