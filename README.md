@@ -89,86 +89,86 @@ from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
 Here's a detailed explanation on how code is made:
 1. Hybrid Wordlist + Mask Cracking:
 
-- This script specifically handles cracking with a combination of a wordlist and a mask.
-- The mask allows generating variations of words from the wordlist using placeholders like ?a?a?a? which represent characters.
+  - This script specifically handles cracking with a combination of a wordlist and a mask.
+  - The mask allows generating variations of words from the wordlist using placeholders like ?a?a?a? which represent characters.
 
 2. User Prompts and Inputs:
 
-- The script retrieves available sessions for potential restoration.
-- It prompts the user for various inputs:
-  - Restore file name (optional)
-  - Session name (defaults to $default_session)
-  - Wordlist path (defaults to $default_wordlists)
-  - Wordlist name (defaults to $default_wordlist)
-  - Mask (defaults to $default_mask)
-  - Whether to use a status timer (prompts for "y" or "n")
-  - Minimum password length (defaults to $default_min_length)
-  - Maximum password length (defaults to $default_max_length)
+  - The script retrieves available sessions for potential restoration.
+  - It prompts the user for various inputs:
+    - Restore file name (optional)
+    - Session name (defaults to $default_session)
+    - Wordlist path (defaults to $default_wordlists)
+    - Wordlist name (defaults to $default_wordlist)
+    - Mask (defaults to $default_mask)
+    - Whether to use a status timer (prompts for "y" or "n")
+    - Minimum password length (defaults to $default_min_length)
+    - Maximum password length (defaults to $default_max_length)
   
 3. Hashcat Command Construction:
   
 The script constructs the hashcat command based on user inputs and default values.
 Here's a breakdown of the important options:
-- --session="$session": Creates or resumes a session named $session
-- --increment --increment-min="$min_length" --increment-max="$max_length": Enables password length incrementing within the specified range.
-- -m 22000: Specifies the hash mode (likely for a specific hash type)
-- hash.hc22000: Path to the hash file containing the password hash
-- -a 6: Sets the attack mode to hybrid wordlist + mask (mode 6)
-- -w 4: Uses wordlists for the attack
-- --outfile-format=2: Specifies output format for cracked passwords
-- -o plaintext.txt: Output file for cracked passwords
-- "wordlist_path/$wordlist": Path to the chosen wordlist
-- "mask": The mask string to generate password variations
+  - --session="$session": Creates or resumes a session named $session
+  - --increment --increment-min="$min_length" --increment-max="$max_length": Enables password length incrementing within the specified range.
+  - -m 22000: Specifies the hash mode (likely for a specific hash type)
+  - hash.hc22000: Path to the hash file containing the password hash
+  - -a 6: Sets the attack mode to hybrid wordlist + mask (mode 6)
+  - -w 4: Uses wordlists for the attack
+  - --outfile-format=2: Specifies output format for cracked passwords
+  - -o plaintext.txt: Output file for cracked passwords
+  - "wordlist_path/$wordlist": Path to the chosen wordlist
+  - "mask": The mask string to generate password variations
 
 4. Conditional Hashcat Execution:
 
-- The script checks the user's choice for a status timer:
-  - If "y", it executes hashcat with --status --status-timer=2 options, providing real-time status updates every 2 seconds.
-  - Otherwise, it executes hashcat without the status timer.
+  - The script checks the user's choice for a status timer:
+    - If "y", it executes hashcat with --status --status-timer=2 options, providing real-time status updates every 2 seconds.
+    - Otherwise, it executes hashcat without the status timer.
 
 5. Saving Results:
 
-- The script calls save_settings to store details about the successful cracking session (session name, wordlist path, wordlist name, mask, etc.).
-- It calls save_logs to organize and store session data and logs.
-
-## Useful one-liners for wordlist manipulation (from [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git))
+  - The script calls save_settings to store details about the successful cracking session (session name, wordlist path, wordlist name, mask, etc.).
+  - It calls save_logs to organize and store session data and logs.
 
 **Script Breakdown**
 
-For example "crack-rule" automates password cracking using a combination of a wordlist and a set of rules. Here's a step-by-step breakdown:
+For example `crack-rule` automates password cracking using a combination of a wordlist and a set of rules. Here's a step-by-step breakdown:
 
 1. Initialization (Lines 1-16):
 
-- Loads functions from a separate file (functions.sh), likely containing reusable functionalities used throughout the script.
-- Sets default values for various parameters like script paths, session names, wordlists, and rules.
-- Checks for existing restore files (potentially from previous cracking sessions) in a designated directory. If any are found, it lists their names.
-- Prompts the user to choose a restore file to resume an earlier session (optional).
+  - Loads functions from a separate file (`functions.sh`), likely containing reusable functionalities used throughout the script.
+  - Sets default values for various parameters like script paths, session names, wordlists, and rules.
+  - Checks for existing restore files (potentially from previous cracking sessions) in a designated directory. If any are found, it lists their names.
+  - Prompts the user to choose a restore file to resume an earlier session (optional).
 
 2. User Interaction (Lines 17-34):
 
-- Asks the user to define a name for the current cracking session (with a default option).
-- Prompts the user for the directory containing wordlists (with a default option).
-- Lists available wordlist files within the specified directory.
-- Asks the user to select a specific wordlist from the available ones (with a default option).
-- Prompts the user to choose a rule file containing password cracking rules (with a default option).
-- Optionally asks the user if they want to display a status timer during the cracking process (showing progress updates).
+  - Asks the user to define a name for the current cracking session (with a default option).
+  - Prompts the user for the directory containing wordlists (with a default option).
+  - Lists available wordlist files within the specified directory.
+  - Asks the user to select a specific wordlist from the available ones (with a default option).
+  - Prompts the user to choose a rule file containing password cracking rules (with a default option).
+  - Optionally asks the user if they want to display a status timer during the cracking process (showing progress updates).
 
 3. Command Construction and Display (Lines 35-40):
 
-- Prints a message indicating where restore data for the current session will be saved.
-- Constructs the actual hashcat command to be executed based on the user's choices and script defaults. This command defines various parameters for the cracking process.
-- Displays the constructed hashcat command for the user to review the cracking configuration.
+  - Prints a message indicating where restore data for the current session will be saved.
+  - Constructs the actual hashcat command to be executed based on the user's choices and script defaults. This command defines various parameters for the cracking process.
+  - Displays the constructed hashcat command for the user to review the cracking configuration.
 
 4. Hashcat Execution (Lines 41-46):
 
-- Checks the user's decision about the status timer.
-- If the user opted for a timer ("y"), the script executes hashcat with --status --status-timer=2 options. These - options provide real-time updates on the cracking progress.
-- Otherwise, hashcat is executed without the status timer.
+  - Checks the user's decision about the status timer.
+  - If the user opted for a timer ("y"), the script executes hashcat with --status --status-timer=2 options. These options provide real-time updates on the cracking progress.
+  - Otherwise, hashcat is executed without the status timer.
 
-5. Saving Results (Lines 47-49):
+  5. Saving Results (Lines 47-49):
+  
+  - Calls a function named save_settings (defined in `functions.sh`). This function stores details about the successful cracking session, such as the session name, chosen wordlist path and name, rule name, etc.
+  - Calls another function named save_logs (defined in `functions.sh`). This function organizes and saves data and logs generated during the cracking process.
 
-- Calls a function named save_settings (likely defined in functions.sh). This function presumably stores details about the successful cracking session, such as the session name, chosen wordlist path and name, rule name, etc.
-- Calls another function named save_logs (likely defined in functions.sh). This function presumably organizes and saves data and logs generated during the cracking process.
+## Useful one-liners for wordlist manipulation (from [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git))
 
 **Remove duplicates**
 ```
