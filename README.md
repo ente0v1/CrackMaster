@@ -117,7 +117,7 @@ Here's a detailed explanation on how code is made:
 The `crack-rule` script do password cracking using a combination of a wordlist and a set of rules. Here's a step-by-step breakdown:
 
 **Initialization (Lines 1-16)**
-  - Loads functions from a separate file (`functions.sh`), likely containing reusable functionalities used throughout the script.
+  - Loads functions from a separate file (`functions.sh`), containing reusable functionalities used throughout the script.
   - Sets default values for various parameters like script paths, session names, wordlists, and rules.
   - Checks for existing restore files (potentially from previous cracking sessions) in a designated directory. If any are found, it lists their names.
   - Prompts the user to choose a restore file to resume an earlier session (optional).
@@ -128,7 +128,7 @@ The `crack-rule` script do password cracking using a combination of a wordlist a
   - Lists available wordlist files within the specified directory.
   - Asks the user to select a specific wordlist from the available ones (with a default option).
   - Prompts the user to choose a rule file containing password cracking rules (with a default option).
-  - Optionally asks the user if they want to display a status timer during the cracking process (showing progress updates).
+  - Optionally asks the user if they want to update screen every 2 seconds during cracking (showing progress updates).
 
 **Command Construction and Display (Lines 34-48)**
   - Constructs the actual hashcat command to be executed based on the user's choices and script defaults. This command defines various parameters for the cracking process.
