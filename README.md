@@ -72,6 +72,7 @@ from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
 
 ## Cracking options in-depth
 **Menu Option workflow**
+
 Here's a detailed explanation on how code is made:
 1. Hybrid Wordlist + Mask Cracking:
   - This script specifically handles cracking with a combination of a wordlist and a mask.
