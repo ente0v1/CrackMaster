@@ -70,13 +70,19 @@ At the end of the cracking you will see the results inside `logs`, just open `st
 from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
 
 ## Cracking Methods in-depth
-Option	Action
-1 (Crack with Wordlist)	-> Execute crack-wordlist script (calls the script located at default_scripts/crack-wordlist)
-2 (Crack with Rules)	-> Execute crack-rule script (calls the script located at default_scripts/crack-rule)
-3 (Crack with Brute-Force)	-> Execute crack-bruteforce script (calls the script located at default_scripts/crack-bruteforce)
-4 (Crack with Combo)	-> Execute crack-combo script (calls the script located at default_scripts/crack-combo)
-Q (Quit)	-> Save Successful Settings (saves details of the cracking session if successful) -> Save Logs (moves session data and logs to a folder) -> Exit
-Invalid Option	-> Display Invalid Option Message -> Show Menu again
+```
+- [ Crack Menu ] -
+
+  Option                      | -> Action
+ =============================+====================================================================================================
+  1. Crack with Wordlist      | -> Execute crack-wordlist script (calls the script located at default_scripts/crack-wordlist)
+  2. Crack with Rules | MD5   | -> Execute crack-rule script (calls the script located at default_scripts/crack-rule)
+  3 (Crack with Brute-Force)  | -> Execute crack-bruteforce script (calls the script located at default_scripts/crack-bruteforce)
+  4 (Crack with Combo)        | -> Execute crack-combo script (calls the script located at default_scripts/crack-combo)
+  Q (Quit)                    | -> Save Successful Settings -> Save Logs -> Exit
+  Invalid Option              | -> Display Invalid Option Message -> Show Menu again
+```
+
 **crack-bruteforce**
 
 1. Brute-Force Attack:
