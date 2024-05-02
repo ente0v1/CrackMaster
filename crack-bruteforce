@@ -2,8 +2,6 @@
 # Brute-force
 # Example:  hashcat -a 3 -m 0 example.hash ?a?a?a?a?a?a
 source functions.sh
-default_scripts="$HOME/Crack_Master"
-
 define_default_parameters
 define_colors
 
@@ -25,13 +23,6 @@ restore_session "$restore_file_input"
 echo -e "${MAGENTA}Enter session name (press Enter to use default '$default_session'):${NC}"
 read session_input
 session=${session_input:-$default_session}
-
-echo -e "${RED}Enter Wordlists Path (press Enter to use default '$default_wordlists'):${NC}"
-read wordlist_path
-wordlist_path=${wordlist_path:-$default_wordlists}
-
-echo -e "${MAGENTA}Available Wordlists in $default_wordlists:${NC} "
-ls "$default_wordlists:${NC}"
 
 echo -e "${MAGENTA}Enter Wordlist (press Enter to use default '$default_wordlist'):${NC}"
 read wordlist

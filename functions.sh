@@ -1,5 +1,4 @@
 #!/bin/bash
-default_scripts="$HOME/Crack_Master"
 
 # Function to define colors
 define_colors() {
@@ -14,6 +13,7 @@ define_colors() {
 
 # Function to define default parameters
 define_default_parameters() {
+    default_scripts="$HOME/Crack_Master"
     default_restorepath="$HOME/.local/share/hashcat/sessions"
     default_session=$(date +"%Y-%m-%d")
     default_wordlists="$default_scripts/wordlists"
@@ -24,6 +24,21 @@ define_default_parameters() {
     default_rule="T0XlCv2.rule"
     default_min_length="4"
     default_max_length="16"
+}
+
+# Function to define customized parameters
+define_my_parameters() {
+    default_scripts=
+    default_restorepath=
+    default_session=
+    default_wordlists=
+    default_masks=
+    default_rules=
+    default_wordlist=
+    default_mask=
+    default_rule=
+    default_min_length=
+    default_max_length=
 }
 
 # Function to clear the screen
