@@ -71,16 +71,13 @@ At the end of the cracking you will see the results inside `logs`, just open `st
 from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
 
 ## Cracking options in-depth
-
 **Menu Option workflow**
-
 Here's a detailed explanation on how code is made:
 1. Hybrid Wordlist + Mask Cracking:
   - This script specifically handles cracking with a combination of a wordlist and a mask.
   - The mask allows generating variations of words from the wordlist using placeholders like ?a?a?a? which represent characters.
 
 2. User Prompts and Inputs:
-
   - The script retrieves available sessions for potential restoration.
   - It prompts the user for various inputs:
     - Restore file name (optional)
@@ -93,7 +90,6 @@ Here's a detailed explanation on how code is made:
     - Maximum password length (defaults to $default_max_length)
   
 3. Hashcat Command Construction:
-  
 The script constructs the hashcat command based on user inputs and default values.
 Here's a breakdown of the important options:
   - --session="$session": Creates or resumes a session named $session
@@ -108,29 +104,24 @@ Here's a breakdown of the important options:
   - "mask": The mask string to generate password variations
 
 4. Conditional Hashcat Execution:
-
   - The script checks the user's choice for a status timer:
     - If "y", it executes hashcat with --status --status-timer=2 options, providing real-time status updates every 2 seconds.
     - Otherwise, it executes hashcat without the status timer.
 
 5. Saving Results:
-
   - The script calls save_settings to store details about the successful cracking session (session name, wordlist path, wordlist name, mask, etc.).
   - It calls save_logs to organize and store session data and logs.
 
 ## Script Breakdown
-
 The `crack-rule` script do password cracking using a combination of a wordlist and a set of rules. Here's a step-by-step breakdown:
 
 **Initialization (Lines 1-16)**
-
   - Loads functions from a separate file (`functions.sh`), likely containing reusable functionalities used throughout the script.
   - Sets default values for various parameters like script paths, session names, wordlists, and rules.
   - Checks for existing restore files (potentially from previous cracking sessions) in a designated directory. If any are found, it lists their names.
   - Prompts the user to choose a restore file to resume an earlier session (optional).
 
 **User Interaction (Lines 17-33)**
-
   - Asks the user to define a name for the current cracking session (with a default option).
   - Prompts the user for the directory containing wordlists (with a default option).
   - Lists available wordlist files within the specified directory.
@@ -139,18 +130,15 @@ The `crack-rule` script do password cracking using a combination of a wordlist a
   - Optionally asks the user if they want to display a status timer during the cracking process (showing progress updates).
 
 **Command Construction and Display (Lines 34-48)**
-
   - Constructs the actual hashcat command to be executed based on the user's choices and script defaults. This command defines various parameters for the cracking process.
   - Displays the constructed hashcat command for the user to review the cracking configuration.
 
 **Hashcat Execution (Lines 49-55)**
-
   - Checks the user's decision about the status timer.
   - If the user opted for a timer ("y"), the script executes hashcat with --status --status-timer=2 options. These options provide real-time updates on the cracking progress.
   - Otherwise, hashcat is executed without the status timer.
 
 **Saving Results (Lines 56-59)**
-  
   - Calls a function named save_settings (defined in `functions.sh`). This function stores details about the successful cracking session, such as the session name, chosen wordlist path and name, rule name, etc.
   - Calls another function named save_logs (defined in `functions.sh`). This function organizes and saves data and logs generated during the cracking process.
 
@@ -168,31 +156,27 @@ The `crack-rule` script do password cracking using a combination of a wordlist a
 ```
 
 ## Useful one-liners for wordlist manipulation (from [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git))
-
 Remove duplicates
 ```
 awk '!(count[$0]++)' old.txt > new.txt
 ```
-
 Sort by length
 ```
 awk '{print length, $0}' old.txt | sort -n | cut -d " " -f2- > new.txt
 ```
-
 Sort by alphabetical order
 ```
 sort old.txt | uniq > new.txt
 ```
-
 Merge multiple text files into one
 ```
 cat file1.txt file2.txt > combined.txt
 ```
-
 Remove all blank lines
 ```
 egrep -v "^[[:space:]]*$" old.txt > new.txt
 ```
+
 ## Help
 If you desire to get more resources take a look at:
   [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git), [paroleitaliane](https://github.com/napolux/paroleitaliane), [SecLists](https://github.com/danielmiessler/SecLists), [hashcat-rules](https://github.com/Unic0rn28/hashcat-rules)
