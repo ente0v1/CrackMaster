@@ -17,6 +17,31 @@ This Bash script provides a simple interface to perform cracking operations usin
 - Easy-to-use menu interface for selecting cracking options.
 - Supports session restoration for interrupted cracking sessions.
 
+## Requirements
+- Linux operating system
+- Hashcat installed (`sudo apt install hashcat`)
+- Wordlists, rules, and masks available in the specified paths
+
+## Installation
+![Test Image](./assets/menu.png)
+
+To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the Crack_Master folder by typing `cd Crack_Master`. After that, make all scripts executable with `chmod +x *`, and proceed to move "hash.hc22000" in your repo root directory. With these steps completed, you're now ready to run the script by executing `./crackmaster.sh`.
+Execution:
+```
+git clone https://github.com/ente0v1/Crack_Master.git
+mv Crack_Master $HOME
+cd $HOME/Crack_Master
+chmod +x *
+```
+If you prefer to use wordlists and other custom parameters, in files suffixed with `crack*` on line 7, replace `define_default_parameters` with `define_my_parameters` and go change variables in function "define_my_parameters" in `functions.sh`.
+
+## Usage
+To start the script log in as non-root user and rename your hash in "hash.hc22000", move your hash into Crack_Master directory and execute: `./crackmaster.sh`
+
+![Test Image](./assets/action.png)
+
+At the end of the cracking you will see the results inside `logs`, just open `status.txt` in the session folder.
+
 ## Attacks
 ```
 - [ Attack Modes ] -
@@ -44,34 +69,14 @@ This Bash script provides a simple interface to perform cracking operations usin
 ```
 from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
 
-
-## Requirements
-- Linux operating system
-- Hashcat installed (`sudo apt install hashcat`)
-- Wordlists, rules, and masks available in the specified paths
-
-## Installation
-![Test Image](./assets/menu.png)
-
-To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the Crack_Master folder by typing `cd Crack_Master`. After that, make all scripts executable with `chmod +x *`, and proceed to move "hash.hc22000" in your repo root directory. With these steps completed, you're now ready to run the script by executing `./crackmaster.sh`.
-Execution:
-```
-git clone https://github.com/ente0v1/Crack_Master.git
-mv Crack_Master $HOME
-cd $HOME/Crack_Master
-chmod +x *
-```
-If you prefer to use wordlists and other custom parameters, in files suffixed with `crack*` on line 7, replace `define_default_parameters` with `define_my_parameters` and go change variables in function "define_my_parameters" in `functions.sh`.
-
-## Usage
-To start the script log in as non-root user and rename your hash in "hash.hc22000", move your hash into Crack_Master directory and execute: `./crackmaster.sh`
-
-![Test Image](./assets/action.png)
-
-At the end of the cracking you will see the results inside `logs`, just open `status.txt` in the session folder.
-
 ## Cracking Methods in-depth
-
+Option	Action
+1 (Crack with Wordlist)	-> Execute crack-wordlist script (calls the script located at default_scripts/crack-wordlist)
+2 (Crack with Rules)	-> Execute crack-rule script (calls the script located at default_scripts/crack-rule)
+3 (Crack with Brute-Force)	-> Execute crack-bruteforce script (calls the script located at default_scripts/crack-bruteforce)
+4 (Crack with Combo)	-> Execute crack-combo script (calls the script located at default_scripts/crack-combo)
+Q (Quit)	-> Save Successful Settings (saves details of the cracking session if successful) -> Save Logs (moves session data and logs to a folder) -> Exit
+Invalid Option	-> Display Invalid Option Message -> Show Menu again
 **crack-bruteforce**
 
 1. Brute-Force Attack:
@@ -93,7 +98,7 @@ Similar to the previous code section, the script prompts the user for various in
 
 The script constructs the hashcat command with some key differences:
 - -a 3: Sets the attack mode to brute-force (mode 3)
-- The wordlist options (-w 4 and "wordlist_path/$wordlist") are no longer used as brute-force doesn't rely on pre-defined wordlists.
+- The wordlist option is no longer used as brute-force doesn't rely on pre-defined wordlists.
 - The mask ("$mask") becomes the main input for generating password variations.
 
 4. Conditional Hashcat Execution:
