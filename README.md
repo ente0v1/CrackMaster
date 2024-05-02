@@ -147,7 +147,7 @@ The `crack-rule` script do password cracking using a combination of a wordlist a
 - [ Crack Menu ] -
 
   Option                      | -> Action
- =============================+=========================================================================
+ =============================+=============================================================
   1. Crack with Wordlist      | -> Execute crack-wordlist script
   2. Crack with Rules         | -> Execute crack-rule script
   3. Crack with Brute-Force   | -> Execute crack-bruteforce script
