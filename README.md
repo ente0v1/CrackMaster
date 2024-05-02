@@ -83,43 +83,8 @@ from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
   Invalid Option              | -> Display Invalid Option Message -> Show Menu again
 ```
 
-**crack-bruteforce**
 
-1. Brute-Force Attack:
-
-- This script handles cracking passwords using a brute-force approach.
-- Brute-force attempts all possible combinations of characters within a specified length range.
-
-2. User Prompts and Inputs:
-
-Similar to the previous code section, the script prompts the user for various inputs:
-- Restore file name (optional)
-- Session name (defaults to $default_session)
-- Mask (used for defining character sets in the brute-force attack)
-- Whether to use a status timer (prompts for "y" or "n")
-- Minimum password length (defaults to $default_min_length)
-- Maximum password length (defaults to $default_max_length)
-
-3. Hashcat Command Construction:
-
-The script constructs the hashcat command with some key differences:
-- -a 3: Sets the attack mode to brute-force (mode 3)
-- The wordlist option is no longer used as brute-force doesn't rely on pre-defined wordlists.
-- The mask ("$mask") becomes the main input for generating password variations.
-
-4. Conditional Hashcat Execution:
-
-- The script checks the user's choice for a status timer.
-  - If "y", it executes hashcat with --status --status-timer=2 options.
-  - Otherwise, it executes hashcat without the status timer.
-
-5. Saving Results:
-
-- The script calls save_settings to store details about the successful cracking session (session name, mask, etc.). Notice how wordlist and wordlist path are not saved as they weren't used.
-- It calls save_logs to organize and store session data and logs.
-Overall, this code snippet demonstrates how the script facilitates brute-force password cracking by trying all possible combinations of characters within a defined length range.
-
-**crack-combo**
+**Menu Option workflow**
 
 1. Hybrid Wordlist + Mask Cracking:
 
@@ -164,9 +129,46 @@ Here's a breakdown of the important options:
 
 - The script calls save_settings to store details about the successful cracking session (session name, wordlist path, wordlist name, mask, etc.).
 - It calls save_logs to organize and store session data and logs.
-Overall, this code snippet demonstrates how the script facilitates cracking password hashes using a combination of a wordlist and a mask, allowing for more flexibility in password guessing.
 
 ## Useful one-liners for wordlist manipulation (from [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git))
+
+**Script Breakdown**
+
+For example "crack-rule" automates password cracking using a combination of a wordlist and a set of rules. Here's a step-by-step breakdown:
+
+1. Initialization (Lines 1-16):
+
+- Loads functions from a separate file (functions.sh), likely containing reusable functionalities used throughout the script.
+- Sets default values for various parameters like script paths, session names, wordlists, and rules.
+- Checks for existing restore files (potentially from previous cracking sessions) in a designated directory. If any are found, it lists their names.
+- Prompts the user to choose a restore file to resume an earlier session (optional).
+
+2. User Interaction (Lines 17-34):
+
+- Asks the user to define a name for the current cracking session (with a default option).
+- Prompts the user for the directory containing wordlists (with a default option).
+- Lists available wordlist files within the specified directory.
+- Asks the user to select a specific wordlist from the available ones (with a default option).
+- Prompts the user to choose a rule file containing password cracking rules (with a default option).
+- Optionally asks the user if they want to display a status timer during the cracking process (showing progress updates).
+
+3. Command Construction and Display (Lines 35-40):
+
+- Prints a message indicating where restore data for the current session will be saved.
+- Constructs the actual hashcat command to be executed based on the user's choices and script defaults. This command defines various parameters for the cracking process.
+- Displays the constructed hashcat command for the user to review the cracking configuration.
+
+4. Hashcat Execution (Lines 41-46):
+
+- Checks the user's decision about the status timer.
+- If the user opted for a timer ("y"), the script executes hashcat with --status --status-timer=2 options. These - options provide real-time updates on the cracking progress.
+- Otherwise, hashcat is executed without the status timer.
+
+5. Saving Results (Lines 47-49):
+
+- Calls a function named save_settings (likely defined in functions.sh). This function presumably stores details about the successful cracking session, such as the session name, chosen wordlist path and name, rule name, etc.
+- Calls another function named save_logs (likely defined in functions.sh). This function presumably organizes and saves data and logs generated during the cracking process.
+
 **Remove duplicates**
 ```
 awk '!(count[$0]++)' old.txt > new.txt
