@@ -46,14 +46,6 @@ hashcat --session="$session" -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 
 
 # Save successful settings
 save_settings "$session" "$wordlist_path" "$wordlist" ""
-
-# Save logs
-mkdir logs
-mkdir "$session"
-mv "$session" logs
-echo -e "$status" > status.txt
-mv session.txt "logs/$session"
-mv status.txt "logs/$session"
-mv plaintext.txt "logs/$session"
+save logs
 
 

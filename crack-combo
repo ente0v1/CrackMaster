@@ -67,14 +67,6 @@ fi
 
 # Save successful settings
 save_settings "$session" "$wordlist_path" "$wordlist" "$mask" ""
-
-# Save logs
-mkdir logs
-mkdir "$session"
-mv "$session" logs
-echo -e "$status" > status.txt
-mv session.txt "logs/$session"
-mv status.txt "logs/$session"
-mv plaintext.txt "logs/$session"
+save_logs
 
 

@@ -11,21 +11,20 @@ define_colors
 
 # Loop to keep displaying the menu and handling options until the user chooses to quit
 while true; do
-    clear_screen
-    show_title
-    show_menu
-    read -r user_option  # Read user input
+	clear_screen
+	show_title
+	show_menu
+	read -r user_option  # Read user input
 
-    # Handle the user's selected option
-    handle_option "$user_option"
-    echo "User option: $user_option"
+	# Handle the user's selected option
+	handle_option "$user_option"
+	echo "User option: $user_option"
+	
+	# Pause briefly to allow the user to read previous output before clearing the screen
+	sleep 5
 
-
-    # Pause briefly to allow the user to read previous output before clearing the screen
-    sleep 5
-
-    # If the user selected "Quit", exit the loop
-    if [[ "$user_option" == [Qq] ]]; then
-        break
-    fi
+	# If the user selected "Quit", exit the loop
+	if [[ "$user_option" == [Qq] ]]; then
+		break
+	fi
 done

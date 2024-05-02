@@ -173,4 +173,15 @@ restore_session() {
     fi
 }
 
+# Function to save all the results
+save_logs() {
+    mkdir logs
+    mkdir "$session"
+    mv "$session" logs
+    echo -e "$status" > status.txt
+    mv session.txt "logs/$session"
+    mv status.txt "logs/$session"
+    mv plaintext.txt "logs/$session"
+}
+
 
