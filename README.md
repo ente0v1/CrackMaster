@@ -68,7 +68,7 @@ To start the script log in as non-root user and rename your hash in "hash.hc2200
 
 ![Test Image](./assets/action.png)
 
-At the end of the cracking you will see the results inside `logs`, just open `status.txt`.
+At the end of the cracking you will see the results inside `logs`, just open `status.txt` in the session folder.
 
 ## Useful one-liners for wordlist manipulation (from [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git))
 **Remove duplicates**
