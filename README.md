@@ -72,17 +72,48 @@ At the end of the cracking you will see the results inside `logs`, just open `st
 
 ## Cracking Methods in-depth
 
-**crack-combo**
+**crack-bruteforce**
 
-Breakdown of the Additional Code:
-This code snippet focuses on the functionality related to cracking with a combined wordlist and mask attack. Here's a detailed explanation:
+1. Brute-Force Attack:
+
+This script handles cracking passwords using a brute-force approach.
+Brute-force attempts all possible combinations of characters within a specified length range.
+2. User Prompts and Inputs:
+
+Similar to the previous code section, the script prompts the user for various inputs:
+Restore file name (optional)
+Session name (defaults to $default_session)
+Wordlists path (defaults to $default_wordlists) (Note: This is not used in brute-force, likely a leftover from the previous section)
+Wordlist name (Note: This is not used in brute-force, likely a leftover from the previous section)
+Mask (used for defining character sets in the brute-force attack)
+Whether to use a status timer (prompts for "y" or "n")
+Minimum password length (defaults to $default_min_length)
+Maximum password length (defaults to $default_max_length)
+3. Hashcat Command Construction:
+
+The script constructs the hashcat command with some key differences:
+-a 3: Sets the attack mode to brute-force (mode 3)
+The wordlist options (-w 4 and "wordlist_path/$wordlist") are no longer used as brute-force doesn't rely on pre-defined wordlists.
+The mask ("$mask") becomes the main input for generating password variations.
+4. Conditional Hashcat Execution:
+
+- The script checks the user's choice for a status timer.
+  - If "y", it executes hashcat with --status --status-timer=2 options.
+  - Otherwise, it executes hashcat without the status timer.
+5. Saving Results:
+
+- The script calls save_settings to store details about the successful cracking session (session name, mask, etc.). Notice how wordlist and wordlist path are not saved as they weren't used.
+- It calls save_logs to organize and store session data and logs.
+Overall, this code snippet demonstrates how the script facilitates brute-force password cracking by trying all possible combinations of characters within a defined length range.
+
+**crack-combo**
 
 1. Hybrid Wordlist + Mask Cracking:
 
 This script specifically handles cracking with a combination of a wordlist and a mask.
 The mask allows generating variations of words from the wordlist using placeholders like ?a?a?a? which represent characters.
 
-3. User Prompts and Inputs:
+2. User Prompts and Inputs:
 
 The script retrieves available sessions for potential restoration.
 It prompts the user for various inputs:
@@ -112,14 +143,14 @@ Here's a breakdown of the important options:
 
 4. Conditional Hashcat Execution:
 
-The script checks the user's choice for a status timer.
-If "y", it executes hashcat with --status --status-timer=2 options, providing real-time status updates every 2 seconds.
-Otherwise, it executes hashcat without the status timer.
+The script checks the user's choice for a status timer:
+- If "y", it executes hashcat with --status --status-timer=2 options, providing real-time status updates every 2 seconds.
+- Otherwise, it executes hashcat without the status timer.
 
 5. Saving Results:
 
-The script calls save_settings to store details about the successful cracking session (session name, wordlist path, wordlist name, mask, etc.).
-It calls save_logs to organize and store session data and logs.
+- The script calls save_settings to store details about the successful cracking session (session name, wordlist path, wordlist name, mask, etc.).
+- It calls save_logs to organize and store session data and logs.
 Overall, this code snippet demonstrates how the script facilitates cracking password hashes using a combination of a wordlist and a mask, allowing for more flexibility in password guessing.
 
 ## Useful one-liners for wordlist manipulation (from [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git))
