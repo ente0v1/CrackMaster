@@ -179,7 +179,7 @@ egrep -v "^[[:space:]]*$" old.txt > new.txt
 ```
 
 ## Help
-If you desire to get more resources take a look at:
+If you want to get more resources take a look at:
   [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git), [paroleitaliane](https://github.com/napolux/paroleitaliane), [SecLists](https://github.com/danielmiessler/SecLists), [hashcat-rules](https://github.com/Unic0rn28/hashcat-rules)
   
   Also if you want more information about how hashcat's attack methods work, I recommend reading the official [Hashcat Wiki](https://hashcat.net/wiki/), the [Radiotap introduction](https://www.radiotap.org/) and [airdump-ng guide](https://wiki.aircrack-ng.org/doku.php?id=airodump-ng).
