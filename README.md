@@ -149,7 +149,7 @@ The `crack-rule` script do password cracking using a combination of a wordlist a
   Option                      | -> Action
  =============================+====================================================================================================
   1. Crack with Wordlist      | -> Execute crack-wordlist script (calls the script located at default_scripts/crack-wordlist)
-  2. Crack with Rules | MD5   | -> Execute crack-rule script (calls the script located at default_scripts/crack-rule)
+  2. Crack with Rules         | -> Execute crack-rule script (calls the script located at default_scripts/crack-rule)
   3 (Crack with Brute-Force)  | -> Execute crack-bruteforce script (calls the script located at default_scripts/crack-bruteforce)
   4 (Crack with Combo)        | -> Execute crack-combo script (calls the script located at default_scripts/crack-combo)
   Q (Quit)                    | -> Save Successful Settings -> Save Logs -> Exit
