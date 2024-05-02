@@ -141,7 +141,6 @@ The `crack-rule` script do password cracking using a combination of a wordlist a
 
 **Command Construction and Display (Lines 34-48)**
 
-  - Prints a message indicating where restore data for the current session will be saved.
   - Constructs the actual hashcat command to be executed based on the user's choices and script defaults. This command defines various parameters for the cracking process.
   - Displays the constructed hashcat command for the user to review the cracking configuration.
 
