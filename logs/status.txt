@@ -1,5 +1,6 @@
 
 Session: pennybags
 Wordlist Path: /usr/share/wordlists/rockyou.txt
-Mask: 
+Mask: ?d?d?d?d?d
+Rule: T0X1C.rule
 Plaintext: admin
