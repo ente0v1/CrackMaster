@@ -67,6 +67,7 @@ If you prefer to use wordlists and other custom parameters, in files suffixed wi
 To start the script log in as non-root user and rename your hash in "hash.hc22000", move your hash into Crack_Master directory and execute: `./crackmaster.sh`
 
 ![Test Image](./assets/action.png)
+At the end of the cracking you can see the results inside `logs`, just open `status.txt`.
 
 ## Useful one-liners for wordlist manipulation (from [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git))
 **Remove duplicates**
