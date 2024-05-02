@@ -142,7 +142,7 @@ The `crack-rule` script do password cracking using a combination of a wordlist a
 **Saving Results (Lines 56-59)**
   - Calls a function named save_settings (defined in `functions.sh`). This function stores details about the successful cracking session, such as the session name, chosen wordlist path and name, rule name, etc.
   - Calls another function named save_logs (defined in `functions.sh`). This function organizes and saves data and logs generated during the cracking process.
-
+<!--
 ```
 - [ Crack Menu ] -
 
@@ -155,7 +155,7 @@ The `crack-rule` script do password cracking using a combination of a wordlist a
   Q. (Quit)                   | -> Save Successful Settings -> Save Logs -> Exit
   (Invalid Option)            | -> Display Invalid Option Message -> Show Menu again
 ```
-
+-->
 ## Useful one-liners for wordlist manipulation (from [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git))
 Remove duplicates:
 ```
