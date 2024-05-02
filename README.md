@@ -71,19 +71,6 @@ At the end of the cracking you will see the results inside `logs`, just open `st
 from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
 
 ## Cracking options in-depth
-```
-- [ Crack Menu ] -
-
-  Option                      | -> Action
- =============================+====================================================================================================
-  1. Crack with Wordlist      | -> Execute crack-wordlist script (calls the script located at default_scripts/crack-wordlist)
-  2. Crack with Rules | MD5   | -> Execute crack-rule script (calls the script located at default_scripts/crack-rule)
-  3 (Crack with Brute-Force)  | -> Execute crack-bruteforce script (calls the script located at default_scripts/crack-bruteforce)
-  4 (Crack with Combo)        | -> Execute crack-combo script (calls the script located at default_scripts/crack-combo)
-  Q (Quit)                    | -> Save Successful Settings -> Save Logs -> Exit
-  Invalid Option              | -> Display Invalid Option Message -> Show Menu again
-```
-
 
 **Menu Option workflow**
 
@@ -168,6 +155,19 @@ For example `crack-rule` automates password cracking using a combination of a wo
   
   - Calls a function named save_settings (defined in `functions.sh`). This function stores details about the successful cracking session, such as the session name, chosen wordlist path and name, rule name, etc.
   - Calls another function named save_logs (defined in `functions.sh`). This function organizes and saves data and logs generated during the cracking process.
+
+```
+- [ Crack Menu ] -
+
+  Option                      | -> Action
+ =============================+====================================================================================================
+  1. Crack with Wordlist      | -> Execute crack-wordlist script (calls the script located at default_scripts/crack-wordlist)
+  2. Crack with Rules | MD5   | -> Execute crack-rule script (calls the script located at default_scripts/crack-rule)
+  3 (Crack with Brute-Force)  | -> Execute crack-bruteforce script (calls the script located at default_scripts/crack-bruteforce)
+  4 (Crack with Combo)        | -> Execute crack-combo script (calls the script located at default_scripts/crack-combo)
+  Q (Quit)                    | -> Save Successful Settings -> Save Logs -> Exit
+  Invalid Option              | -> Display Invalid Option Message -> Show Menu again
+```
 
 ## Useful one-liners for wordlist manipulation (from [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git))
 
