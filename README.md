@@ -150,10 +150,10 @@ The `crack-rule` script do password cracking using a combination of a wordlist a
  =============================+====================================================================================================
   1. Crack with Wordlist      | -> Execute crack-wordlist script (calls the script located at default_scripts/crack-wordlist)
   2. Crack with Rules         | -> Execute crack-rule script (calls the script located at default_scripts/crack-rule)
-  3 (Crack with Brute-Force)  | -> Execute crack-bruteforce script (calls the script located at default_scripts/crack-bruteforce)
-  4 (Crack with Combo)        | -> Execute crack-combo script (calls the script located at default_scripts/crack-combo)
-  Q (Quit)                    | -> Save Successful Settings -> Save Logs -> Exit
-  Invalid Option              | -> Display Invalid Option Message -> Show Menu again
+  3.  Crack with Brute-Force   | -> Execute crack-bruteforce script (calls the script located at default_scripts/crack-bruteforce)
+  4. Crack with Combination   | -> Execute crack-combo script (calls the script located at default_scripts/crack-combo)
+  Q. (Quit)                   | -> Save Successful Settings -> Save Logs -> Exit
+  (Invalid Option)            | -> Display Invalid Option Message -> Show Menu again
 ```
 
 ## Useful one-liners for wordlist manipulation (from [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists.git))
