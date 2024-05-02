@@ -1,7 +1,8 @@
 # Crack_Master
 An awareness based Bash script to perform cracking operations with Hashcat. This software is openly inspired by the TV Show "Mr. Robot".
-
+<!--
 ![Test Image](./assets/pennybags.png)
+-->
 ![GitHub](https://img.shields.io/github/license/ente0v1/CrackMaster)
 
 
