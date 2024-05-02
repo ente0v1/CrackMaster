@@ -71,7 +71,7 @@ At the end of the cracking you will see the results inside `logs`, just open `st
 from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
 
 ## Cracking options in-depth
-**Menu Option workflow**
+**Menu Options workflow**
 
 Here's a detailed explanation on how code is made:
 1. Hybrid Wordlist + Mask Cracking:
