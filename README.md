@@ -101,7 +101,7 @@ Here's a detailed explanation on how code is made:
     - -w 4: Uses wordlists for the attack
     - --outfile-format=2: Specifies output format for cracked passwords
     - -o plaintext.txt: Output file for cracked passwords
-    - "wordlist_path/$wordlist": Path to the chosen wordlist
+    - "$wordlist_path/$wordlist": Path to the chosen wordlist
     - "mask": The mask string to generate password variations
 
 4. Conditional Hashcat Execution:
