@@ -90,18 +90,18 @@ Here's a detailed explanation on how code is made:
     - Maximum password length (defaults to $default_max_length)
   
 3. Hashcat Command Construction:
-The script constructs the hashcat command based on user inputs and default values.
-Here's a breakdown of the important options:
-  - --session="$session": Creates or resumes a session named $session
-  - --increment --increment-min="$min_length" --increment-max="$max_length": Enables password length incrementing within the specified range.
-  - -m 22000: Specifies the hash mode (for a specific hash type)
-  - hash.hc22000: Path to the hash file containing the password hash
-  - -a 6: Sets the attack mode to hybrid wordlist + mask (mode 6)
-  - -w 4: Uses wordlists for the attack
-  - --outfile-format=2: Specifies output format for cracked passwords
-  - -o plaintext.txt: Output file for cracked passwords
-  - "wordlist_path/$wordlist": Path to the chosen wordlist
-  - "mask": The mask string to generate password variations
+  - The script constructs the hashcat command based on user inputs and default values.
+  - Here's a breakdown of the important options:
+    - --session="$session": Creates or resumes a session named $session
+    - --increment --increment-min="$min_length" --increment-max="$max_length": Enables password length incrementing within the specified range.
+    - -m 22000: Specifies the hash mode (for a specific hash type)
+    - hash.hc22000: Path to the hash file containing the password hash
+    - -a 6: Sets the attack mode to hybrid wordlist + mask (mode 6)
+    - -w 4: Uses wordlists for the attack
+    - --outfile-format=2: Specifies output format for cracked passwords
+    - -o plaintext.txt: Output file for cracked passwords
+    - "wordlist_path/$wordlist": Path to the chosen wordlist
+    - "mask": The mask string to generate password variations
 
 4. Conditional Hashcat Execution:
   - The script checks the user's choice for a status timer:
