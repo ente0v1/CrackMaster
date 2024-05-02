@@ -21,7 +21,7 @@ while true; do
 	echo "User option: $user_option"
 	
 	# Pause briefly to allow the user to read previous output before clearing the screen
-	sleep 5
+	sleep 3
 
 	# If the user selected "Quit", exit the loop
 	if [[ "$user_option" == [Qq] ]]; then

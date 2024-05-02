@@ -66,5 +66,5 @@ else
 fi
 
 # Save successful settings
-save_settings "" "" "" "$mask" ""
+save_settings "$session" "" "" "$mask" ""
 save_logs

@@ -38,15 +38,6 @@ random_color() {
     echo -e "${colors[$random_index]}"
 }
 
-show_title() {
-    local title_color=$(random_color)
-    echo -e "${title_color}"
-    cat <<EOF
-    Your Title Here
-EOF
-    echo -e "${NC}"  # Reset color
-}
-
 # Function to display the menu
 show_menu() {
     local title_color=$(random_color)  # Color for the title
@@ -175,7 +166,6 @@ restore_session() {
 
 # Function to save all the results
 save_logs() {
-    mkdir logs
     mkdir "$session"
     mv "$session" logs
     echo -e "$status" > status.txt
