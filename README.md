@@ -99,7 +99,7 @@ The script constructs the hashcat command based on user inputs and default value
 Here's a breakdown of the important options:
   - --session="$session": Creates or resumes a session named $session
   - --increment --increment-min="$min_length" --increment-max="$max_length": Enables password length incrementing within the specified range.
-  - -m 22000: Specifies the hash mode (likely for a specific hash type)
+  - -m 22000: Specifies the hash mode (for a specific hash type)
   - hash.hc22000: Path to the hash file containing the password hash
   - -a 6: Sets the attack mode to hybrid wordlist + mask (mode 6)
   - -w 4: Uses wordlists for the attack
