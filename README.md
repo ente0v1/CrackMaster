@@ -19,7 +19,6 @@ This Bash script provides a simple interface to perform cracking operations usin
 - Supports session restoration for interrupted cracking sessions.
 
 ## Requirements
-- Linux operating system
 - Hashcat installed (`sudo apt install hashcat`)
 - Wordlists, rules, and masks available in the specified paths
 
@@ -28,12 +27,23 @@ This Bash script provides a simple interface to perform cracking operations usin
 
 To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the Crack_Master folder by typing `cd Crack_Master`. After that, make all scripts executable with `chmod +x *`, and proceed to move "hash.hc22000" in your repo root directory. With these steps completed, you're now ready to run the script by executing `./crackmaster.sh`.
 Execution:
+
+**Linux**
 ```
 git clone https://github.com/ente0v1/Crack_Master.git
 mv Crack_Master $HOME
 cd $HOME/Crack_Master
 chmod +x *
 ```
+
+**Windows**
+```
+git clone https://github.com/ente0v1/Crack_Master.git
+mv Crack_Master C
+cd $HOME/Crack_Master
+chmod +x *
+```
+
 If you prefer to use wordlists and other custom parameters, in files suffixed with `crack*` on line 5, replace `define_default_parameters` with `define_my_parameters` and go change variables in function "define_my_parameters" in `functions.sh`.
 
 ## Usage
