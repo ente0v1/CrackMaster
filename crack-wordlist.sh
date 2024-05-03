@@ -40,7 +40,7 @@ echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
 echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist""
 
 # Execute hashcat with the specified wordlist
-hashcat --session="$session" -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
+hashcat.exe --session="$session" -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
 
 # Save successful settings
 save_settings "$session" "$wordlist_path" "$wordlist" ""

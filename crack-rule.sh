@@ -48,9 +48,9 @@ echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m 22000 hash.hc22
 
 # Execute hashcat with rules
 if [ "$status_timer_input" = "y" ]; then
-    hashcat --session="$session" --status --status-timer=2 -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
+    hashcat.exe --session="$session" --status --status-timer=2 -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
 else
-    hashcat --session="$session" -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
+    hashcat.exe --session="$session" -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
 fi
 
 # Save successful settings

@@ -1,0 +1,6 @@
+
+Session: 2024-05-03
+Wordlist Path: /c/Users/roboc/Crack_Master/wordlists/john.lst
+Mask: ?d?d?d?d
+Rule: 
+Plaintext: 
