@@ -1,11 +1,10 @@
 #!/bin/bash
 source functions.sh
 
-
 show_title() {
     clear  # Clear the screen
-    local color=$(random_color)  # Generate a random color for the title
-    echo -ne "$color
+    color=$(random_color)  # Generate a random color for the title
+    animate_text "$color
                          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                         @                                         @
                        @                                          @
@@ -48,7 +47,7 @@ show_title() {
           @@@@               @@@@@ @               @@@@@@@@@@@@@@@                @@@
        @ @                    @@@@@ @             @@@@@@@@@@@@@@@@@                  @@@
     @@                      @@@@@@@ @          @@@@@@@@@@@@@@@@@@@                       @@
-  @                        @@@@@@@@          @@@@@@@@@@@@@@@@@@@@                           @"
+  @                        @@@@@@@@          @@@@@@@@@@@@@@@@@@@@                           @" 0
     
     sleep 0.9
     clear

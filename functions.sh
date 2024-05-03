@@ -48,7 +48,7 @@ clear_screen() {
 
 # Function to generate a random color
 random_color() {
-    local colors=("\033[0;31m" "\033[0;32m" "\033[1;33m")
+    local colors=("$RED" "$MAGENTA" "$CYAN" "$BLUE" "$GREEN" "$YELLOW")
     local random_index=$((RANDOM % ${#colors[@]}))
     echo -e "${colors[$random_index]}"
 }
