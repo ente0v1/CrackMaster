@@ -13,6 +13,7 @@ define_colors() {
 
 # Function to define default parameters
 define_default_parameters() {
+    default_windows_scripts="./windows"
     default_scripts="$../Crack_Master"
     default_restorepath="$HOME/.local/share/hashcat/sessions"
     default_session=$(date +"%Y-%m-%d")
@@ -141,10 +142,31 @@ handle_option() {
             echo -e "${YELLOW}Exiting...${NC}"
             exit 0
             ;;
+        [Oo])
+            # If the user selected option "Other Scripts", execute Windows scripts
+            execute_windows_scripts
+            ;;
         *)
             echo -e "${RED}Invalid option. Please try again.${NC}"
             ;;
     esac
+}
+
+# Function to execute Windows scripts
+execute_windows_scripts() {
+    # Check if the Windows scripts directory exists
+    if [[ -d "$windows_scripts_dir" ]]; then
+        # Loop through the Windows scripts directory and execute each script
+        for script in "$windows_scripts_dir"/*.ps1; do
+            if [[ -f "$script" ]]; then
+                echo "Executing Windows script: $script"
+                # Add code to execute Windows script using PowerShell
+                # E.g., powershell.exe -File "$script"
+            fi
+        done
+    else
+        echo "Windows scripts directory not found: $windows_scripts_dir"
+    fi
 }
 
 # Function to save successful settings

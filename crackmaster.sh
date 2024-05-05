@@ -1,6 +1,4 @@
 #!/bin/bash
-default_scripts="$HOME/Crack_Master"
-
 # Source the functions library
 source "$default_scripts/functions.sh"
 source "$default_scripts/fsociety00.dat"
