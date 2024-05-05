@@ -4,13 +4,11 @@ An awareness based Bash script to perform cracking operations with Hashcat. This
 ![Test Image](./assets/pennybags.png)
 -->
 
-
-
 ## Disclaimer
 This program is provided without warranties of any kind. The author assumes no responsibility for any damages resulting from the use of this software. We recommend that you use it only for lawful purposes and in accordance with local laws.
 
 ## Description
-This Bash script provides a simple interface to perform cracking operations using Hashcat. It offers various options such as cracking with wordlists, rules, brute-force, and hybrid wordlist + mask attacks. The program is enriched with comments in order to make it as usable and minimal as possible.
+This Bash script provides a simple interface to perform cracking operations using Hashcat. It offers various options such as cracking with wordlists, rules, brute-force, and hybrid wordlist + mask attacks. The program is enriched with comments in order to make it as usable and minimal as possible. To download it just go to the ![Releases page](https://github.com/ente0v1/Crack_Master/releases).
 
 ## Features
 - Crack passwords using wordlists, rules, or brute-force methods.
@@ -19,13 +17,13 @@ This Bash script provides a simple interface to perform cracking operations usin
 - Supports session restoration for interrupted cracking sessions.
 
 ## Requirements
-- Linux operating system
-- Hashcat installed (`sudo apt install hashcat`)
-- Wordlists, rules, and masks available in the specified paths
+- OS: Linux, Windows 10 or later
+- Programs: Hashcat (`sudo apt install hashcat`) and ![Git Bash](https://git-scm.com/download/win)(if you are a Windows user)
+- Resources: Wordlists, rules, and masks available in the specified paths
 
 ## Installation
 ![Test Image](./assets/menu.png)
-
+If you are on Windows, in order to execute Bash, simply download ![Git Bash](https://git-scm.com/download/win) or ![Kali Linux](https://apps.microsoft.com/detail/9pkr34tncv07?hl=en-us&gl=US) from Microsoft Store.
 To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the Crack_Master folder by typing `cd Crack_Master`. After that, make all scripts executable with `chmod +x *`, and proceed to move "hash.hc22000" in your repo root directory. With these steps completed, you're now ready to run the script by executing `./crackmaster.sh`.
 Execution:
 ```
