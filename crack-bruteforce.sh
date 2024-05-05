@@ -19,17 +19,18 @@ echo -e "\n${RED}Restore? (Enter restore file name or leave empty):${NC}"
 read restore_file_input
 restore_session "$restore_file_input"
 
+# Prompt hash attack mode
+echo -e "\n${MAGENTA}Enter hash attack mode:${NC}"
+read hashmode_input
+hashmode=${hashmode:-$default_hashmode}
+
 # Prompt user inputs
 echo -e "${MAGENTA}Enter session name (press Enter to use default '$default_session'):${NC}"
 read session_input
 session=${session_input:-$default_session}
 
-echo -e "${MAGENTA}Enter Wordlist (press Enter to use default '$default_wordlist'):${NC}"
-read wordlist
-wordlist=${wordlist_input:-$default_wordlist}
-
 echo -e "${MAGENTA}Enter Mask (press Enter to use default '$default_mask'):${NC}"
-read mask
+read mask_input
 mask=${mask_input:-$default_mask}
 
 echo -e "${MAGENTA}Use status timer? (y/n)${NC}"
@@ -47,13 +48,13 @@ max_length=${max_length:-$default_max_length}
 
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m 22000 hash.hc22000 -a 6 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask""
+echo -e "${GREEN}Command >>${NC} hashcat --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.hc22000 -a 6 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask""
 
 # Execute hashcat with combined attack (wordlist + mask) and increment options
 if [ "$status_timer_input" = "y" ]; then
-    hashcat --session="$session" --status --status-timer=2 -m 22000 hash.hc22000 -a 3 -w 4 --outfile-format=2 -o plaintext.txt "$mask_input"
+    hashcat --session="$session" --status --status-timer=2 -m "$hashmode" hash.hc22000 -a 3 -w 4 --outfile-format=2 -o plaintext.txt "$mask"
 else
-    hashcat --session="$session" -m 22000 hash.hc22000 -a 3 -w 4 --outfile-format=2 -o plaintext.txt "$mask_input"
+    hashcat --session="$session" -m "$hashmode" hash.hc22000 -a 3 -w 4 --outfile-format=2 -o plaintext.txt "$mask"
 fi
 
 # Save successful settings

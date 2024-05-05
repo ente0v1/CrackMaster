@@ -13,17 +13,18 @@ define_colors() {
 
 # Function to define default parameters
 define_default_parameters() {
-    default_scripts="$HOME/Crack_Master"
+    default_scripts="$../Crack_Master"
     default_restorepath="$HOME/.local/share/hashcat/sessions"
     default_session=$(date +"%Y-%m-%d")
-    default_wordlists="$default_scripts/wordlists"
+    default_wordlists="/usr/share/wordlists"
     default_masks="$default_scripts/masks"
     default_rules="$default_scripts/rules"
-    default_wordlist="john.lst"
+    default_wordlist="rockyou.txt"
     default_mask="?d?d?d?d"
     default_rule="T0XlCv2.rule"
     default_min_length="4"
     default_max_length="16"
+    default_hashmode="22000"
 }
 
 # Function to define customized parameters
@@ -39,6 +40,7 @@ define_my_parameters() {
     default_rule=
     default_min_length=
     default_max_length=
+    default_hashmode="22000"
 }
 
 # Function to clear the screen
@@ -112,25 +114,25 @@ handle_option() {
             echo -ne "Executing crack-wordlist script: "
             animate_text "..." 0.1  # Animating ellipsis to indicate processing
             echo -e "${YELLOW}Done!${NC}"
-            "$default_scripts/crack-wordlist"
+            "$default_scripts/crack-wordlist.sh"
             ;;
         2)
             echo -ne "Executing crack-rule script: "
             animate_text "..." 0.1
             echo -e "${YELLOW}Done!${NC}"
-            "$default_scripts/crack-rule"
+            "$default_scripts/crack-rule.sh"
             ;;
         3)
             echo -ne "Executing crack-bruteforce script: "
             animate_text "..." 0.1
             echo -e "${YELLOW}Done!${NC}"
-            "$default_scripts/crack-bruteforce"
+            "$default_scripts/crack-bruteforce.sh"
             ;;
         4)
             echo -ne "Executing crack-combo script: "
             animate_text "..." 0.1
             echo -e "${YELLOW}Done!${NC}"
-            "$default_scripts/crack-combo"
+            "$default_scripts/crack-combo.sh"
             ;;
         [Qq])
             echo -ne "Exiting: "

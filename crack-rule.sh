@@ -19,6 +19,11 @@ echo -e "\n${RED}Restore? (Enter restore file name or leave empty):${NC}"
 read restore_file_input
 restore_session "$restore_file_input"
 
+# Prompt hash attack mode
+echo -e "\n${MAGENTA}Enter hash attack mode:${NC}"
+read hashmode_input
+hashmode=${hashmode_input:-$default_hashmode}
+
 # Prompt user inputs
 echo -e "${MAGENTA}Enter session name (press Enter to use default '$default_session'):${NC}"
 read session_input
@@ -44,13 +49,13 @@ read status_timer_input
 
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist" -r "$rule""
+echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist" -r "$rule""
 
 # Execute hashcat with rules
 if [ "$status_timer_input" = "y" ]; then
-    hashcat --session="$session" --status --status-timer=2 -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
+    hashcat --session="$session" --status --status-timer=2 -m "$hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
 else
-    hashcat --session="$session" -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
+    hashcat --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
 fi
 
 # Save successful settings

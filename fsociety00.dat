@@ -4,6 +4,7 @@ source functions.sh
 show_title() {
     clear  # Clear the screen
     color=$(random_color)  # Generate a random color for the title
+    #To animate the splash screen put animate_text before $color and 0 after ASCII art
     animate_text "$color
                          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                         @                                         @
@@ -47,7 +48,7 @@ show_title() {
           @@@@               @@@@@ @               @@@@@@@@@@@@@@@                @@@
        @ @                    @@@@@ @             @@@@@@@@@@@@@@@@@                  @@@
     @@                      @@@@@@@ @          @@@@@@@@@@@@@@@@@@@                       @@
-  @                        @@@@@@@@          @@@@@@@@@@@@@@@@@@@@                           @" 0
+  @                        @@@@@@@@          @@@@@@@@@@@@@@@@@@@@                           @"
     
     sleep 0.9
     clear
