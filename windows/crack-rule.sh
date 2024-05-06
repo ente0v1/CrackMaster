@@ -4,8 +4,9 @@
 # Example:  hashcat -a 0 -m 0 example.hash example.dict example.rule
 
 
-source ./functions.sh
-define_default_parameters
+source ../functions.sh
+define_windows_parameters
+#define_my_parameters
 define_colors
 
 # List available sessions
@@ -23,7 +24,7 @@ read restore_file_input
 restore_session "$restore_file_input"
 
 # Prompt hash attack mode
-echo -e "\n${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
+echo -e "${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
 read hashmode_input
 hashmode=${hashmode_input:-$default_hashmode}
 
@@ -57,15 +58,19 @@ rule=${rule_input:-$default_rule}
 echo -e "${MAGENTA}Use status timer? (y/n)${NC}"
 read status_timer_input
 
+# Prompt for hashcat path
+echo -e "${RED}Enter Hashcat Path:${NC}"
+read hashcat_path
+
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
 echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist" -r "$rule""
 
 # Execute hashcat with rules
 if [ "$status_timer_input" = "y" ]; then
-    hashcat.exe --session="$session" --status --status-timer=2 -m "$hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
+    "$hashcat_path/hashcat.exe" --session="$session" --status --status-timer=2 -m "$hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
 else
-    hashcat.exe --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
+    "$hashcat_path/hashcat.exe" --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
 fi
 
 # Save successful settings

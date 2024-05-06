@@ -4,8 +4,9 @@
 # Example:  hashcat -a 3 -m 0 example.hash ?a?a?a?a?a?a
 
 
-source ./functions.sh
-define_default_parameters
+source ../functions.sh
+define_windows_parameters
+#define_my_parameters
 define_colors
 
 # List available sessions
@@ -23,9 +24,9 @@ read restore_file_input
 restore_session "$restore_file_input"
 
 # Prompt hash attack mode
-echo -e "\n${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
+echo -e "${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
 read hashmode_input
-hashmode=${hashmode:-$default_hashmode}
+hashmode=${hashmode_input:-$default_hashmode}
 
 # Prompt user inputs
 echo -e "${MAGENTA}Enter session name (press Enter to use default '$default_session'):${NC}"
@@ -49,15 +50,19 @@ echo -e "${MAGENTA}Enter Maximum Length (press Enter to use default '$default_ma
 read max_length
 max_length=${max_length:-$default_max_length}
 
+# Prompt for hashcat path
+echo -e "${RED}Enter Hashcat Path:${NC}"
+read hashcat_path
+
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
 echo -e "${GREEN}Command >>${NC} hashcat --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.hc22000 -a 6 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask""
 
 # Execute hashcat with combined attack (wordlist + mask) and increment options
 if [ "$status_timer_input" = "y" ]; then
-    hashcat.exe --session="$session" --status --status-timer=2 -m "$hashmode" hash.hc22000 -a 3 -w 4 --outfile-format=2 -o plaintext.txt "$mask"
+    "$hashcat_path/hashcat.exe" --session="$session" --status --status-timer=2 -m "$hashmode" hash.hc22000 -a 3 -w 4 --outfile-format=2 -o plaintext.txt "$mask"
 else
-    hashcat.exe --session="$session" -m "$hashmode" hash.hc22000 -a 3 -w 4 --outfile-format=2 -o plaintext.txt "$mask"
+    "$hashcat_path/hashcat.exe" --session="$session" -m "$hashmode" hash.hc22000 -a 3 -w 4 --outfile-format=2 -o plaintext.txt "$mask"
 fi
 
 # Save successful settings

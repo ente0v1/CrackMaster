@@ -1,5 +1,8 @@
 #!/bin/bash
 
+default_scripts="/home/enteo/Crack_Master"
+default_windows_scripts="/c/Users/alexa/source/repos/ente0v1/Crack_Master/windows"
+
 # Function to define colors
 define_colors() {
     RED='\033[0;31m'
@@ -14,7 +17,6 @@ define_colors() {
 # Function to define default parameters
 define_default_parameters() {
     default_os="Linux"
-    default_windows_scripts="windows"
     default_restorepath="$HOME/.local/share/hashcat/sessions"
     default_session=$(date +"%Y-%m-%d")
     default_wordlists="/usr/share/wordlists"
@@ -28,21 +30,36 @@ define_default_parameters() {
     default_hashmode="22000"
 }
 
+define_windows_parameters() {
+    default_os="Windows"
+    default_restorepath="$HOME/hashcat/sessions"
+    default_session="fsociety"
+    default_wordlists="/c/Users/alexa/wordlists"
+    default_masks="/c/Users/alexa/source/repos/ente0v1/Crack_Master/masks"
+    default_rules="/c/Users/alexa/source/repos/ente0v1/Crack_Master/rules"
+    default_wordlist="rockyou.txt"
+    default_mask="?d?d?d?d"
+    default_rule="T0XlCv2.rule"
+    default_min_length="4"
+    default_max_length="16"
+    default_hashmode="22000"
+}
+
 # Function to define customized parameters
 define_my_parameters() {
-    default_os="Windows"
-    default_windows_scripts="windows"
+    default_os=
+    default_windows_scripts=
     default_restorepath=
-    default_session="fsociety"
-    default_wordlists="/c/Users/user/Crack_Master/wordlists/rockyou.txt"
+    default_session=
+    default_wordlists=
     default_masks=
     default_rules=
     default_wordlist=
     default_mask=
     default_rule=
-    default_min_length="4"
-    default_max_length="16"
-    default_hashmode="22000"
+    default_min_length=
+    default_max_length=
+    default_hashmode=
 }
 
 # Function to clear the screen
@@ -139,25 +156,25 @@ handle_option() {
         1)
             echo -ne "Executing crack-wordlist script: "
             animate_text "..." 0.1  # Animating ellipsis to indicate processing
-            echo -e "${YELLOW}Done!${NC}"
+            echo -ne "crack-wordlist.sh ${YELLOW}is Executing${NC}\n\n\n\n\n"
             ./crack-wordlist.sh
             ;;
         2)
             echo -ne "Executing crack-rule script: "
             animate_text "..." 0.1
-            echo -e "${YELLOW}Done!${NC}"
+            echo -e "crack-rule.sh ${YELLOW}is Executing${NC}\n\n\n\n\n"
             ./crack-rule.sh
             ;;
         3)
             echo -ne "Executing crack-bruteforce script: "
             animate_text "..." 0.1
-            echo -e "${YELLOW}Done!${NC}"
+            echo -e "crack-bruteforce.sh ${YELLOW}is Executing${NC}\n\n\n\n\n"
             ./crack-bruteforce.sh
             ;;
         4)
             echo -ne "Executing crack-combo script: "
             animate_text "..." 0.1
-            echo -e "${YELLOW}Done!${NC}"
+            echo -e "crack-combo.sh ${YELLOW}is Executing${NC}\n\n\n\n\n"
             ./crack-combo.sh
             ;;
         [Qq])
@@ -180,13 +197,12 @@ handle_option() {
 # Function to execute Windows scripts
 execute_windows_scripts() {
     # Check if the Windows scripts directory exists
-    if [[ -d "$default_windows_scripts" ]]; then
+    if [[ -d "windows" ]]; then
         # Loop through the Windows scripts directory and execute each script
-        for script in "$default_windows_scripts"/*.ps1; do
+        for script in "windows"; do
             if [[ -f "$script" ]]; then
                 echo "Executing Windows script: $script"
-                # Add code to execute Windows script using PowerShell
-                # E.g., powershell.exe -File "$script"
+                # Add code to execute Windows script
             fi
         done
     else
@@ -221,7 +237,7 @@ restore_session() {
         else
             local session=$(basename "$restore_file" .restore)
             echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-            echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$default_hashmode"hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$default_wordlists/$default_wordlist""
+            echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$default_hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$default_wordlists/$default_wordlist""
             hashcat --session "$session" --restore
             exit 0
         fi
@@ -233,7 +249,6 @@ save_logs() {
     mkdir "$session"
     mv "$session" logs
     echo -e "$status" > status.txt
-    mv session.txt "logs/$session"
     mv status.txt "logs/$session"
     mv plaintext.txt "logs/$session"
 }
