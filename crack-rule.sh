@@ -43,6 +43,13 @@ echo -e "${MAGENTA}Enter Wordlist (press Enter to use default '$default_wordlist
 read wordlist_input
 wordlist=${wordlist_input:-$default_wordlist}
 
+echo -e "${RED}Enter Rules Path (press Enter to use default '$default_rules'):${NC}"
+read rule_path_input
+rule_path=${rules_path_input:-$default_rules}
+
+echo -e "${MAGENTA}Available Rules in $rules_path:${NC}"
+ls "$rule_path"
+
 echo -e "${MAGENTA}Enter Rule (press Enter to use default '$default_rule'):${NC}"
 read rule_input
 rule=${rule_input:-$default_rule}

@@ -43,6 +43,13 @@ echo -e "${MAGENTA}Enter Wordlist (press Enter to use default '$default_wordlist
 read wordlist_input
 wordlist=${wordlist_input:-$default_wordlist}
 
+echo -e "${RED}Enter Masks Path (press Enter to use default '$default_masks'):${NC}"
+read mask_path_input
+masks_path=${rules_path_input:-$default_rules}
+
+echo -e "${MAGENTA}Available Rules in $masks_path:${NC}"
+ls "$masks_path"
+
 echo -e "${MAGENTA}Enter Mask (press Enter to use default '$default_mask'):${NC}"
 read mask_input
 mask=${mask_input:-$default_mask}

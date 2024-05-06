@@ -30,18 +30,18 @@ define_default_parameters() {
 
 # Function to define customized parameters
 define_my_parameters() {
-    default_os=
-    default_scripts=
+    default_os="Windows"
+    default_windows_scripts="windows"
     default_restorepath=
-    default_session=
-    default_wordlists=
+    default_session="fsociety"
+    default_wordlists="/c/Users/user/Crack_Master/wordlists/rockyou.txt"
     default_masks=
     default_rules=
     default_wordlist=
     default_mask=
     default_rule=
-    default_min_length=
-    default_max_length=
+    default_min_length="4"
+    default_max_length="16"
     default_hashmode="22000"
 }
 
