@@ -27,7 +27,7 @@ session=${session_input:-$default_session}
 
 echo -e "${RED}Enter Masks Path (press Enter to use default '$default_masks'):${NC}"
 read mask_path_input
-masks_path=${rules_path_input:-$default_rules}
+masks_path=${mask_path_input:-$default_masks}
 
 echo -e "${MAGENTA}Available Masks in $masks_path:${NC}"
 ls "$masks_path"

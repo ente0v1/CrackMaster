@@ -42,6 +42,7 @@ while true; do
     if [[ "$user_option" == [Qq] ]]; then
         break
     fi
+    
     handle_option "$user_option"
     echo "User option: $user_option" 
 done

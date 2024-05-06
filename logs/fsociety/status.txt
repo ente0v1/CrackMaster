@@ -1,6 +1,6 @@
 
 Session: fsociety
-Wordlist Path: /c/Users/alexa/wordlists/rockyou.txt
+Wordlist Path: /c/Users//wordlists/rockyou.txt
 Mask: 
 Rule: 
 Plaintext: 
