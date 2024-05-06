@@ -4,7 +4,7 @@
 # Example:  hashcat -a 3 -m 0 example.hash ?a?a?a?a?a?a
 
 
-source ./functions.sh
+source windows/functions.sh
 define_default_parameters
 #define_my_parameters
 define_colors

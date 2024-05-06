@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Source the functions library
-source functions.sh
+source windows/functions.sh
 source fsociety00.dat
 
 # Define parameters
-define_default_parameters
+#define_default_parameters
+define_windows_parameters
 #define_my_parameters
 define_colors
 

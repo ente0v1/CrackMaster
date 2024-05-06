@@ -31,7 +31,7 @@ define_default_parameters() {
 }
 
 define_windows_parameters() {
-    default_os="Windows"
+    default_os="Linux"
     default_restorepath="$HOME/hashcat/sessions"
     default_session="fsociety"
     default_wordlists="/c/Users/alexa/wordlists"
@@ -178,31 +178,19 @@ handle_option() {
             echo -ne "Executing crack-rule script: "
             animate_text "..." 0.1
             echo -e "crack-rule.sh ${YELLOW}is Executing${NC}\n\n\n"
-            if [[ "$default_os" == "Windows" ]]; then
-                windows/crack-rule.sh
-            elif [[ "$default_os" == "Linux" ]]; then
-                ./crack-rule.sh
-            fi
+            ./crack-rule.sh
             ;;
         3)
             echo -ne "Executing crack-bruteforce script: "
             animate_text "..." 0.1
             echo -e "crack-bruteforce.sh ${YELLOW}is Executing${NC}\n\n\n"
-            if [[ "$default_os" == "Windows" ]]; then
-                windows/crack-bruteforce.sh
-            elif [[ "$default_os" == "Linux" ]]; then
-                ./crack-bruteforce.sh
-            fi
+            ./crack-bruteforce.sh
             ;;
         4)
             echo -ne "Executing crack-combo script: "
             animate_text "..." 0.1
             echo -e "crack-combo.sh ${YELLOW}is Executing${NC}\n\n\n"
-            if [[ "$default_os" == "Windows" ]]; then
-                windows/crack-combo.sh
-            elif [[ "$default_os" == "Linux" ]]; then
-                ./crack-combo.sh
-            fi
+            ./crack-combo.sh
             ;;
         [Qq])
             echo -ne "Exiting: "
@@ -215,7 +203,6 @@ handle_option() {
             # If the user selected option "Other Scripts", execute Windows scripts
             execute_windows_scripts
             ;;
-
         *)
             echo -e "${RED}Invalid option. Please try again.${NC}"
             ;;
