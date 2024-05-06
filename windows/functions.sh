@@ -165,33 +165,48 @@ handle_option() {
 
     case "$option" in
         1)
-            echo -ne "Executing crack-wordlist script: "
-            animate_text "..." 0.1  # Animating ellipsis to indicate processing
-            echo -ne "crack-wordlist.sh ${YELLOW}is Executing${NC}\n\n\n"
-            if [[ "$default_os" == "Windows" ]]; then
+            animate_text "..." 0.1
+            if [[ "$default_os" == "Linux" ]]; then
+                echo -ne "windows/crack-wordlist.sh ${YELLOW}is Executing${NC}\n\n\n"
                 windows/crack-wordlist.sh
-            elif [[ "$default_os" == "Linux" ]]; then
+            elif [[ "$default_os" == "Windows" ]]; then
+                echo -ne "./crack-wordlist.sh ${YELLOW}is Executing${NC}\n\n\n"
                 ./crack-wordlist.sh
             fi
             ;;
         2)
-            echo -ne "Executing crack-rule script: "
             animate_text "..." 0.1
-            echo -e "crack-rule.sh ${YELLOW}is Executing${NC}\n\n\n"
-            ./crack-rule.sh
+            if [[ "$default_os" == "Linux" ]]; then
+                echo -e "windows/crack-rule.sh ${YELLOW}is Executing${NC}\n\n\n"
+                windows/crack-rule.sh
+            elif [[ "$default_os" == "Windows" ]]; then
+                echo -e "./crack-rule.sh ${YELLOW}is Executing${NC}\n\n\n"
+                ./crack-rule.sh
+            fi
             ;;
+
         3)
-            echo -ne "Executing crack-bruteforce script: "
             animate_text "..." 0.1
-            echo -e "crack-bruteforce.sh ${YELLOW}is Executing${NC}\n\n\n"
-            ./crack-bruteforce.sh
+            if [[ "$default_os" == "Linux" ]]; then
+                echo -ne "windows/crack-bruteforce.sh ${YELLOW}is Executing${NC}\n\n\n"
+                windows/crack-bruteforce.sh
+            elif [[ "$default_os" == "Windows" ]]; then
+                echo -ne "./crack-bruteforce.sh ${YELLOW}is Executing${NC}\n\n\n"
+                ./crack-bruteforce.sh
+            fi
             ;;
+
         4)
-            echo -ne "Executing crack-combo script: "
             animate_text "..." 0.1
-            echo -e "crack-combo.sh ${YELLOW}is Executing${NC}\n\n\n"
-            ./crack-combo.sh
+            if [[ "$default_os" == "Linux" ]]; then
+                echo -ne "windows/crack-combo.sh ${YELLOW}is Executing${NC}\n\n\n"
+                windows/crack-combo.sh
+            elif [[ "$default_os" == "Windows" ]]; then
+                echo -ne "./crack-combo.sh ${YELLOW}is Executing${NC}\n\n\n"
+                ./crack-combo.sh
+            fi
             ;;
+
         [Qq])
             echo -ne "Exiting: "
             animate_text "..." 0.1
