@@ -113,15 +113,15 @@ Here's a detailed explanation on how code is made:
   - It calls save_logs to organize and store session data and logs.
 
 ## Script Breakdown
-The `crack-rule` script do password cracking using a combination of a wordlist and a set of rules. Here's a step-by-step breakdown:
+The `crack-rule.sh` script do password cracking using a combination of a wordlist and a set of rules. Here's a step-by-step breakdown:
 
-**Initialization (Lines 1-16)**
+**Initialization**
   - Loads functions from a separate file (`functions.sh`), containing reusable functionalities used throughout the script.
   - Sets default values for various parameters like script paths, session names, wordlists, and rules.
   - Checks for existing restore files (potentially from previous cracking sessions) in a designated directory. If any are found, it lists their names.
   - Prompts the user to choose a restore file to resume an earlier session (optional).
 
-**User Interaction (Lines 17-33)**
+**User Interaction**
   - Asks the user to define a name for the current cracking session (with a default option).
   - Prompts the user for the directory containing wordlists (with a default option).
   - Lists available wordlist files within the specified directory.
@@ -129,16 +129,16 @@ The `crack-rule` script do password cracking using a combination of a wordlist a
   - Prompts the user to choose a rule file containing password cracking rules (with a default option).
   - Optionally asks the user if they want to update screen every 2 seconds during cracking (showing progress updates).
 
-**Command Construction and Display (Lines 34-48)**
+**Command Construction and Display**
   - Constructs the actual hashcat command to be executed based on the user's choices and script defaults. This command defines various parameters for the cracking process.
   - Displays the constructed hashcat command for the user to review the cracking configuration.
 
-**Hashcat Execution (Lines 49-55)**
+**Hashcat Execution**
   - Checks the user's decision about the status timer.
   - If the user opted for a timer ("y"), the script executes hashcat with --status --status-timer=2 options. These options provide real-time updates on the cracking progress.
   - Otherwise, hashcat is executed without the status timer.
 
-**Saving Results (Lines 56-59)**
+**Saving Results**
   - Calls a function named save_settings (defined in `functions.sh`). This function stores details about the successful cracking session, such as the session name, chosen wordlist path and name, rule name, etc.
   - Calls another function named save_logs (defined in `functions.sh`). This function organizes and saves data and logs generated during the cracking process.
 <!--
