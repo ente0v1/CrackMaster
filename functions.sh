@@ -174,9 +174,6 @@ handle_option() {
                 ./crack-wordlist.sh
             fi
             ;;
-            
-            ;;
-       ;;
         2)
             echo -ne "Executing crack-rule script: "
             animate_text "..." 0.1
