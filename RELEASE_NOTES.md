@@ -1,4 +1,4 @@
-# Crack_Master-v1.01
+# Crack_Master-v1.1
 
 ### Description
 
@@ -30,7 +30,7 @@ To report bugs, issues, or feature requests, please open a new issue on [GitHub 
 For further questions or assistance, contact us via [email](mailto:test.xmod.clashofclans@gmail.com).
 
 -----------------------------------------------------------------------------
-# Crack_Master-v1.00
+# Crack_Master-v1.0
 
 ### Description
 
