@@ -18,7 +18,7 @@ This Bash script provides a simple interface to perform cracking operations usin
 
 ## Requirements
 - OS: Linux, Windows 10 or later
-- Programs: Hashcat and [Git Bash](https://git-scm.com/download/win) (if you are a Windows user)
+- Programs: [Hashcat](https://hashcat.net/hashcat/) and [Git Bash](https://git-scm.com/download/win) (if you are a Windows user)
 - Resources: Wordlists, rules, and masks available in the specified paths
 
 ## Installation
