@@ -32,7 +32,7 @@ git clone https://github.com/ente0v1/Crack_Master.git
 cd Crack_Master
 chmod +x *
 ```
-If you prefer to use wordlists and other custom parameters, in files suffixed with `crack*` on line 5, replace `define_default_parameters` with `define_my_parameters` and go change variables in function "define_my_parameters" in `functions.sh`.
+If you prefer to use wordlists and other custom parameters, in files suffixed with `crack*`, replace `define_default_parameters` with `define_my_parameters` and go change variables in function "define_my_parameters" in `functions.sh`.
 
 ## Usage
 To start the script log in as non-root user and rename your hash in "hash.hc22000", move your hash into Crack_Master directory and execute: `./crackmaster.sh`
