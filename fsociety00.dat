@@ -1,11 +1,11 @@
 #!/bin/bash
 source functions.sh
 
-show_title() {
+show_pennybags() {
     clear  # Clear the screen
     color=$(random_color)  # Generate a random color for the title
-    #To animate the splash screen put animate_text before $color and 0 after ASCII art
-    animate_text "$color
+    #To animate the splash screen replace "echo -e " with "animate_text" before and 0 after ASCII art
+    echo -e "$color
                          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                         @                                         @
                        @                                          @

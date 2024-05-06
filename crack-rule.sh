@@ -1,7 +1,10 @@
 #!/bin/bash
+
 # Wordlist + Rule
 # Example:  hashcat -a 0 -m 0 example.hash example.dict example.rule
-source functions.sh
+
+
+source ./functions.sh
 define_default_parameters
 define_colors
 
@@ -20,7 +23,7 @@ read restore_file_input
 restore_session "$restore_file_input"
 
 # Prompt hash attack mode
-echo -e "\n${MAGENTA}Enter hash attack mode:${NC}"
+echo -e "\n${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
 read hashmode_input
 hashmode=${hashmode_input:-$default_hashmode}
 

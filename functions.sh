@@ -13,8 +13,8 @@ define_colors() {
 
 # Function to define default parameters
 define_default_parameters() {
-    default_windows_scripts="./windows"
-    default_scripts="$../Crack_Master"
+    default_os="linux"
+    default_windows_scripts="windows"
     default_restorepath="$HOME/.local/share/hashcat/sessions"
     default_session=$(date +"%Y-%m-%d")
     default_wordlists="/usr/share/wordlists"
@@ -30,6 +30,7 @@ define_default_parameters() {
 
 # Function to define customized parameters
 define_my_parameters() {
+    default_os=
     default_scripts=
     default_restorepath=
     default_session=
@@ -57,7 +58,7 @@ random_color() {
 }
 
 # Function to display the menu
-show_menu() {
+show_title() {
     local title_color=$(random_color)  # Color for the title
     local option_color="${title_color}" # Use the same color for all options
     echo -e "${title_color}"
@@ -83,17 +84,31 @@ show_menu() {
 
 
 EOF
+}
 
+show_windows_menu{
     echo -e "${option_color}Menu Options:${NC}"
     echo -e "${option_color}1.${NC} Crack with wordlist only          						  ${CYAN}[EASY]"
     echo -e "${option_color}2.${NC} Crack with rules (Wordlist + Rules)    					  ${GREEN}[MEDIUM]"
     echo -e "${option_color}3.${NC} Crack with brute-force            						  ${YELLOW}[HARD]"
     echo -e "${option_color}4.${NC} Crack with combo (Hybrid Wordlist + Mask)  					  ${RED}[ADVANCED]"
+    echo -e "${option_color}X.${NC} Execute Scripts for Linux"
     echo -e "${option_color}Q.${NC} Quit"
     echo "--------------------------------"
     echo -ne "${option_color}Enter option (1-4, or Q to quit): ${NC}"
 }
 
+show_linux_menu{
+    echo -e "${option_color}Menu Options:${NC}"
+    echo -e "${option_color}1.${NC} Crack with wordlist only          						  ${CYAN}[EASY]"
+    echo -e "${option_color}2.${NC} Crack with rules (Wordlist + Rules)    					  ${GREEN}[MEDIUM]"
+    echo -e "${option_color}3.${NC} Crack with brute-force            						  ${YELLOW}[HARD]"
+    echo -e "${option_color}4.${NC} Crack with combo (Hybrid Wordlist + Mask)  					  ${RED}[ADVANCED]"
+    echo -e "${option_color}X.${NC} Execute Scripts for Linux"
+    echo -e "${option_color}Q.${NC} Quit"
+    echo "--------------------------------"
+    echo -ne "${option_color}Enter option (1-4, or Q to quit): ${NC}"
+}
 
 animate_text() {
     local text="$1"
@@ -115,25 +130,25 @@ handle_option() {
             echo -ne "Executing crack-wordlist script: "
             animate_text "..." 0.1  # Animating ellipsis to indicate processing
             echo -e "${YELLOW}Done!${NC}"
-            "$default_scripts/crack-wordlist.sh"
+            ./crack-wordlist.sh
             ;;
         2)
             echo -ne "Executing crack-rule script: "
             animate_text "..." 0.1
             echo -e "${YELLOW}Done!${NC}"
-            "$default_scripts/crack-rule.sh"
+            ./crack-rule.sh
             ;;
         3)
             echo -ne "Executing crack-bruteforce script: "
             animate_text "..." 0.1
             echo -e "${YELLOW}Done!${NC}"
-            "$default_scripts/crack-bruteforce.sh"
+            ./crack-bruteforce.sh
             ;;
         4)
             echo -ne "Executing crack-combo script: "
             animate_text "..." 0.1
             echo -e "${YELLOW}Done!${NC}"
-            "$default_scripts/crack-combo.sh"
+            ./crack-combo.sh
             ;;
         [Qq])
             echo -ne "Exiting: "
@@ -142,7 +157,7 @@ handle_option() {
             echo -e "${YELLOW}Exiting...${NC}"
             exit 0
             ;;
-        [Oo])
+        [Xx])
             # If the user selected option "Other Scripts", execute Windows scripts
             execute_windows_scripts
             ;;
@@ -155,9 +170,9 @@ handle_option() {
 # Function to execute Windows scripts
 execute_windows_scripts() {
     # Check if the Windows scripts directory exists
-    if [[ -d "$windows_scripts_dir" ]]; then
+    if [[ -d "$default_windows_scripts" ]]; then
         # Loop through the Windows scripts directory and execute each script
-        for script in "$windows_scripts_dir"/*.ps1; do
+        for script in "$default_windows_scripts"/*.ps1; do
             if [[ -f "$script" ]]; then
                 echo "Executing Windows script: $script"
                 # Add code to execute Windows script using PowerShell
@@ -165,7 +180,7 @@ execute_windows_scripts() {
             fi
         done
     else
-        echo "Windows scripts directory not found: $windows_scripts_dir"
+        echo "Windows scripts directory not found: '$windows_scripts_dir'"
     fi
 }
 
@@ -196,7 +211,7 @@ restore_session() {
         else
             local session=$(basename "$restore_file" .restore)
             echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-            echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m 22000 hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$default_wordlists/$default_wordlist""
+            echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$default_hashmode"hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$default_wordlists/$default_wordlist""
             hashcat --session "$session" --restore
             exit 0
         fi
