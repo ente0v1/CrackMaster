@@ -13,7 +13,7 @@ define_colors() {
 
 # Function to define default parameters
 define_default_parameters() {
-    default_os="linux"
+    default_os="Linux"
     default_windows_scripts="windows"
     default_restorepath="$HOME/.local/share/hashcat/sessions"
     default_session=$(date +"%Y-%m-%d")
@@ -59,8 +59,8 @@ random_color() {
 
 # Function to display the menu
 show_title() {
-    local title_color=$(random_color)  # Color for the title
-    local option_color="${title_color}" # Use the same color for all options
+    title_color=$(random_color)  # Color for the title
+    option_color="${title_color}" # Use the same color for all options
     echo -e "${title_color}"
     cat <<EOF
 
@@ -86,28 +86,41 @@ show_title() {
 EOF
 }
 
-show_windows_menu{
-    echo -e "${option_color}Menu Options:${NC}"
+show_windows_menu() {
+    echo -e "${option_color}Menu Options for Windows:${NC}"
     echo -e "${option_color}1.${NC} Crack with wordlist only          						  ${CYAN}[EASY]"
     echo -e "${option_color}2.${NC} Crack with rules (Wordlist + Rules)    					  ${GREEN}[MEDIUM]"
     echo -e "${option_color}3.${NC} Crack with brute-force            						  ${YELLOW}[HARD]"
     echo -e "${option_color}4.${NC} Crack with combo (Hybrid Wordlist + Mask)  					  ${RED}[ADVANCED]"
-    echo -e "${option_color}X.${NC} Execute Scripts for Linux"
     echo -e "${option_color}Q.${NC} Quit"
+    echo -ne "${option_color}\nPress Enter to switch to Windows.${NC}\n"
     echo "--------------------------------"
     echo -ne "${option_color}Enter option (1-4, or Q to quit): ${NC}"
 }
 
-show_linux_menu{
-    echo -e "${option_color}Menu Options:${NC}"
+
+show_linux_menu() {
+    echo -e "${option_color}Menu Options for Linux:${NC}"
     echo -e "${option_color}1.${NC} Crack with wordlist only          						  ${CYAN}[EASY]"
     echo -e "${option_color}2.${NC} Crack with rules (Wordlist + Rules)    					  ${GREEN}[MEDIUM]"
     echo -e "${option_color}3.${NC} Crack with brute-force            						  ${YELLOW}[HARD]"
     echo -e "${option_color}4.${NC} Crack with combo (Hybrid Wordlist + Mask)  					  ${RED}[ADVANCED]"
-    echo -e "${option_color}X.${NC} Execute Scripts for Linux"
     echo -e "${option_color}Q.${NC} Quit"
+    echo -ne "${option_color}\nPress Enter to switch to Windows.${NC}\n"
     echo "--------------------------------"
     echo -ne "${option_color}Enter option (1-4, or Q to quit): ${NC}"
+}
+
+# Function to display the menu based on OS choice
+show_menu_based_on_os() {
+    if [[ "$1" == "Linux" ]]; then
+        show_linux_menu
+    elif [[ "$1" == "Windows" ]]; then
+        show_windows_menu
+    else
+        echo "Invalid OS choice"
+        exit 1
+    fi
 }
 
 animate_text() {
@@ -227,5 +240,3 @@ save_logs() {
     mv status.txt "logs/$session"
     mv plaintext.txt "logs/$session"
 }
-
-
