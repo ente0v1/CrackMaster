@@ -1,0 +1,6 @@
+
+Session: fsociety
+Wordlist Path: /c/Users/alexa/wordlists/rockyou.txt
+Mask: 
+Rule: 
+Plaintext: 
