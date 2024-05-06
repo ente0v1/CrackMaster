@@ -4,7 +4,7 @@
 # Example:  hashcat -a 0 -m 0 example.hash example.dict example.rule
 
 
-source functions.sh
+source windows/functions.sh
 define_windows_parameters
 #define_my_parameters
 define_colors
