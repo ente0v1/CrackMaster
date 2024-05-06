@@ -69,12 +69,13 @@ read max_length_input
 max_length=${max_length_input:-$default_max_length}
 
 # Prompt for hashcat path
-echo -e "${RED}Enter Hashcat Path:${NC}"
-read hashcat_path
+echo -e "${RED}Enter Hashcat Path (press Enter to use default '$default_hashcat'):${NC}"
+read hashcat_path_input
+hashcat_path=${hashcat_path_input_input:-$default_hashcat}
 
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.hc22000 -a 6 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask""
+echo -e "${GREEN}Command >>${NC} hashcat.exe --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.hc22000 -a 6 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask""
 
 # Execute hashcat with combined attack (wordlist + mask) and increment options
 if [ "$status_timer_input" = "y" ]; then

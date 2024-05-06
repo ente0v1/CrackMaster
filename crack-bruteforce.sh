@@ -16,7 +16,7 @@ read restore_file_input
 restore_session "$restore_file_input"
 
 # Prompt hash attack mode
-echo -e "\n${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
+echo -e "${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
 read hashmode_input
 hashmode=${hashmode:-$default_hashmode}
 

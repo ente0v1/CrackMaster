@@ -16,12 +16,13 @@ define_colors() {
 
 # Function to define default parameters
 define_default_parameters() {
+    default_hashcat="."
     default_os="Linux"
     default_restorepath="$HOME/.local/share/hashcat/sessions"
     default_session=$(date +"%Y-%m-%d")
     default_wordlists="/usr/share/wordlists"
-    default_masks="$default_scripts/masks"
-    default_rules="$default_scripts/rules"
+    default_masks="masks"
+    default_rules="rules"
     default_wordlist="rockyou.txt"
     default_mask="?d?d?d?d"
     default_rule="T0XlCv2.rule"
@@ -31,12 +32,13 @@ define_default_parameters() {
 }
 
 define_windows_parameters() {
+    default_hashcat="."
     default_os="Linux"
     default_restorepath="$HOME/hashcat/sessions"
     default_session="fsociety"
     default_wordlists="/c/Users/$USER/wordlists"
-    default_masks="/c/Users/$USER/repos/ente0v1/Crack_Master/masks"
-    default_rules="/c/Users/$USER/repos/ente0v1/Crack_Master/rules"
+    default_masks="masks"
+    default_rules="rules"
     default_wordlist="rockyou.txt"
     default_mask="?d?d?d?d"
     default_rule="T0XlCv2.rule"
@@ -47,6 +49,7 @@ define_windows_parameters() {
 
 # Function to define customized parameters
 define_my_parameters() {
+    default_hashcat=
     default_os=
     default_windows_scripts=
     default_restorepath=

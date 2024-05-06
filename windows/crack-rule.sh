@@ -48,7 +48,7 @@ echo -e "${RED}Enter Rules Path (press Enter to use default '$default_rules'):${
 read rule_path_input
 rule_path=${rules_path_input:-$default_rules}
 
-echo -e "${MAGENTA}Available Rules in $rules_path:${NC}"
+echo -e "${MAGENTA}Available Rules in $rule_path:${NC}"
 ls "$rule_path"
 
 echo -e "${MAGENTA}Enter Rule (press Enter to use default '$default_rule'):${NC}"
@@ -59,12 +59,13 @@ echo -e "${MAGENTA}Use status timer? (y/n)${NC}"
 read status_timer_input
 
 # Prompt for hashcat path
-echo -e "${RED}Enter Hashcat Path:${NC}"
-read hashcat_path
+echo -e "${RED}Enter Hashcat Path (press Enter to use default '$default_hashcat'):${NC}"
+read hashcat_path_input
+hashcat_path=${hashcat_path_input_input:-$default_hashcat}
 
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist" -r "$rule""
+echo -e "${GREEN}Command >>${NC} hashcat.exe --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist" -r "$rule""
 
 # Execute hashcat with rules
 if [ "$status_timer_input" = "y" ]; then
