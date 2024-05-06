@@ -9,16 +9,8 @@ define_default_parameters
 #define_my_parameters
 define_colors
 
-# List available sessions
-echo -e "${GREEN}Available sessions:${NC}"
-restore_files=$(find "$default_restorepath" -name "*.restore" -exec basename {} \; | sed 's/\.restore$//')
-if [ -z "$restore_files" ]; then
-    echo "No restore files found..."
-else
-    echo "$restore_files"
-fi
-
 # Restore session if requested
+list_sessions
 echo -e "\n${RED}Restore? (Enter restore file name or leave empty):${NC}"
 read restore_file_input
 restore_session "$restore_file_input"

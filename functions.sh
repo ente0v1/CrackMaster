@@ -62,6 +62,17 @@ define_my_parameters() {
     default_hashmode=
 }
 
+# Function to list available sessions
+list_sessions () {
+    echo -e "${GREEN}Available sessions:${NC}"
+    restore_files=$(find "$default_restorepath" -name "*.restore" -exec basename {} \; | sed 's/\.restore$//')
+    if [ -z "$restore_files" ]; then
+        echo "No restore files found..."
+    else
+        echo "$restore_files"
+    fi
+}
+
 # Function to clear the screen
 clear_screen() {
     clear
