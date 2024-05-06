@@ -6,7 +6,7 @@ In this release, we've introduced several new features and bug fixes to enhance 
 
 ### What's New in This Version
 
-- **New Feature:** Added option for selecting hash mode
+- **New Feature:** Added option for selecting hash mode and added Windows compatibility!
 - **Improvements:** Fixed declarations in `functions.sh`
 
 ### Download and Installation Instructions
@@ -38,7 +38,6 @@ In this release, we've introduced several new features and bug fixes to enhance 
 
 ### What's New in This Version
 
-- **New Feature:** Added Windows compatibility!
 - **Improvements:** Better performance due to removed animate_text to initial splash screen.
 - **Bug Fixes:** Resolved issues with script extensions.
 
