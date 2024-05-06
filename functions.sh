@@ -59,9 +59,8 @@ random_color() {
 
 # Function to display the menu
 show_title() {
-    title_color=$(random_color)  # Color for the title
-    option_color="${title_color}" # Use the same color for all options
-    echo -e "${title_color}"
+    option_color="${color}" # Use the same color for all options
+    echo -e "${color}"
     cat <<EOF
 
 
@@ -92,8 +91,7 @@ show_windows_menu() {
     echo -e "${option_color}2.${NC} Crack with rules (Wordlist + Rules)    					  ${GREEN}[MEDIUM]"
     echo -e "${option_color}3.${NC} Crack with brute-force            						  ${YELLOW}[HARD]"
     echo -e "${option_color}4.${NC} Crack with combo (Hybrid Wordlist + Mask)  					  ${RED}[ADVANCED]"
-    echo -e "${option_color}Q.${NC} Quit"
-    echo -ne "${option_color}\nPress Enter to switch to Windows.${NC}\n"
+    echo -ne "${option_color}\nPress Enter to switch to Linux.${NC}\n"
     echo "--------------------------------"
     echo -ne "${option_color}Enter option (1-4, or Q to quit): ${NC}"
 }
@@ -105,7 +103,6 @@ show_linux_menu() {
     echo -e "${option_color}2.${NC} Crack with rules (Wordlist + Rules)    					  ${GREEN}[MEDIUM]"
     echo -e "${option_color}3.${NC} Crack with brute-force            						  ${YELLOW}[HARD]"
     echo -e "${option_color}4.${NC} Crack with combo (Hybrid Wordlist + Mask)  					  ${RED}[ADVANCED]"
-    echo -e "${option_color}Q.${NC} Quit"
     echo -ne "${option_color}\nPress Enter to switch to Windows.${NC}\n"
     echo "--------------------------------"
     echo -ne "${option_color}Enter option (1-4, or Q to quit): ${NC}"

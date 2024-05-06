@@ -34,10 +34,12 @@ while true; do
     fi
 
     # Pause briefly to allow the user to read previous output before clearing the screen
-    sleep 1
+    #sleep 1
 
     # If the user selected "Quit", exit the loop
     if [[ "$user_option" == [Qq] ]]; then
         break
     fi
+    handle_option "$user_option"
+    echo "User option: $user_option" 
 done
