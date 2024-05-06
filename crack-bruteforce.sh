@@ -18,12 +18,19 @@ restore_session "$restore_file_input"
 # Prompt hash attack mode
 echo -e "${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
 read hashmode_input
-hashmode=${hashmode:-$default_hashmode}
+hashmode=${hashmode_input:-$default_hashmode}
 
 # Prompt user inputs
 echo -e "${MAGENTA}Enter session name (press Enter to use default '$default_session'):${NC}"
 read session_input
 session=${session_input:-$default_session}
+
+echo -e "${RED}Enter Masks Path (press Enter to use default '$default_masks'):${NC}"
+read mask_path_input
+masks_path=${rules_path_input:-$default_rules}
+
+echo -e "${MAGENTA}Available Masks in $masks_path:${NC}"
+ls "$masks_path"
 
 echo -e "${MAGENTA}Enter Mask (press Enter to use default '$default_mask'):${NC}"
 read mask_input

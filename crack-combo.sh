@@ -40,7 +40,7 @@ echo -e "${RED}Enter Masks Path (press Enter to use default '$default_masks'):${
 read mask_path_input
 masks_path=${rules_path_input:-$default_rules}
 
-echo -e "${MAGENTA}Available Rules in $masks_path:${NC}"
+echo -e "${MAGENTA}Available Masks in $masks_path:${NC}"
 ls "$masks_path"
 
 echo -e "${MAGENTA}Enter Mask (press Enter to use default '$default_mask'):${NC}"
