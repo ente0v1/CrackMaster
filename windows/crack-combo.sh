@@ -1,7 +1,10 @@
 #!/bin/bash
+
 # Hybrid Wordlist + Mask
 # Example:  hashcat -a 6 -m 0 example.hash example.dict ?a?a?a?a?a?a
-source functions.sh
+
+
+source ./functions.sh
 define_default_parameters
 define_colors
 
@@ -20,7 +23,7 @@ read restore_file_input
 restore_session "$restore_file_input"
 
 # Prompt hash attack mode
-echo -e "\n${MAGENTA}Enter hash attack mode:${NC}"
+echo -e "\n${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
 read hashmode_input
 hashmode=${hashmode_input:-$default_hashmode}
 
@@ -39,6 +42,13 @@ ls "$wordlist_path"
 echo -e "${MAGENTA}Enter Wordlist (press Enter to use default '$default_wordlist'):${NC}"
 read wordlist_input
 wordlist=${wordlist_input:-$default_wordlist}
+
+echo -e "${RED}Enter Masks Path (press Enter to use default '$default_masks'):${NC}"
+read mask_path_input
+masks_path=${rules_path_input:-$default_rules}
+
+echo -e "${MAGENTA}Available Rules in $masks_path:${NC}"
+ls "$masks_path"
 
 echo -e "${MAGENTA}Enter Mask (press Enter to use default '$default_mask'):${NC}"
 read mask_input
