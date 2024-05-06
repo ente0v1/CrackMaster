@@ -1,6 +1,0 @@
-
-Session: fsociety
-Wordlist Path: /
-Mask: ?d?d?d?d
-Rule: 
-Plaintext: 
