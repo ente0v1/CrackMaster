@@ -167,26 +167,45 @@ handle_option() {
         1)
             echo -ne "Executing crack-wordlist script: "
             animate_text "..." 0.1  # Animating ellipsis to indicate processing
-            echo -ne "crack-wordlist.sh ${YELLOW}is Executing${NC}\n\n\n\n\n"
-            ./crack-wordlist.sh
+            echo -ne "crack-wordlist.sh ${YELLOW}is Executing${NC}\n\n\n"
+            if [[ "$default_os" == "Windows" ]]; then
+                windows/crack-wordlist.sh
+            elif [[ "$default_os" == "Linux" ]]; then
+                ./crack-wordlist.sh
+            fi
             ;;
+            
+            ;;
+       ;;
         2)
             echo -ne "Executing crack-rule script: "
             animate_text "..." 0.1
-            echo -e "crack-rule.sh ${YELLOW}is Executing${NC}\n\n\n\n\n"
-            ./crack-rule.sh
+            echo -e "crack-rule.sh ${YELLOW}is Executing${NC}\n\n\n"
+            if [[ "$default_os" == "Windows" ]]; then
+                windows/crack-rule.sh
+            elif [[ "$default_os" == "Linux" ]]; then
+                ./crack-rule.sh
+            fi
             ;;
         3)
             echo -ne "Executing crack-bruteforce script: "
             animate_text "..." 0.1
-            echo -e "crack-bruteforce.sh ${YELLOW}is Executing${NC}\n\n\n\n\n"
-            ./crack-bruteforce.sh
+            echo -e "crack-bruteforce.sh ${YELLOW}is Executing${NC}\n\n\n"
+            if [[ "$default_os" == "Windows" ]]; then
+                windows/crack-bruteforce.sh
+            elif [[ "$default_os" == "Linux" ]]; then
+                ./crack-bruteforce.sh
+            fi
             ;;
         4)
             echo -ne "Executing crack-combo script: "
             animate_text "..." 0.1
-            echo -e "crack-combo.sh ${YELLOW}is Executing${NC}\n\n\n\n\n"
-            ./crack-combo.sh
+            echo -e "crack-combo.sh ${YELLOW}is Executing${NC}\n\n\n"
+            if [[ "$default_os" == "Windows" ]]; then
+                windows/crack-combo.sh
+            elif [[ "$default_os" == "Linux" ]]; then
+                ./crack-combo.sh
+            fi
             ;;
         [Qq])
             echo -ne "Exiting: "
@@ -199,6 +218,7 @@ handle_option() {
             # If the user selected option "Other Scripts", execute Windows scripts
             execute_windows_scripts
             ;;
+
         *)
             echo -e "${RED}Invalid option. Please try again.${NC}"
             ;;
