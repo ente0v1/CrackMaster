@@ -3,4 +3,4 @@ Session: 2024-05-08
 Wordlist Path: /usr/share/wordlists/rockyou.txt
 Mask: 
 Rule: 
-Plaintext: 00880088
+Plaintext: 

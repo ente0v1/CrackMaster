@@ -57,6 +57,7 @@ rule=${rule_input:-$default_rule}
 
 echo -e "${MAGENTA}Use status timer? (y/n)${NC}"
 read status_timer_input
+status_timer=${status_timer_input:-"y"}
 
 # Prompt for hashcat path
 echo -e "${RED}Enter Hashcat Path (press Enter to use default '$default_hashcat'):${NC}"
@@ -73,7 +74,7 @@ echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
 echo -e "${GREEN}Command >>${NC} hashcat.exe --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist" -r "$rule""
 
 # Execute hashcat with rules
-if [ "$status_timer_input" = "y" ]; then
+if [ "$status_timer" = "y" ]; then
     "$hashcat_path/hashcat.exe" --session="$session" --status --status-timer=2 -m "$hashmode" hash.hc22000 -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
 else
     "$hashcat_path/hashcat.exe" --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"

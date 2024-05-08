@@ -38,6 +38,7 @@ wordlist=${wordlist_input:-$default_wordlist}
 
 echo -e "${MAGENTA}Use status timer? (y/n)${NC}"
 read status_timer_input
+status_timer=${status_timer_input:-"y"}
 
 # Prompt for workload
 echo -e "${MAGENTA}Enter workload (press Enter to use default '$default_workload') [1-4]:${NC}"
@@ -49,8 +50,11 @@ echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
 echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist""
 
 # Execute hashcat with the specified wordlist
-hashcat --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w "$workload"4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
-
+if [ "$status_timer" = "y" ]; then
+    hashcat --session="$session" --status --status-timer=2 -m "$hashmode" hash.hc22000 -a 0 -w "$workload"4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
+else
+    hashcat --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
+fi
 # Save successful settings
 save_settings "$session" "$wordlist_path" "$wordlist" ""
 save_logs
