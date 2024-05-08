@@ -36,9 +36,9 @@ echo -e "${MAGENTA}Enter Wordlist (press Enter to use default '$default_wordlist
 read wordlist_input
 wordlist=${wordlist_input:-$default_wordlist}
 
-echo -e "${MAGENTA}Use status timer? (y/n)${NC}"
+echo -e "${MAGENTA}Use status timer? (press Enter to use default '$default_wordlist') [y/n]:${NC}"
 read status_timer_input
-status_timer=${status_timer_input:-"y"}
+status_timer=${status_timer_input:-default_status_timer}
 
 # Prompt for workload
 echo -e "${MAGENTA}Enter workload (press Enter to use default '$default_workload') [1-4]:${NC}"

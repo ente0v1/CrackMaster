@@ -17,6 +17,7 @@ define_colors() {
 # Function to define default parameters
 define_default_parameters() {
     default_hashcat="."
+    default_status_timer="y"
     default_workload="4"
     default_os="Linux"
     default_restorepath="$HOME/.local/share/hashcat/sessions"
@@ -34,6 +35,7 @@ define_default_parameters() {
 
 define_windows_parameters() {
     default_hashcat="."
+    default_status_timer="y"
     default_workload="4"
     default_os="Linux"
     default_restorepath="$HOME/hashcat/sessions"
@@ -52,6 +54,7 @@ define_windows_parameters() {
 # Function to define customized parameters
 define_my_parameters() {
     default_hashcat=
+    default_status_timer="y"
     default_workload=
     default_os=
     default_windows_scripts=
