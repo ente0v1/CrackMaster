@@ -66,7 +66,7 @@ echo -e "${GREEN}Command >>${NC} hashcat --session="$session" --increment --incr
 if [ "$status_timer" = "y" ]; then
     hashcat --session="$session" --status --status-timer=2 -m "$hashmode" hash.hc22000 -a 3 -w "$workload" --outfile-format=2 -o plaintext.txt "$mask"
 else
-    hashcat --session="$session" -m "$hashmode" hash.hc22000 -a 3 -w 4"$workload" --outfile-format=2 -o plaintext.txt "$mask"
+    hashcat --session="$session" -m "$hashmode" hash.hc22000 -a 3 -w "$workload" --outfile-format=2 -o plaintext.txt "$mask"
 fi
 
 # Save successful settings

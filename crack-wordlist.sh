@@ -51,7 +51,7 @@ echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$hashmode" has
 
 # Execute hashcat with the specified wordlist
 if [ "$status_timer" = "y" ]; then
-    hashcat --session="$session" --status --status-timer=2 -m "$hashmode" hash.hc22000 -a 0 -w "$workload"4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
+    hashcat --session="$session" --status --status-timer=2 -m "$hashmode" hash.hc22000 -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
 else
     hashcat --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
 fi
