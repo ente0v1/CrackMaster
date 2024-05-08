@@ -49,12 +49,20 @@ echo -e "${RED}Enter Hashcat Path (press Enter to use default '$default_hashcat'
 read hashcat_path_input
 hashcat_path=${hashcat_path_input_input:-$default_hashcat}
 
+echo -e "${MAGENTA}Use status timer? (y/n)${NC}"
+read status_timer_input
+
+# Prompt for workload
+echo -e "${MAGENTA}Enter workload (press Enter to use default '$default_workload') [1-4]:${NC}"
+read workload_input
+workload=${workload_input:-$default_workload}
+
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat.exe --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist""
+echo -e "${GREEN}Command >>${NC} hashcat.exe --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist""
 
 # Execute hashcat with the specified wordlist
-"$hashcat_path/hashcat.exe" --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
+"$hashcat_path/hashcat.exe" --session="$session" -m "$hashmode" hash.hc22000 -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
 
 # Save successful settings
 save_settings "$session" "$wordlist_path" "$wordlist" ""

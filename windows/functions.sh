@@ -17,6 +17,7 @@ define_colors() {
 # Function to define default parameters
 define_default_parameters() {
     default_hashcat="."
+    default_workload="4"
     default_os="Linux"
     default_restorepath="$HOME/.local/share/hashcat/sessions"
     default_session=$(date +"%Y-%m-%d")
@@ -33,6 +34,7 @@ define_default_parameters() {
 
 define_windows_parameters() {
     default_hashcat="."
+    default_workload="4"
     default_os="Linux"
     default_restorepath="$HOME/hashcat/sessions"
     default_session="fsociety"
@@ -50,6 +52,7 @@ define_windows_parameters() {
 # Function to define customized parameters
 define_my_parameters() {
     default_hashcat=
+    default_workload=
     default_os=
     default_windows_scripts=
     default_restorepath=
@@ -116,27 +119,30 @@ show_title() {
 EOF
 }
 
+# Function to display the menu options for Windows
 show_windows_menu() {
-    echo -e "${option_color}Menu Options for Windows:${NC}"
-    echo -e "${option_color}1.${NC} Crack with wordlist only          						  ${CYAN}[EASY]"
-    echo -e "${option_color}2.${NC} Crack with rules (Wordlist + Rules)    					  ${GREEN}[MEDIUM]"
-    echo -e "${option_color}3.${NC} Crack with brute-force            						  ${YELLOW}[HARD]"
-    echo -e "${option_color}4.${NC} Crack with combo (Hybrid Wordlist + Mask)  					  ${RED}[ADVANCED]"
-    echo -ne "${option_color}\nPress Enter to switch to Linux.${NC}\n"
-    echo "--------------------------------"
-    echo -ne "${option_color}Enter option (1-4, or Q to quit): ${NC}"
+    echo -e "   ${option_color}Menu Options for Windows:${NC}"
+    echo -e "   ${option_color}1.${NC} Crack with Wordlist                                                             ${CYAN}[EASY]"
+    echo -e "   ${option_color}2.${NC} Crack with Association                                                        ${GREEN}[MEDIUM]"
+    echo -e "   ${option_color}3.${NC} Crack with Brute-Force                                                          ${YELLOW}[HARD]"
+    echo -e "   ${option_color}4.${NC} Crack with Combinator                                                       ${RED}[ADVANCED]"
+    echo -e ""
+    echo -e "                                                              ${option_color}Press Enter to switch to Linux.${NC}"
+    echo -e "--------------------------------------------------------------------------------------------"
+    echo -e "  ${option_color}Enter option (1-4, or Q to quit): ${NC}"
 }
 
-
+# Function to display the menu options for Linux
 show_linux_menu() {
-    echo -e "${option_color}Menu Options for Linux:${NC}"
-    echo -e "${option_color}1.${NC} Crack with wordlist only          						  ${CYAN}[EASY]"
-    echo -e "${option_color}2.${NC} Crack with rules (Wordlist + Rules)    					  ${GREEN}[MEDIUM]"
-    echo -e "${option_color}3.${NC} Crack with brute-force            						  ${YELLOW}[HARD]"
-    echo -e "${option_color}4.${NC} Crack with combo (Hybrid Wordlist + Mask)  					  ${RED}[ADVANCED]"
-    echo -ne "${option_color}\nPress Enter to switch to Windows.${NC}\n"
-    echo "--------------------------------"
-    echo -ne "${option_color}Enter option (1-4, or Q to quit): ${NC}"
+    echo -e "   ${option_color}Menu Options for Linux:${NC}"
+    echo -e "   ${option_color}1.${NC} Crack with Wordlist                                                             ${CYAN}[EASY]"
+    echo -e "   ${option_color}2.${NC} Crack with Association                                                        ${GREEN}[MEDIUM]"
+    echo -e "   ${option_color}3.${NC} Crack with Brute-Force                                                          ${YELLOW}[HARD]"
+    echo -e "   ${option_color}4.${NC} Crack with Combinator                                                       ${RED}[ADVANCED]"
+    echo -e ""
+    echo -e "                                                            ${option_color}Press Enter to switch to Windows.${NC}"
+    echo -e "--------------------------------------------------------------------------------------------"
+    echo -e "  ${option_color}Enter option (1-4, or Q to quit): ${NC}"
 }
 
 # Function to display the menu based on OS choice
