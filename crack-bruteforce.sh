@@ -49,9 +49,9 @@ echo -e "${MAGENTA}Enter Maximum Length (press Enter to use default '$default_ma
 read max_length
 max_length=${max_length:-$default_max_length}
 
-echo -e "${MAGENTA}Use status timer? (y/n)${NC}"
+echo -e "${MAGENTA}Use status timer? (press Enter to use default '$default_status_timer') [y/n]:${NC}"
 read status_timer_input
-status_timer=${status_timer_input:-"y"}
+status_timer=${status_timer_input:-default_status_timer}
 
 # Prompt for workload
 echo -e "${MAGENTA}Enter workload (press Enter to use default '$default_workload') [1-4]:${NC}"
