@@ -64,6 +64,11 @@ echo -e "${RED}Enter Hashcat Path (press Enter to use default '$default_hashcat'
 read hashcat_path_input
 hashcat_path=${hashcat_path_input_input:-$default_hashcat}
 
+# Prompt hash attack mode
+echo -e "${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
+read hashmode_input
+hashmode=${hashmode_input:-$default_hashmode}
+
 # Prompt for workload
 echo -e "${MAGENTA}Enter workload (press Enter to use default '$default_workload') [1-4]:${NC}"
 read workload_input

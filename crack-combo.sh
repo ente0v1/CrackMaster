@@ -15,11 +15,6 @@ echo -e "\n${RED}Restore? (Enter restore file name or leave empty):${NC}"
 read restore_file_input
 restore_session "$restore_file_input"
 
-# Prompt hash attack mode
-echo -e "${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
-read hashmode_input
-hashmode=${hashmode_input:-$default_hashmode}
-
 # Prompt user inputs
 echo -e "${MAGENTA}Enter session name (press Enter to use default '$default_session'):${NC}"
 read session_input
@@ -63,6 +58,11 @@ max_length=${max_length_input:-$default_max_length}
 echo -e "${MAGENTA}Use status timer? (press Enter to use default '$default_status_timer') [y/n]:${NC}"
 read status_timer_input
 status_timer=${status_timer_input:-default_status_timer}
+
+# Prompt hash attack mode
+echo -e "${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
+read hashmode_input
+hashmode=${hashmode_input:-$default_hashmode}
 
 # Prompt for workload
 echo -e "${MAGENTA}Enter workload (press Enter to use default '$default_workload') [1-4]:${NC}"

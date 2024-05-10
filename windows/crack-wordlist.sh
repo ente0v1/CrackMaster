@@ -53,6 +53,11 @@ echo -e "${MAGENTA}Use status timer? (press Enter to use default '$default_statu
 read status_timer_input
 status_timer=${status_timer_input:-default_status_timer}
 
+# Prompt hash attack mode
+echo -e "${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
+read hashmode_input
+hashmode=${hashmode_input:-$default_hashmode}
+
 # Prompt for workload
 echo -e "${MAGENTA}Enter workload (press Enter to use default '$default_workload') [1-4]:${NC}"
 read workload_input
