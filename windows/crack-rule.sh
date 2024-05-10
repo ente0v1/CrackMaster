@@ -50,10 +50,6 @@ echo -e "${MAGENTA}Enter Rule (press Enter to use default '$default_rule'):${NC}
 read rule_input
 rule=${rule_input:-$default_rule}
 
-echo -e "${MAGENTA}Use status timer? (press Enter to use default '$default_status_timer') [y/n]:${NC}"
-read status_timer_input
-status_timer=${status_timer_input:-default_status_timer}
-
 # Prompt for hashcat path
 echo -e "${RED}Enter Hashcat Path (press Enter to use default '$default_hashcat'):${NC}"
 read hashcat_path_input
@@ -68,6 +64,10 @@ hashmode=${hashmode_input:-$default_hashmode}
 echo -e "${MAGENTA}Enter workload (press Enter to use default '$default_workload') [1-4]:${NC}"
 read workload_input
 workload=${workload_input:-$default_workload}
+
+echo -e "${MAGENTA}Use status timer? (press Enter to use default '$default_status_timer') [y/n]:${NC}"
+read status_timer_input
+status_timer=${status_timer_input:-default_status_timer}
 
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"

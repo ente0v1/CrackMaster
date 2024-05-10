@@ -42,9 +42,6 @@ echo -e "${MAGENTA}Enter Mask (press Enter to use default '$default_mask'):${NC}
 read mask_input
 mask=${mask_input:-$default_mask}
 
-echo -e "${MAGENTA}Use status timer? (y/n)${NC}"
-read status_timer_input
-
 # Prompt for min length
 echo -e "${MAGENTA}Enter Minimum Length (press Enter to use default '$default_min_length'):${NC}"
 read min_length_input
@@ -68,6 +65,10 @@ hashmode=${hashmode_input:-$default_hashmode}
 echo -e "${MAGENTA}Enter workload (press Enter to use default '$default_workload') [1-4]:${NC}"
 read workload_input
 workload=${workload_input:-$default_workload}
+
+echo -e "${MAGENTA}Use status timer? (press Enter to use default '$default_status_timer') [y/n]:${NC}"
+read status_timer_input
+status_timer=${status_timer_input:-default_status_timer}
 
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
