@@ -23,11 +23,6 @@ echo -e "\n${RED}Restore? (Enter restore file name or leave empty):${NC}"
 read restore_file_input
 restore_session "$restore_file_input"
 
-# Prompt hash attack mode
-echo -e "${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
-read hashmode_input
-hashmode=${hashmode_input:-$default_hashmode}
-
 # Prompt user inputs
 echo -e "${MAGENTA}Enter session name (press Enter to use default '$default_session'):${NC}"
 read session_input
