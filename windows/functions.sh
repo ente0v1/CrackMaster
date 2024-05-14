@@ -279,7 +279,7 @@ restore_session() {
         else
             local session=$(basename "$restore_file" .restore)
             echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-            echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$default_hashmode" hash.hc22000 -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$default_wordlists/$default_wordlist""
+            echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$default_hashmode" hash -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$default_wordlists/$default_wordlist""
             hashcat --session "$session" --restore
             exit 0
         fi

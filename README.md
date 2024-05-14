@@ -26,7 +26,7 @@ This Bash script provides a simple interface to perform cracking operations usin
 ![Test Image](./assets/menu.png)
 
 If you are on Windows, in order to execute Bash, simply download [Git Bash](https://git-scm.com/download/win) or [Kali Linux](https://apps.microsoft.com/detail/9pkr34tncv07?hl=en-us&gl=US) from Microsoft Store.
-To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the Crack_Master folder by typing `cd Crack_Master`. After that, make all scripts executable with `chmod +x *`, and proceed to move "hash.hc22000" in your repo root directory. With these steps completed, you're now ready to run the script by executing `./crackmaster.sh`.
+To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the Crack_Master folder by typing `cd Crack_Master`. After that, make all scripts executable with `chmod +x *`, and proceed to move "hash" in your repo root directory. With these steps completed, you're now ready to run the script by executing `./crackmaster.sh`.
 Execution:
 ```
 git clone https://github.com/ente0v1/Crack_Master.git
@@ -36,7 +36,7 @@ chmod +x *
 If you prefer to use wordlists and other custom parameters, in files suffixed with `crack*`, replace `define_default_parameters` with `define_my_parameters` and go change variables in function "define_my_parameters" in `functions.sh`.
 
 ## Usage
-To start the script log in as non-root user and rename your hash in "hash.hc22000", move your hash into Crack_Master directory and execute: `./crackmaster.sh`
+To start the script log in as non-root user and rename your hash in "hash", move your hash into Crack_Master directory and execute: `./crackmaster.sh`
 
 ![Test Image](./assets/action.png)
 
@@ -95,7 +95,7 @@ Here's a detailed explanation on how code is made:
     - --session="$session": Creates or resumes a session named $session
     - --increment --increment-min="$min_length" --increment-max="$max_length": Enables password length incrementing within the specified range.
     - -m 22000: Specifies the hash mode (for a specific hash type)
-    - hash.hc22000: Path to the hash file containing the password hash
+    - hash: Path to the hash file containing the password hash
     - -a 6: Sets the attack mode to hybrid wordlist + mask (mode 6)
     - -w 4: Uses wordlists for the attack
     - --outfile-format=2: Specifies output format for cracked passwords

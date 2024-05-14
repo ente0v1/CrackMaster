@@ -1,5 +1,5 @@
 
-Session: 2024-05-09
+Session: 2024-05-14
 Wordlist Path: /usr/share/wordlists/rockyou.txt
 Mask: 
 Rule: 
