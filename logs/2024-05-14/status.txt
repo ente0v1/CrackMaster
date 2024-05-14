@@ -1,6 +1,6 @@
 
 Session: 2024-05-14
-Wordlist Path: /usr/share/wordlists/rockyou.txt
+Wordlist Path: wordlists/dnsmap.txt
 Mask: 
 Rule: 
 Plaintext: 

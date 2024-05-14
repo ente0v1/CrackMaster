@@ -1,6 +1,0 @@
-
-Session: 2024-05-08
-Wordlist Path: /usr/share/wordlists/wpa2-wordlists/Bigone2016.txt
-Mask: 
-Rule: 
-Plaintext: 

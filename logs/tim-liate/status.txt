@@ -1,6 +1,0 @@
-
-Session: tim-liate
-Wordlist Path: /usr/share/wordlists/wpa2-wordlists/Ultimate2016.txt
-Mask: 
-Rule: 
-Plaintext: 

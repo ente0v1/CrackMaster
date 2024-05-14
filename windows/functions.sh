@@ -22,10 +22,10 @@ define_default_parameters() {
     default_os="Linux"
     default_restorepath="$HOME/.local/share/hashcat/sessions"
     default_session=$(date +"%Y-%m-%d")
-    default_wordlists="/usr/share/wordlists"
+    default_wordlists="wordlists"
     default_masks="masks"
     default_rules="rules"
-    default_wordlist="rockyou.txt"
+    default_wordlist="dnsmap.txt"
     default_mask="?d?d?d?d"
     default_rule="T0XlCv2.rule"
     default_min_length="4"
