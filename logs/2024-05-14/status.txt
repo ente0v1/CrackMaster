@@ -1,6 +1,0 @@
-
-Session: 2024-05-14
-Wordlist Path: wordlists/dnsmap.txt
-Mask: 
-Rule: 
-Plaintext: 
