@@ -7,7 +7,7 @@ source fsociety00.dat
 # Define parameters
 #define_default_parameters
 define_windows_parameters
-#define_my_parameters
+define_my_parameters
 define_colors
 
 # Variable to track the current OS selection (0 for Windows, 1 for Linux)

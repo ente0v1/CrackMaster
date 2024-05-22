@@ -53,22 +53,21 @@ define_windows_parameters() {
 
 # Function to define customized parameters
 define_my_parameters() {
-    default_hashcat=
+    default_hashcat="."
     default_status_timer="y"
-    default_workload=
-    default_os=
-    default_windows_scripts=
-    default_restorepath=
-    default_session=
-    default_wordlists=
-    default_masks=
-    default_rules=
-    default_wordlist=
-    default_mask=
-    default_rule=
-    default_min_length=
-    default_max_length=
-    default_hashmode=
+    default_workload="2"
+    default_os="Linux"
+    default_restorepath="/home/enteo/.local/share/hashcat/sessions"
+    default_session="fsociety"
+    default_wordlists="/home/enteo/cracking/wordlists"
+    default_masks="masks"
+    default_rules="rules"
+    default_wordlist="full.txt"
+    default_mask="?d?d?d?d"
+    default_rule="T0XlCv2.rule"
+    default_min_length="4"
+    default_max_length="16"
+    default_hashmode="22000"
 }
 
 # Function to list available sessions
@@ -132,7 +131,7 @@ show_windows_menu() {
     echo -e ""
     echo -e "                                                              ${option_color}Press Enter to switch to Linux.${NC}"
     echo -e "--------------------------------------------------------------------------------------------"
-    echo -e "  ${option_color}Enter option (1-4, or Q to quit): ${NC}"
+    echo -ne "  ${option_color}Enter option (1-4, or Q to quit): ${NC}"
 }
 
 # Function to display the menu options for Linux
@@ -145,7 +144,7 @@ show_linux_menu() {
     echo -e ""
     echo -e "                                                            ${option_color}Press Enter to switch to Windows.${NC}"
     echo -e "--------------------------------------------------------------------------------------------"
-    echo -e "  ${option_color}Enter option (1-4, or Q to quit): ${NC}"
+    echo -ne "  ${option_color}Enter option (1-4, or Q to quit): ${NC}"
 }
 
 # Function to display the menu based on OS choice
