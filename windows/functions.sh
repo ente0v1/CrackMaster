@@ -57,7 +57,7 @@ define_my_parameters() {
     default_status_timer="y"
     default_workload="2"
     default_os="Linux"
-    default_restorepath="$HOME/share/hashcat/sessions"
+    default_restorepath="$HOME/.local/share/hashcat/sessions"
     default_session="fsociety"
     default_wordlists="$HOME/cracking/wordlists"
     default_masks="masks"
