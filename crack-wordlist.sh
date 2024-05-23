@@ -47,13 +47,13 @@ status_timer=${status_timer_input:-default_status_timer}
 
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$hashmode" hash -a 0 -w $wordload --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist""
+echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$hashmode" hash.txt -a 0 -w $wordload --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist""
 
 # Execute hashcat with the specified wordlist
 if [ "$status_timer" = "y" ]; then
-    hashcat --session="$session" --status --status-timer=2 -m "$hashmode" hash -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
+    hashcat --session="$session" --status --status-timer=2 -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
 else
-    hashcat --session="$session" -m "$hashmode" hash -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
+    hashcat --session="$session" -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
 fi
 # Save successful settings
 save_settings "$session" "$wordlist_path" "$wordlist" ""

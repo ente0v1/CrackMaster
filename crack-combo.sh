@@ -72,13 +72,13 @@ status_timer=${status_timer_input:-default_status_timer}
 
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash -a 6 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask""
+echo -e "${GREEN}Command >>${NC} hashcat --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask""
 
 # Execute hashcat with combined attack (wordlist + mask) and increment options
 if [ "$status_timer" = "y" ]; then
-    hashcat --session="$session" --status --status-timer=2 --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask"
+    hashcat --session="$session" --status --status-timer=2 --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask"
 else
-    hashcat --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m 22000 hash -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask"
+    hashcat --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m 22000 hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask"
 fi
 
 # Save successful settings

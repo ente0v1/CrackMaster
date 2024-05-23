@@ -71,13 +71,13 @@ status_timer=${status_timer_input:-default_status_timer}
 
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat.exe --session="$session" -m "$hashmode" hash -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist" -r "$rule""
+echo -e "${GREEN}Command >>${NC} hashcat.exe --session="$session" -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist" -r "$rule""
 
 # Execute hashcat with rules
 if [ "$status_timer" = "y" ]; then
-    "$hashcat_path/hashcat.exe" --session="$session" --status --status-timer=2 -m "$hashmode" hash -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
+    "$hashcat_path/hashcat.exe" --session="$session" --status --status-timer=2 -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
 else
-    "$hashcat_path/hashcat.exe" --session="$session" -m "$hashmode" hash -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
+    "$hashcat_path/hashcat.exe" --session="$session" -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
 fi
 
 # Save successful settings

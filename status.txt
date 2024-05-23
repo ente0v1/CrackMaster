@@ -1,0 +1,6 @@
+
+Session: oppo
+Wordlist Path: /home/enteo/cracking/wordlists/full.txt
+Mask: 
+Rule: 
+Plaintext: 
