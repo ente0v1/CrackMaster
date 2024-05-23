@@ -1,5 +1,5 @@
 
-Session: oppo
+Session: fsociety
 Wordlist Path: /home/enteo/cracking/wordlists/rockyou.txt
 Mask: 
 Rule: 
