@@ -5,8 +5,8 @@
 
 
 source windows/functions.sh
-define_default_parameters
-#define_my_parameters
+#define_default_parameters
+define_my_parameters
 define_colors
 
 # Restore session if requested
