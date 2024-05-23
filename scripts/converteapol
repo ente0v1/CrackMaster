@@ -27,7 +27,7 @@ ssid=$(cat essidlist)
 mkdir -p "$ssid"
 
 # Move hash file and essidlist to directory
-mv hash.hc22000 "$ssid/"
+mv hash.txt "$ssid/"
 mv essidlist "$ssid/"
 
 echo "Conversion completed successfully. Output stored in: $ssid/"
