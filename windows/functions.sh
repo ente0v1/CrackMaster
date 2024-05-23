@@ -57,9 +57,9 @@ define_my_parameters() {
     default_status_timer="y"
     default_workload="2"
     default_os="Linux"
-    default_restorepath="/home/enteo/.local/share/hashcat/sessions"
+    default_restorepath="$USER/share/hashcat/sessions"
     default_session="fsociety"
-    default_wordlists="/home/enteo/cracking/wordlists"
+    default_wordlists="$USER/cracking/wordlists"
     default_masks="masks"
     default_rules="rules"
     default_wordlist="full.txt"
@@ -278,7 +278,7 @@ restore_session() {
         else
             local session=$(basename "$restore_file" .restore)
             echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-            echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$default_hashmode" hash -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$default_wordlists/$default_wordlist""
+            echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$default_hashmode" hash.txt -a "?" -w "$workload" --outfile-format=2 -o plaintext.txt "$default_wordlists/$default_wordlist""
             hashcat --session "$session" --restore
             exit 0
         fi
