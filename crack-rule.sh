@@ -58,7 +58,7 @@ status_timer=${status_timer_input:-default_status_timer}
 
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$hashmode" hash.txt -a 0 -w 4 --outfile-format=2 -o plaintext.txt "$wordlist" -r "$rule""
+echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist" -r "$rule""
 
 # Execute hashcat with rules
 if [ "$status_timer" = "y" ]; then
