@@ -19,10 +19,12 @@ run_hashcat() {
 
     if echo "$hashcat_output" | grep -q "Cracked"; then
         echo -e "${GREEN}Hashcat found the plaintext! Saving logs...${NC}"
+        sleep 2
         save_logs
         save_settings "$session" "$wordlist_path" "$wordlist" ""
     else
         echo -e "${RED}Hashcat did not find the plaintext.${NC}"
+        sleep 2
     fi
 }
 
