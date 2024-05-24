@@ -3,6 +3,7 @@
 default_scripts="$HOME/Crack_Master"
 default_windows_scripts="/c/Users/$USER/source/repos/ente0v1/Crack_Master/windows"
 
+
 # Function to define colors
 define_colors() {
     RED='\033[0;31m'
@@ -293,3 +294,5 @@ save_logs() {
     mv status.txt "logs/$session"
     mv plaintext.txt "logs/$session"
 }
+
+

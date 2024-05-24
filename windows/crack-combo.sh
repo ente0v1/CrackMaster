@@ -1,7 +1,35 @@
 #!/bin/bash
-
 # Hybrid Wordlist + Mask
 # Example:  hashcat -a 6 -m 0 example.hash example.dict ?a?a?a?a?a?a
+
+# Function to handle hashcat execution and check for success
+run_hashcat() {
+    local session="$1"
+    local hashmode="$2"
+    local wordlist_path="$3"
+    local wordlist="$4"
+    local mask_path="$5"
+    local mask="$6"
+    local min_length="$7"
+    local max_length="$8"
+    local workload="$9"
+    local status_timer="${10}"
+    local hashcat_path="${11}"
+
+    if [ "$status_timer" = "y" ]; then
+        hashcat_output=$("$hashcat_path/hashcat.exe" --session="$session" --status --status-timer=2 --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask_path/$mask")
+    else
+        hashcat_output=$("$hashcat_path/hashcat.exe" --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask_path/$mask")
+    fi
+
+    if echo "$hashcat_output" | grep -q "Cracked"; then
+        echo -e "${GREEN}Hashcat found the plaintext!${NC}"
+        sleep 2
+    else
+        echo -e "${RED}Hashcat did not find the plaintext.${NC}"
+        sleep 2
+    fi
+}
 
 
 source windows/functions.sh
@@ -9,16 +37,8 @@ define_windows_parameters
 #define_my_parameters
 define_colors
 
-# List available sessions
-echo -e "${GREEN}Available sessions:${NC}"
-restore_files=$(find "$default_restorepath" -name "*.restore" -exec basename {} \; | sed 's/\.restore$//')
-if [ -z "$restore_files" ]; then
-    echo "No restore files found..."
-else
-    echo "$restore_files"
-fi
-
 # Restore session if requested
+list_sessions
 echo -e "\n${RED}Restore? (Enter restore file name or leave empty):${NC}"
 read restore_file_input
 restore_session "$restore_file_input"
@@ -41,10 +61,10 @@ wordlist=${wordlist_input:-$default_wordlist}
 
 echo -e "${RED}Enter Masks Path (press Enter to use default '$default_masks'):${NC}"
 read mask_path_input
-masks_path=${rules_path_input:-$default_rules}
+mask_path=${mask_path_input:-$default_masks}
 
-echo -e "${MAGENTA}Available Masks in $masks_path:${NC}"
-ls "$masks_path"
+echo -e "${MAGENTA}Available Masks in $mask_path:${NC}"
+ls "$mask_path"
 
 echo -e "${MAGENTA}Enter Mask (press Enter to use default '$default_mask'):${NC}"
 read mask_input
@@ -63,7 +83,7 @@ max_length=${max_length_input:-$default_max_length}
 # Prompt for hashcat path
 echo -e "${RED}Enter Hashcat Path (press Enter to use default '$default_hashcat'):${NC}"
 read hashcat_path_input
-hashcat_path=${hashcat_path_input_input:-$default_hashcat}
+hashcat_path=${hashcat_path_input:-$default_hashcat}
 
 echo -e "${MAGENTA}Use status timer? (press Enter to use default '$default_status_timer') [y/n]:${NC}"
 read status_timer_input
@@ -79,23 +99,9 @@ echo -e "${MAGENTA}Enter workload (press Enter to use default '$default_workload
 read workload_input
 workload=${workload_input:-$default_workload}
 
-echo -e "${MAGENTA}Use status timer? (press Enter to use default '$default_status_timer') [y/n]:${NC}"
-read status_timer_input
-status_timer=${status_timer_input:-default_status_timer}
-
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat.exe --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask""
+echo -e "${GREEN}Command >>${NC} \"$hashcat_path/hashcat.exe\" --session=\"$session\" --increment --increment-min=\"$min_length\" --increment-max=\"$max_length\" -m \"$hashmode\" hash.txt -a 6 -w \"$workload\" --outfile-format=2 -o plaintext.txt \"$wordlist_path/$wordlist\" \"$mask\""
 
 # Execute hashcat with combined attack (wordlist + mask) and increment options
-if [ "$status_timer" = "y" ]; then
-    "$hashcat_path/hashcat.exe" --session="$session" --status --status-timer=2 --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask"
-else
-    "$hashcat_path/hashcat.exe" --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m 22000 hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask"
-fi
-
-# Save successful settings
-save_settings "$session" "$wordlist_path" "$wordlist" "$mask" ""
-save_logs
-
-
+run_hashcat "$session" "$hashmode" "$wordlist_path" "$wordlist" "$mask_path" "$mask" "$min_length" "$max_length" "$workload" "$status_timer" "$hashcat_path"

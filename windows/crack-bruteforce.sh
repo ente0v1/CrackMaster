@@ -1,7 +1,33 @@
 #!/bin/bash
-
 # Brute-force
 # Example:  hashcat -a 3 -m 0 example.hash ?a?a?a?a?a?a
+
+# Function to handle hashcat execution and check for success
+run_hashcat() {
+    local session="$1"
+    local hashmode="$2"
+    local mask="$3"
+    local workload="$4"
+    local status_timer="$5"
+    local hashcat_path="$6"
+    local hashcat_output=""
+
+    if [ "$status_timer" = "y" ]; then
+        hashcat_output=$("$hashcat_path/hashcat.exe" --session="$session" --status --status-timer=2 -m "$hashmode" hash.txt -a 3 -w "$workload" --outfile-format=2 -o plaintext.txt "$mask")
+    else
+        hashcat_output=$("$hashcat_path/hashcat.exe" --session="$session" -m "$hashmode" hash.txt -a 3 -w "$workload" --outfile-format=2 -o plaintext.txt "$mask")
+    fi
+
+    if echo "$hashcat_output" | grep -q "Cracked"; then
+        echo -e "${GREEN}Hashcat found the plaintext! Saving logs...${NC}"
+        sleep 2
+        save_logs
+        save_settings "$session" "" "" "$mask" ""
+    else
+        echo -e "${RED}Hashcat did not find the plaintext.${NC}"
+        sleep 2
+    fi
+}
 
 
 source windows/functions.sh
@@ -69,12 +95,5 @@ echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
 echo -e "${GREEN}Command >>${NC} hashcat.exe --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask""
 
 # Execute hashcat with combined attack (wordlist + mask) and increment options
-if [ "$status_timer" = "y" ]; then
-    "$hashcat_path/hashcat.exe" --session="$session" --status --status-timer=2 -m "$hashmode" hash.txt -a 3 -w "$workload" --outfile-format=2 -o plaintext.txt "$mask"
-else
-    "$hashcat_path/hashcat.exe" --session="$session" -m "$hashmode" hash.txt -a 3 -w "$workload" --outfile-format=2 -o plaintext.txt "$mask"
-fi
+run_hashcat "$session" "$hashmode" "$mask" "$workload" "$status_timer" "$hashcat_path"
 
-# Save successful settings
-save_settings "$session" "" "" "$mask" ""
-save_logs

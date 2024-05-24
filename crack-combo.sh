@@ -1,7 +1,35 @@
 #!/bin/bash
-
 # Hybrid Wordlist + Mask
-# Example:  hashcat -a 6 -m 0 example.hash example.dict ?a?a?a?a?a?a
+# Example: hashcat -a 6 -m 0 example.hash example.dict ?a?a?a?a?a?a
+
+# Function to handle hashcat execution and check for success
+run_hashcat() {
+    local session="$1"
+    local hashmode="$2"
+    local wordlist_path="$3"
+    local wordlist="$4"
+    local mask="$5"
+    local workload="$6"
+    local status_timer="$7"
+    local min_length="$8"
+    local max_length="$9"
+
+    if [ "$status_timer" = "y" ]; then
+        hashcat_output=$(hashcat --session="$session" --status --status-timer=2 --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask")
+    else
+        hashcat_output=$(hashcat --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask")
+    fi
+
+    if echo "$hashcat_output" | grep -q "Cracked"; then
+        echo -e "${GREEN}Hashcat found the plaintext! Saving logs...${NC}"
+        sleep 2
+        save_logs
+        save_settings "$session" "$wordlist_path" "$wordlist" "$mask"
+    else
+        echo -e "${RED}Hashcat did not find the plaintext.${NC}"
+        sleep 2
+    fi
+}
 
 
 source windows/functions.sh
@@ -33,7 +61,7 @@ wordlist=${wordlist_input:-$default_wordlist}
 
 echo -e "${RED}Enter Masks Path (press Enter to use default '$default_masks'):${NC}"
 read mask_path_input
-masks_path=${rules_path_input:-$default_rules}
+masks_path=${mask_path_input:-$default_masks}
 
 echo -e "${MAGENTA}Available Masks in $masks_path:${NC}"
 ls "$masks_path"
@@ -54,7 +82,7 @@ max_length=${max_length_input:-$default_max_length}
 
 echo -e "${MAGENTA}Use status timer? (press Enter to use default '$default_status_timer') [y/n]:${NC}"
 read status_timer_input
-status_timer=${status_timer_input:-default_status_timer}
+status_timer=${status_timer_input:-$default_status_timer}
 
 # Prompt hash attack mode
 echo -e "${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
@@ -66,23 +94,9 @@ echo -e "${MAGENTA}Enter workload (press Enter to use default '$default_workload
 read workload_input
 workload=${workload_input:-$default_workload}
 
-echo -e "${MAGENTA}Use status timer? (press Enter to use default '$default_status_timer') [y/n]:${NC}"
-read status_timer_input
-status_timer=${status_timer_input:-default_status_timer}
-
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask""
+echo -e "${GREEN}Command >>${NC} hashcat --session=\"$session\" --increment --increment-min=\"$min_length\" --increment-max=\"$max_length\" -m \"$hashmode\" hash.txt -a 6 -w \"$workload\" --outfile-format=2 -o plaintext.txt \"$wordlist_path/$wordlist\" \"$mask\""
 
 # Execute hashcat with combined attack (wordlist + mask) and increment options
-if [ "$status_timer" = "y" ]; then
-    hashcat --session="$session" --status --status-timer=2 --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask"
-else
-    hashcat --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m 22000 hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask"
-fi
-
-# Save successful settings
-save_settings "$session" "$wordlist_path" "$wordlist" "$mask" ""
-save_logs
-
-
+run_hashcat "$session" "$hashmode" "$wordlist_path" "$wordlist" "$mask" "$workload" "$status_timer" "$min_length" "$max_length"

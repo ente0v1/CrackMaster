@@ -1,7 +1,30 @@
 #!/bin/bash
-
 # Wordlist
-# Example:  hashcat -a 0 -m 0 example.hash example.dict
+# Example: hashcat -a 0 -m 0 example.hash example.dict
+
+# Function to handle hashcat execution and check for success
+run_hashcat() {
+    local session="$1"
+    local hashmode="$2"
+    local wordlist_path="$3"
+    local wordlist="$4"
+    local workload="$5"
+    local status_timer="$6"
+
+    if [ "$status_timer" = "y" ]; then
+        hashcat_output=$(hashcat --session="$session" --status --status-timer=2 -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist")
+    else
+        hashcat_output=$(hashcat --session="$session" -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist")
+    fi
+
+    if echo "$hashcat_output" | grep -q "Cracked"; then
+        echo -e "${GREEN}Hashcat found the plaintext! Saving logs...${NC}"
+        save_logs
+        save_settings "$session" "$wordlist_path" "$wordlist" ""
+    else
+        echo -e "${RED}Hashcat did not find the plaintext.${NC}"
+    fi
+}
 
 
 source windows/functions.sh
@@ -24,7 +47,7 @@ echo -e "${RED}Enter Wordlists Path (press Enter to use default '$default_wordli
 read wordlist_path_input
 wordlist_path=${wordlist_path_input:-$default_wordlists}
 
-echo -e "${MAGENTA}Available Wordlists in $wordlist_path:${NC} "
+echo -e "${MAGENTA}Available Wordlists in $wordlist_path:${NC}"
 ls "$wordlist_path"
 
 echo -e "${MAGENTA}Enter Wordlist (press Enter to use default '$default_wordlist'):${NC}"
@@ -43,20 +66,11 @@ workload=${workload_input:-$default_workload}
 
 echo -e "${MAGENTA}Use status timer? (press Enter to use default '$default_status_timer') [y/n]:${NC}"
 read status_timer_input
-status_timer=${status_timer_input:-default_status_timer}
+status_timer=${status_timer_input:-$default_status_timer}
 
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$hashmode" hash.txt -a 0 -w $wordload --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist""
+echo -e "${GREEN}Command >>${NC} hashcat --session=\"$session\" -m \"$hashmode\" hash.txt -a 0 -w $workload --outfile-format=2 -o plaintext.txt \"$wordlist_path/$wordlist\""
 
 # Execute hashcat with the specified wordlist
-if [ "$status_timer" = "y" ]; then
-    hashcat --session="$session" --status --status-timer=2 -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
-else
-    hashcat --session="$session" -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist"
-fi
-# Save successful settings
-save_settings "$session" "$wordlist_path" "$wordlist" ""
-save_logs
-
-
+run_hashcat "$session" "$hashmode" "$wordlist_path" "$wordlist" "$workload" "$status_timer"

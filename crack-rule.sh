@@ -1,7 +1,34 @@
 #!/bin/bash
-
 # Wordlist + Rule
-# Example:  hashcat -a 0 -m 0 example.hash example.dict example.rule
+# Example: hashcat -a 0 -m 0 example.hash example.dict example.rule
+
+# Function to handle hashcat execution and check for success
+run_hashcat() {
+    local session="$1"
+    local hashmode="$2"
+    local wordlist_path="$3"
+    local wordlist="$4"
+    local rule_path="$5"
+    local rule="$6"
+    local workload="$7"
+    local status_timer="$8"
+
+    if [ "$status_timer" = "y" ]; then
+        hashcat_output=$(hashcat --session="$session" --status --status-timer=2 -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule_path/$rule")
+    else
+        hashcat_output=$(hashcat --session="$session" -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule_path/$rule")
+    fi
+
+    if echo "$hashcat_output" | grep -q "Cracked"; then
+        echo -e "${GREEN}Hashcat found the plaintext! Saving logs...${NC}"
+        sleep 2
+        save_logs
+        save_settings "$session" "$wordlist_path" "$wordlist" "$rule"
+    else
+        echo -e "${RED}Hashcat did not find the plaintext.${NC}"
+        sleep 2
+    fi
+}
 
 
 source windows/functions.sh
@@ -33,9 +60,9 @@ wordlist=${wordlist_input:-$default_wordlist}
 
 echo -e "${RED}Enter Rules Path (press Enter to use default '$default_rules'):${NC}"
 read rule_path_input
-rule_path=${rules_path_input:-$default_rules}
+rule_path=${rule_path_input:-$default_rules}
 
-echo -e "${MAGENTA}Available Rules in $rules_path:${NC}"
+echo -e "${MAGENTA}Available Rules in $rule_path:${NC}"
 ls "$rule_path"
 
 echo -e "${MAGENTA}Enter Rule (press Enter to use default '$default_rule'):${NC}"
@@ -54,20 +81,11 @@ workload=${workload_input:-$default_workload}
 
 echo -e "${MAGENTA}Use status timer? (press Enter to use default '$default_status_timer') [y/n]:${NC}"
 read status_timer_input
-status_timer=${status_timer_input:-default_status_timer}
+status_timer=${status_timer_input:-$default_status_timer}
 
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat --session="$session" -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist" -r "$rule""
+echo -e "${GREEN}Command >>${NC} hashcat --session=\"$session\" -m \"$hashmode\" hash.txt -a 0 -w \"$workload\" --outfile-format=2 -o plaintext.txt \"$wordlist_path/$wordlist\" -r \"$rule_path/$rule\""
 
 # Execute hashcat with rules
-if [ "$status_timer" = "y" ]; then
-    hashcat --session="$session" --status --status-timer=2 -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
-else
-    hashcat --session="$session" -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule"
-fi
-
-# Save successful settings
-save_settings "$session" "$wordlist_path" "$wordlist" "" "$rule"
-save_logs
-
+run_hashcat "$session" "$hashmode" "$wordlist_path" "$wordlist" "$rule_path" "$rule" "$workload" "$status_timer"
