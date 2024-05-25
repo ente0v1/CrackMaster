@@ -34,10 +34,18 @@ cd Crack_Master
 chmod +x *
 ```
 If you prefer to use wordlists and other custom parameters, in files suffixed with `crack*`, replace `define_default_parameters` with `define_my_parameters` and go change variables in function "define_my_parameters" in `functions.sh`.
+
 To implement Hashcat for Windows see [Hashcat Build Documentation](https://github.com/hashcat/hashcat/blob/master/BUILD.md) and refer to the [Official Homepage](https://hashcat.net/hashcat/).
 
 ## Usage
-To start the script log in as non-root user and rename your hash in `hash.txt`, move your hash into `Crack_Master` directory and execute: `./crackmaster.sh`
+**Capturing a WPA2 hash**
+
+In order to sniff a "EAPOL" packet in the [4-way-handshake](https://notes.networklessons.com/security-wpa-4-way-handshake) see this [video](https://www.youtube.com/watch?v=WfYxrLaqlN8).
+The commands shown in the video has been put in the folder `scripts`.
+
+**Cracking the password**
+
+To start the script log in as non-root user and rename your hash in `hash.txt`, move your hash into `Crack_Master` directory and execute: `./crackmaster.sh`.
 
 ![Test Image](./assets/action.png)
 
