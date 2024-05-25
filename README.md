@@ -34,6 +34,14 @@ cd Crack_Master
 chmod +x *
 ```
 If you prefer to use wordlists and other custom parameters, in files suffixed with `crack*`, replace `define_default_parameters` with `define_my_parameters` and go change variables in function "define_my_parameters" in `functions.sh`.
+To populate Crack_Master with default wordlists and such, just execute:
+```
+cd Crack_Master
+git clone https://github.com/ente0v1/hashcat-defaults
+cd hashcat-defaults/
+mv * ../Crack_Master
+```
+If you want to download new wordlists see [wordlists.txt](./wordlists.txt) links repo. 
 
 To implement Hashcat for Windows see [Hashcat Build Documentation](https://github.com/hashcat/hashcat/blob/master/BUILD.md) and refer to the [Official Homepage](https://hashcat.net/hashcat/).
 
