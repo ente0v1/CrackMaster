@@ -10,23 +10,33 @@ run_hashcat() {
     local workload="$4"
     local status_timer="$5"
     local hashcat_path="$6"
-    local hashcat_output=""
+    
+    temp_output=$(mktemp)
 
     if [ "$status_timer" = "y" ]; then
-        hashcat_output=$("$hashcat_path/hashcat.exe" --session="$session" --status --status-timer=2 -m "$hashmode" hash.txt -a 3 -w "$workload" --outfile-format=2 -o plaintext.txt "$mask")
+        "$hashcat_path/hashcat.exe" --session="$session" --status --status-timer=2 -m "$hashmode" hash.txt -a 3 -w "$workload" --outfile-format=2 -o plaintext.txt "$mask") | tee $temp_output
     else
-        hashcat_output=$("$hashcat_path/hashcat.exe" --session="$session" -m "$hashmode" hash.txt -a 3 -w "$workload" --outfile-format=2 -o plaintext.txt "$mask")
+        "$hashcat_path/hashcat.exe" --session="$session" -m "$hashmode" hash.txt -a 3 -w "$workload" --outfile-format=2 -o plaintext.txt "$mask") | tee $temp_output
     fi
+
+    # Read the content of the temporary file into a variable
+    hashcat_output=$(cat "$temp_output")
+
+    # Output the captured output
+    echo "$hashcat_output"
 
     if echo "$hashcat_output" | grep -q "Cracked"; then
         echo -e "${GREEN}Hashcat found the plaintext! Saving logs...${NC}"
         sleep 2
         save_logs
-        save_settings "$session" "" "" "$mask" ""
+        save_settings "$session" "$wordlist_path" "$wordlist" ""
     else
         echo -e "${RED}Hashcat did not find the plaintext.${NC}"
         sleep 2
     fi
+    
+    # Remove the temporary file
+    rm "$temp_output"
 }
 
 

@@ -13,22 +13,33 @@ run_hashcat() {
     local status_timer="$7"
     local min_length="$8"
     local max_length="$9"
+    
+    temp_output=$(mktemp)
 
     if [ "$status_timer" = "y" ]; then
-        hashcat_output=$(hashcat --session="$session" --status --status-timer=2 --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask")
+        hashcat --session="$session" --status --status-timer=2 --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask") | tee $temp_output
     else
-        hashcat_output=$(hashcat --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask")
+        hashcat --session="$session" --increment --increment-min="$min_length" --increment-max="$max_length" -m "$hashmode" hash.txt -a 6 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" "$mask") | tee $temp_output
     fi
+
+    # Read the content of the temporary file into a variable
+    hashcat_output=$(cat "$temp_output")
+
+    # Output the captured output
+    echo "$hashcat_output"
 
     if echo "$hashcat_output" | grep -q "Cracked"; then
         echo -e "${GREEN}Hashcat found the plaintext! Saving logs...${NC}"
         sleep 2
         save_logs
-        save_settings "$session" "$wordlist_path" "$wordlist" "$mask"
+        save_settings "$session" "$wordlist_path" "$wordlist" ""
     else
         echo -e "${RED}Hashcat did not find the plaintext.${NC}"
         sleep 2
     fi
+    
+    # Remove the temporary file
+    rm "$temp_output"
 }
 
 
