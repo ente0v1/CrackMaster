@@ -37,7 +37,7 @@ If you prefer to use wordlists and other custom parameters, in files suffixed wi
 To implement Hashcat for Windows see [Hashcat Build Documentation](https://github.com/hashcat/hashcat/blob/master/BUILD.md) and refer to the [Official Homepage](https://hashcat.net/hashcat/).
 
 ## Usage
-To start the script log in as non-root user and rename your hash in "hash", move your hash into Crack_Master directory and execute: `./crackmaster.sh`
+To start the script log in as non-root user and rename your hash in `hash.txt`, move your hash into `Crack_Master` directory and execute: `./crackmaster.sh`
 
 ![Test Image](./assets/action.png)
 
