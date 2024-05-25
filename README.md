@@ -48,7 +48,7 @@ To implement Hashcat for Windows see [Hashcat Build Documentation](https://githu
 ## Usage
 **Capturing a WPA2 hash**
 
-In order to sniff a "EAPOL" packet in the [4-way-handshake](https://notes.networklessons.com/security-wpa-4-way-handshake) see this [video](https://www.youtube.com/watch?v=WfYxrLaqlN8).
+In order to sniff EAPOL packets in the [4-way-handshake](https://notes.networklessons.com/security-wpa-4-way-handshake) see this [video](https://www.youtube.com/watch?v=WfYxrLaqlN8).
 The commands shown in the video has been put in the folder `scripts`.
 
 **Cracking the password**
