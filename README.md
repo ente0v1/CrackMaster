@@ -3,7 +3,7 @@ A wrapper for Hashcat: it can perform cracking operations by giving a user-frien
 <!--
 ![Test Image](./assets/pennybags.png)
 -->
-Demo clip: [video](https://github.com/ente0v1/Crack_Master/assets/156426041/0d11513b-4b73-4c2b-9249-a8cac5ce86b1)
+See [Demo](https://github.com/ente0v1/Crack_Master/assets/156426041/0d11513b-4b73-4c2b-9249-a8cac5ce86b1).
 
 ## Disclaimer
 This program is provided without warranties of any kind. The author assumes no responsibility for any damages resulting from the use of this software. We recommend that you use it only for lawful purposes and in accordance with local laws.
