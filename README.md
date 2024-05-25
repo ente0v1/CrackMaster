@@ -3,7 +3,7 @@ A wrapper for Hashcat: it can perform cracking operations by giving a user-frien
 <!--
 ![Test Image](./assets/pennybags.png)
 -->
-Demo clip: https://github.com/ente0v1/Crack_Master/assets/156426041/0d11513b-4b73-4c2b-9249-a8cac5ce86b1
+See [Demo](https://github.com/ente0v1/Crack_Master/assets/156426041/0d11513b-4b73-4c2b-9249-a8cac5ce86b1).
 
 ## Disclaimer
 This program is provided without warranties of any kind. The author assumes no responsibility for any damages resulting from the use of this software. We recommend that you use it only for lawful purposes and in accordance with local laws.
@@ -34,6 +34,7 @@ cd Crack_Master
 chmod +x *
 ```
 If you prefer to use wordlists and other custom parameters, in files suffixed with `crack*`, replace `define_default_parameters` with `define_my_parameters` and go change variables in function "define_my_parameters" in `functions.sh`.
+To implement Hashcat for Windows see [Hashcat Build Documentation](https://github.com/hashcat/hashcat/blob/master/BUILD.md) and refer to the [Official Homepage](https://hashcat.net/hashcat/).
 
 ## Usage
 To start the script log in as non-root user and rename your hash in "hash", move your hash into Crack_Master directory and execute: `./crackmaster.sh`
