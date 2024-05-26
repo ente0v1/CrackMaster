@@ -2,6 +2,6 @@
 .vs/
 .github/
 .git/
-logs/
+logs/*
 !logs/fsociety/
 assets/
