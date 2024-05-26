@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Source the functions library
-source windows/functions.sh
+source functions.sh
 source fsociety00.dat
 
 # Define parameters

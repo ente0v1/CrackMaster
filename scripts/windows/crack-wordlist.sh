@@ -41,7 +41,7 @@ run_hashcat() {
 }
 
 
-source windows/functions.sh
+source functions.sh
 define_windows_parameters
 #define_my_parameters
 define_colors

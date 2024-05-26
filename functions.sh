@@ -1,7 +1,7 @@
 #!/bin/bash
 
 default_scripts="$HOME/Crack_Master"
-default_windows_scripts="/c/Users/$USER/source/repos/ente0v1/Crack_Master/windows"
+default_windows_scripts="/c/Users/$USER/source/repos/ente0v1/Crack_Master/scripts/windows"
 
 
 # Function to define colors
@@ -183,7 +183,7 @@ handle_option() {
                 scripts/windows/crack-wordlist.sh
             elif [[ "$default_os" == "Windows" ]]; then
                 echo -ne "./crack-wordlist.sh ${YELLOW}is Executing${NC}\n\n\n"
-                scripts/crack-wordlist.sh
+                scripts/linux/crack-wordlist.sh
             fi
             ;;
         2)
@@ -193,7 +193,7 @@ handle_option() {
                 scripts/windows/crack-rule.sh
             elif [[ "$default_os" == "Windows" ]]; then
                 echo -e "./crack-rule.sh ${YELLOW}is Executing${NC}\n\n\n"
-                scripts/crack-rule.sh
+                scripts/linux/crack-rule.sh
             fi
             ;;
 
@@ -204,7 +204,7 @@ handle_option() {
                 scripts/windows/crack-bruteforce.sh
             elif [[ "$default_os" == "Windows" ]]; then
                 echo -ne "./crack-bruteforce.sh ${YELLOW}is Executing${NC}\n\n\n"
-                scripts/crack-bruteforce.sh
+                scripts/linux/crack-bruteforce.sh
             fi
             ;;
 
@@ -215,7 +215,7 @@ handle_option() {
                 scripts/windows/crack-combo.sh
             elif [[ "$default_os" == "Windows" ]]; then
                 echo -ne "./crack-combo.sh ${YELLOW}is Executing${NC}\n\n\n"
-                scripts/crack-combo.sh
+                scripts/linux/crack-combo.sh
             fi
             ;;
 

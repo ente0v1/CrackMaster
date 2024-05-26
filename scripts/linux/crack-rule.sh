@@ -1,6 +1,6 @@
 #!/bin/bash
-# Wordlist
-# Example: hashcat -a 0 -m 0 example.hash example.dict
+# Wordlist + Rule
+# Example: hashcat -a 0 -m 0 example.hash example.dict example.rule
 
 # Function to handle hashcat execution and check for success
 run_hashcat() {
@@ -8,15 +8,17 @@ run_hashcat() {
     local hashmode="$2"
     local wordlist_path="$3"
     local wordlist="$4"
-    local workload="$5"
-    local status_timer="$6"
+    local rule_path="$5"
+    local rule="$6"
+    local workload="$7"
+    local status_timer="$8"
 
     temp_output=$(mktemp)
 
     if [ "$status_timer" = "y" ]; then
-        hashcat --session="$session" --status --status-timer=2 -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" | tee $temp_output
+        hashcat --session="$session" --status --status-timer=2 -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule_path/$rule" | tee $temp_output
     else
-        hashcat --session="$session" -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" | tee $temp_output
+        hashcat --session="$session" -m "$hashmode" hash.txt -a 0 -w "$workload" --outfile-format=2 -o plaintext.txt "$wordlist_path/$wordlist" -r "$rule_path/$rule" | tee $temp_output
     fi
 
     # Read the content of the temporary file into a variable
@@ -40,7 +42,7 @@ run_hashcat() {
 }
 
 
-source windows/functions.sh
+source functions.sh
 #define_default_parameters
 define_my_parameters
 define_colors
@@ -67,6 +69,17 @@ echo -e "${MAGENTA}Enter Wordlist (press Enter to use default '$default_wordlist
 read wordlist_input
 wordlist=${wordlist_input:-$default_wordlist}
 
+echo -e "${RED}Enter Rules Path (press Enter to use default '$default_rules'):${NC}"
+read rule_path_input
+rule_path=${rule_path_input:-$default_rules}
+
+echo -e "${MAGENTA}Available Rules in $rule_path:${NC}"
+ls "$rule_path"
+
+echo -e "${MAGENTA}Enter Rule (press Enter to use default '$default_rule'):${NC}"
+read rule_input
+rule=${rule_input:-$default_rule}
+
 # Prompt hash attack mode
 echo -e "${MAGENTA}Enter hash attack mode (press Enter to use default '22000'):${NC}"
 read hashmode_input
@@ -83,7 +96,7 @@ status_timer=${status_timer_input:-$default_status_timer}
 
 # Print the hashcat command
 echo -e "${GREEN}Restore >>${NC} $default_restorepath/$session"
-echo -e "${GREEN}Command >>${NC} hashcat --session=\"$session\" -m \"$hashmode\" hash.txt -a 0 -w $workload --outfile-format=2 -o plaintext.txt \"$wordlist_path/$wordlist\""
+echo -e "${GREEN}Command >>${NC} hashcat --session=\"$session\" -m \"$hashmode\" hash.txt -a 0 -w \"$workload\" --outfile-format=2 -o plaintext.txt \"$wordlist_path/$wordlist\" -r \"$rule_path/$rule\""
 
-# Execute hashcat with the specified wordlist
-run_hashcat "$session" "$hashmode" "$wordlist_path" "$wordlist" "$workload" "$status_timer"
+# Execute hashcat with rules
+run_hashcat "$session" "$hashmode" "$wordlist_path" "$wordlist" "$rule_path" "$rule" "$workload" "$status_timer"
