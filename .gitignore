@@ -1,7 +1,7 @@
-.vscode
-.vs
-.github
-.git
+.vscode/
+.vs/
+.github/
+.git/
 logs
-!logs/fsociety
-assets
+!logs/fsociety/
+assets/
