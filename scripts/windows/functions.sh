@@ -180,20 +180,20 @@ handle_option() {
             animate_text "..." 0.1
             if [[ "$default_os" == "Linux" ]]; then
                 echo -ne "windows/crack-wordlist.sh ${YELLOW}is Executing${NC}\n\n\n"
-                windows/crack-wordlist.sh
+                scripts/windows/crack-wordlist.sh
             elif [[ "$default_os" == "Windows" ]]; then
                 echo -ne "./crack-wordlist.sh ${YELLOW}is Executing${NC}\n\n\n"
-                ./crack-wordlist.sh
+                scripts/crack-wordlist.sh
             fi
             ;;
         2)
             animate_text "..." 0.1
             if [[ "$default_os" == "Linux" ]]; then
                 echo -e "windows/crack-rule.sh ${YELLOW}is Executing${NC}\n\n\n"
-                windows/crack-rule.sh
+                scripts/windows/crack-rule.sh
             elif [[ "$default_os" == "Windows" ]]; then
                 echo -e "./crack-rule.sh ${YELLOW}is Executing${NC}\n\n\n"
-                ./crack-rule.sh
+                scripts/crack-rule.sh
             fi
             ;;
 
@@ -201,10 +201,10 @@ handle_option() {
             animate_text "..." 0.1
             if [[ "$default_os" == "Linux" ]]; then
                 echo -ne "windows/crack-bruteforce.sh ${YELLOW}is Executing${NC}\n\n\n"
-                windows/crack-bruteforce.sh
+                scripts/windows/crack-bruteforce.sh
             elif [[ "$default_os" == "Windows" ]]; then
                 echo -ne "./crack-bruteforce.sh ${YELLOW}is Executing${NC}\n\n\n"
-                ./crack-bruteforce.sh
+                scripts/crack-bruteforce.sh
             fi
             ;;
 
@@ -212,10 +212,10 @@ handle_option() {
             animate_text "..." 0.1
             if [[ "$default_os" == "Linux" ]]; then
                 echo -ne "windows/crack-combo.sh ${YELLOW}is Executing${NC}\n\n\n"
-                windows/crack-combo.sh
+                scripts/windows/crack-combo.sh
             elif [[ "$default_os" == "Windows" ]]; then
                 echo -ne "./crack-combo.sh ${YELLOW}is Executing${NC}\n\n\n"
-                ./crack-combo.sh
+                scripts/crack-combo.sh
             fi
             ;;
 
@@ -239,9 +239,9 @@ handle_option() {
 # Function to execute Windows scripts
 execute_windows_scripts() {
     # Check if the Windows scripts directory exists
-    if [[ -d "windows" ]]; then
+    if [[ -d "scripts/windows" ]]; then
         # Loop through the Windows scripts directory and execute each script
-        for script in "windows"; do
+        for script in "scripts/windows"; do
             if [[ -f "$script" ]]; then
                 echo "Executing Windows script: $script"
                 # Add code to execute Windows script

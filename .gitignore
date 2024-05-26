@@ -1,4 +1,6 @@
 .vscode
+.vs
 .github
 .git
 logs
+assets
