@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source functions.sh
-
 show_pennybags() {
     clear  # Clear the screen
     color=$(random_color)  # Generate a random color for the title
