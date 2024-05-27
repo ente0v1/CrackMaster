@@ -4,4 +4,3 @@
 .git/
 logs/*
 !logs/fsociety/
-assets/
