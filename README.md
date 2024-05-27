@@ -47,9 +47,6 @@ To implement Hashcat for Windows see [Hashcat Build Documentation](https://githu
 
 ## Usage
 
-![Screenshot from 2024-05-27 02-56-37](https://github.com/ente0v1/Crack_Master/assets/156426041/fb8237c0-33b0-42ab-b3ed-2b8f9a1cd20c)
-
-
 **Capturing a WPA2 hash**
 
 In order to sniff EAPOL packets in the [4-way-handshake](https://notes.networklessons.com/security-wpa-4-way-handshake) see this [video](https://www.youtube.com/watch?v=WfYxrLaqlN8).
@@ -60,6 +57,8 @@ The commands shown in the video has been put in the folder `scripts`.
 To start the script log in as non-root user and rename your hash in `hash.txt`, move your hash into `Crack_Master` directory and execute: `./crackmaster.sh`.
 
 At the end of the cracking you will see the results inside `logs`, just open `status.txt` in the session folder.
+
+![Screenshot from 2024-05-27 02-56-37](https://github.com/ente0v1/Crack_Master/assets/156426041/fb8237c0-33b0-42ab-b3ed-2b8f9a1cd20c)
 
 ## Attacks
 
