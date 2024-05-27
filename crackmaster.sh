@@ -44,5 +44,12 @@ while true; do
     fi
     
     handle_option "$user_option"
-    echo "User option: $user_option" 
+
+    # If the option runs hashcat, freeze the screen
+    if [[ "$user_option" == "hashcat_option_identifier" ]]; then
+        echo "Hashcat has finished. Press any key to continue..."
+        read -n 1 -s  # Wait for a key press
+    fi
+
+    echo "User option: $user_option"
 done
