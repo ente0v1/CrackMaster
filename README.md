@@ -26,7 +26,7 @@ This Bash script provides a simple interface to perform cracking operations usin
 ![Test Image](./assets/)
 
 If you are on Windows, in order to execute Bash, simply download [Git Bash](https://git-scm.com/download/win) or [Kali Linux](https://apps.microsoft.com/detail/9pkr34tncv07?hl=en-us&gl=US) from Microsoft Store.
-To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the Crack_Master folder by typing `cd Crack_Master`. After that, make all scripts executable with `chmod -R +x *`, and proceed to move `hash.txt` in your repo root directory. With these steps completed, you're now ready to run the script by executing `./crackmaster.sh`.
+To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the Crack_Master folder by typing `cd Crack_Master`. Proceed to move `hash.txt` in your repo root directory. With these steps completed, you're now ready to run the script by executing `./crackmaster.sh`.
 Execution:
 ```
 git clone --depth 1 https://github.com/ente0v1/Crack_Master.git
