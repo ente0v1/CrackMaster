@@ -1,6 +1,6 @@
 
 Session: fsociety
-Wordlist Path: /home/enteo/cracking/wordlists/rockyou.txt
+Wordlist Path: /home/pennybags/cracking/wordlists/rockyou.txt
 Mask: 
 Rule: 
 Plaintext: 
