@@ -62,7 +62,7 @@ To start the script log in as non-root user and rename your hash in `hash.txt`, 
 At the end of the cracking you will see the results inside `logs`, just open `status.txt` in the session folder.
 
 ## Attacks
-<!--
+
 ```
 - [ Attack Modes ] -
 
@@ -87,8 +87,7 @@ At the end of the cracking you will see the results inside `logs`, just open `st
   Association      | $1$   | hashcat -a 9 -m 500 example500.hash 1word.dict -r rules/best64.rule
 
 ```
--->
-![Screenshot from 2024-05-27 02-59-11](https://github.com/ente0v1/Crack_Master/assets/156426041/e3bcf732-06a6-4e75-a7dc-9eb0368f2048)
+
 -> from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
 
 
