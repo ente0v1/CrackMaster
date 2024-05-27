@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source windows/functions.sh
+source functions.sh
 
 show_pennybags() {
     clear  # Clear the screen
