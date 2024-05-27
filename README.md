@@ -3,7 +3,7 @@ A wrapper group of scripts for Hashcat: it can perform cracking operations by gi
 <!--
 ![Test Image](./assets/pennybags.png)
 -->
-See [Demo](https://github.com/ente0v1/Crack_Master/assets/156426041/0d11513b-4b73-4c2b-9249-a8cac5ce86b1).
+https://github.com/ente0v1/Crack_Master/assets/156426041/f085efaa-777b-40b3-8c82-a3ee1a8b360b
 
 ## Disclaimer
 This program is provided without warranties of any kind. The author assumes no responsibility for any damages resulting from the use of this software. We recommend that you use it only for lawful purposes and in accordance with local laws.
@@ -23,7 +23,7 @@ This Bash script provides a simple interface to perform cracking operations usin
 - Resources: Wordlists, rules, and masks available in the specified paths
 
 ## Installation
-![Test Image](./assets/)
+![Screenshot from 2024-05-27 02-50-05](https://github.com/ente0v1/Crack_Master/assets/156426041/09db3942-0e75-4561-acc7-51bf4e0b5444)
 
 If you are on Windows, in order to execute Bash, simply download [Git Bash](https://git-scm.com/download/win) or [Kali Linux](https://apps.microsoft.com/detail/9pkr34tncv07?hl=en-us&gl=US) from Microsoft Store.
 To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the Crack_Master folder by typing `cd Crack_Master`. Proceed to move `hash.txt` in your repo root directory. With these steps completed, you're now ready to run the script by executing `./crackmaster.sh`.
@@ -46,6 +46,7 @@ If you want to download new wordlists see [wordlists.txt](./wordlists.txt).
 To implement Hashcat for Windows see [Hashcat Build Documentation](https://github.com/hashcat/hashcat/blob/master/BUILD.md) and refer to the [Official Homepage](https://hashcat.net/hashcat/).
 
 ## Usage
+
 **Capturing a WPA2 hash**
 
 In order to sniff EAPOL packets in the [4-way-handshake](https://notes.networklessons.com/security-wpa-4-way-handshake) see this [video](https://www.youtube.com/watch?v=WfYxrLaqlN8).
@@ -55,11 +56,12 @@ The commands shown in the video has been put in the folder `scripts`.
 
 To start the script log in as non-root user and rename your hash in `hash.txt`, move your hash into `Crack_Master` directory and execute: `./crackmaster.sh`.
 
-![Test Image](./assets/action.png)
-
 At the end of the cracking you will see the results inside `logs`, just open `status.txt` in the session folder.
 
+![Screenshot from 2024-05-27 02-56-37](https://github.com/ente0v1/Crack_Master/assets/156426041/fb8237c0-33b0-42ab-b3ed-2b8f9a1cd20c)
+
 ## Attacks
+
 ```
 - [ Attack Modes ] -
 
@@ -84,7 +86,8 @@ At the end of the cracking you will see the results inside `logs`, just open `st
   Association      | $1$   | hashcat -a 9 -m 500 example500.hash 1word.dict -r rules/best64.rule
 
 ```
---> from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
+
+-> from [Hashcat Wiki](https://hashcat.net/wiki/doku.php?id=hashcat)
 
 
 ## Script Breakdown
