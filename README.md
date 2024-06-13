@@ -33,7 +33,7 @@ cd Crack_Master
 ```
 If you want to set default values, such as wordlists and rules comment `define_default_parameters` and uncomment `define_my_parameters` (in files suffixed with `crack-*`, finally go change variables in function "define_my_parameters" in `functions.sh`.
 
-To populate Crack_Master with default wordlists and such, just execute:
+To populate Crack_Master with wordlists and such, just execute:
 ```
 cd Crack_Master
 git clone https://github.com/ente0v1/hashcat-defaults
