@@ -31,7 +31,7 @@ To begin, clone the repository using `git clone https://github.com/ente0v1/Crack
 git clone --depth 1 https://github.com/ente0v1/Crack_Master.git
 cd Crack_Master
 ```
-If you prefer to use wordlists and other custom parameters, in files suffixed with `crack*`, comment `define_default_parameters` and uncomment `define_my_parameters`, finally go change variables in function "define_my_parameters" in `functions.sh`.
+If you want to set default values, such as wordlists and rules comment `define_default_parameters` and uncomment `define_my_parameters` (in files suffixed with `crack-*`, finally go change variables in function "define_my_parameters" in `functions.sh`.
 
 To populate Crack_Master with default wordlists and such, just execute:
 ```
