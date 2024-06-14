@@ -23,14 +23,16 @@ This Bash script provides a simple interface to perform cracking operations usin
 - Resources: Wordlists, rules, and masks available in the specified paths
 
 ## Installation
-![Screenshot from 2024-05-27 02-50-05](https://github.com/ente0v1/Crack_Master/assets/156426041/09db3942-0e75-4561-acc7-51bf4e0b5444)
-
-If you are on Windows, in order to execute Bash, simply download [Git Bash](https://git-scm.com/download/win) or [Kali Linux](https://apps.microsoft.com/detail/9pkr34tncv07?hl=en-us&gl=US) from Microsoft Store.
-To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the Crack_Master folder by typing `cd Crack_Master`. Proceed to move `hash.txt` in your repo root directory. 
+Command:
 ```
 git clone --depth 1 https://github.com/ente0v1/Crack_Master.git
 cd Crack_Master
 ```
+![Screenshot from 2024-05-27 02-50-05](https://github.com/ente0v1/Crack_Master/assets/156426041/09db3942-0e75-4561-acc7-51bf4e0b5444)
+
+If you are on Windows, in order to execute Bash, simply download [Git Bash](https://git-scm.com/download/win) or [Kali Linux](https://apps.microsoft.com/detail/9pkr34tncv07?hl=en-us&gl=US) from Microsoft Store.
+To begin, clone the repository using `git clone https://github.com/ente0v1/Crack_Master.git` in your $HOME directory, then navigate into the Crack_Master folder by typing `cd Crack_Master`. Proceed to move `hash.txt` in your repo root directory. 
+
 If you want to set default values, such as wordlists and rules comment `define_default_parameters` and uncomment `define_my_parameters` (in files suffixed with `crack-*`, finally go change variables in function "define_my_parameters" in `functions.sh`.
 
 To populate Crack_Master with wordlists and such, just execute:
