@@ -23,7 +23,7 @@ This Bash script provides a simple interface to perform cracking operations usin
 - Resources: Wordlists, rules, and masks available in the specified paths
 
 ## Installation
-Command:
+**Command to clone (lightweight) repo**
 ```
 git clone --depth 1 https://github.com/ente0v1/Crack_Master.git
 cd Crack_Master
